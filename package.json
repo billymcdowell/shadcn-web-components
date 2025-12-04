@@ -1,6 +1,7 @@
 {
   "name": "@billy_mcdowell/shadcn-web-components",
   "version": "0.0.2",
+  "private": false,
   "description": "A professional web component library built with Lit, following shadcn design principles",
   "type": "module",
   "main": "./dist/index.js",
@@ -143,7 +144,7 @@
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build && npm run type-check && npm run analyze",
     "changeset": "changeset",
-    "release": "changeset publish"
+    "release": "changeset publish --access=public"
   },
   "keywords": [
     "web-components",
