@@ -31,8 +31,11 @@ jobs:
           node-version: 20.x
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install Dependencies
-        run: npm install --frozen-lockfile
+      - name: Run Build and Validation Scripts
+        run: |
+          npm run build
+          npm run type-check
+          npm run analyze
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
