@@ -1,0 +1,152 @@
+{
+  "name": "shadcn-web-components",
+  "version": "0.1.0",
+  "description": "A professional web component library built with Lit, following shadcn design principles",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./accordion": {
+      "types": "./dist/components/accordion/index.d.ts",
+      "default": "./dist/components/accordion/index.js"
+    },
+    "./button": {
+      "types": "./dist/components/button/index.d.ts",
+      "default": "./dist/components/button/index.js"
+    },
+    "./button-group": {
+      "types": "./dist/components/button-group/index.d.ts",
+      "default": "./dist/components/button-group/index.js"
+    },
+    "./card": {
+      "types": "./dist/components/card/index.d.ts",
+      "default": "./dist/components/card/index.js"
+    },
+    "./checkbox": {
+      "types": "./dist/components/checkbox/index.d.ts",
+      "default": "./dist/components/checkbox/index.js"
+    },
+    "./empty": {
+      "types": "./dist/components/empty/index.d.ts",
+      "default": "./dist/components/empty/index.js"
+    },
+    "./field": {
+      "types": "./dist/components/field/index.d.ts",
+      "default": "./dist/components/field/index.js"
+    },
+    "./input": {
+      "types": "./dist/components/input/index.d.ts",
+      "default": "./dist/components/input/index.js"
+    },
+    "./input-group": {
+      "types": "./dist/components/input-group/index.d.ts",
+      "default": "./dist/components/input-group/index.js"
+    },
+    "./item": {
+      "types": "./dist/components/item/index.d.ts",
+      "default": "./dist/components/item/index.js"
+    },
+    "./kbd": {
+      "types": "./dist/components/kbd/index.d.ts",
+      "default": "./dist/components/kbd/index.js"
+    },
+    "./label": {
+      "types": "./dist/components/label/index.d.ts",
+      "default": "./dist/components/label/index.js"
+    },
+    "./native-select": {
+      "types": "./dist/components/native-select/index.d.ts",
+      "default": "./dist/components/native-select/index.js"
+    },
+    "./radio-group": {
+      "types": "./dist/components/radio-group/index.d.ts",
+      "default": "./dist/components/radio-group/index.js"
+    },
+    "./separator": {
+      "types": "./dist/components/separator/index.d.ts",
+      "default": "./dist/components/separator/index.js"
+    },
+    "./skeleton": {
+      "types": "./dist/components/skeleton/index.d.ts",
+      "default": "./dist/components/skeleton/index.js"
+    },
+    "./slider": {
+      "types": "./dist/components/slider/index.d.ts",
+      "default": "./dist/components/slider/index.js"
+    },
+    "./spinner": {
+      "types": "./dist/components/spinner/index.d.ts",
+      "default": "./dist/components/spinner/index.js"
+    },
+    "./switch": {
+      "types": "./dist/components/switch/index.d.ts",
+      "default": "./dist/components/switch/index.js"
+    },
+    "./textarea": {
+      "types": "./dist/components/textarea/index.d.ts",
+      "default": "./dist/components/textarea/index.js"
+    },
+    "./toggle": {
+      "types": "./dist/components/toggle/index.d.ts",
+      "default": "./dist/components/toggle/index.js"
+    },
+    "./toggle-group": {
+      "types": "./dist/components/toggle-group/index.d.ts",
+      "default": "./dist/components/toggle-group/index.js"
+    },
+    "./styles": {
+      "default": "./dist/styles/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "custom-elements.json"
+  ],
+  "customElements": "custom-elements.json",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "analyze": "cem analyze --litelement --outdir .",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "prepublishOnly": "npm run build && npm run type-check && npm run analyze"
+  },
+  "keywords": [
+    "web-components",
+    "lit",
+    "design-system",
+    "shadcn",
+    "ui-components"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/williammcdowell/shadcn-web-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/williammcdowell/shadcn-web-components/issues"
+  },
+  "homepage": "https://github.com/williammcdowell/shadcn-web-components#readme",
+  "dependencies": {
+    "lit": "^3.2.1"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@storybook/addon-a11y": "^8.4.7",
+    "@storybook/addon-essentials": "^8.4.7",
+    "@storybook/web-components": "^8.4.7",
+    "@storybook/web-components-vite": "^8.4.7",
+    "storybook": "^8.4.7",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.1"
+  }
+}
