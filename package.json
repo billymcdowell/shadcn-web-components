@@ -1,6 +1,6 @@
 {
   "name": "shadcn-web-components",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "A professional web component library built with Lit, following shadcn design principles",
   "type": "module",
   "main": "./dist/index.js",
@@ -141,7 +141,8 @@
     "analyze": "cem analyze --litelement --outdir .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepublishOnly": "npm run build && npm run type-check && npm run analyze"
+    "prepublishOnly": "npm run build && npm run type-check && npm run analyze",
+    "changeset": "changeset"
   },
   "keywords": [
     "web-components",
@@ -164,6 +165,7 @@
     "lit": "^3.2.1"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.8",
     "@custom-elements-manifest/analyzer": "^0.10.4",
     "@storybook/addon-a11y": "^8.4.7",
     "@storybook/addon-essentials": "^8.4.7",
