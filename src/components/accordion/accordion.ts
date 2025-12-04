@@ -12,9 +12,9 @@ import { tokens } from '../../styles/index.js';
  */
 @customElement('shadcn-accordion-item')
 export class AccordionItem extends LitElement {
-    static styles = [
-        tokens,
-        css`
+  static styles = [
+    tokens,
+    css`
       :host {
         display: block;
       }
@@ -75,13 +75,13 @@ export class AccordionItem extends LitElement {
         color: var(--foreground);
       }
     `,
-    ];
+  ];
 
-    @property({ type: Boolean }) open = false;
-    @property({ type: String }) value = '';
+  @property({ type: Boolean }) open = false;
+  @property({ type: String }) value = '';
 
-    render() {
-        return html`
+  render() {
+    return html`
       <div part="accordion-item" class="accordion-item">
         <button
           part="accordion-trigger"
@@ -101,17 +101,17 @@ export class AccordionItem extends LitElement {
         </div>
       </div>
     `;
-    }
+  }
 
-    private _handleClick() {
-        this.dispatchEvent(
-            new CustomEvent('accordion-item-toggle', {
-                bubbles: true,
-                composed: true,
-                detail: { value: this.value, open: !this.open },
-            })
-        );
-    }
+  private _handleClick() {
+    this.dispatchEvent(
+      new CustomEvent('accordion-item-toggle', {
+        bubbles: true,
+        composed: true,
+        detail: { value: this.value, open: !this.open },
+      })
+    );
+  }
 }
 
 /**
@@ -125,9 +125,9 @@ export class AccordionItem extends LitElement {
  */
 @customElement('shadcn-accordion')
 export class Accordion extends LitElement {
-    static styles = [
-        tokens,
-        css`
+  static styles = [
+    tokens,
+    css`
       :host {
         display: block;
       }
@@ -136,92 +136,92 @@ export class Accordion extends LitElement {
         border-top: 1px solid var(--border);
       }
     `,
-    ];
+  ];
 
-    @property({ type: String }) type: 'single' | 'multiple' = 'single';
-    @property({ type: String }) value = '';
-    @property({ type: Boolean }) collapsible = false;
+  @property({ type: String }) type: 'single' | 'multiple' = 'single';
+  @property({ type: String }) value = '';
+  @property({ type: Boolean }) collapsible = false;
 
-    render() {
-        return html`
+  render() {
+    return html`
       <div part="accordion" class="accordion" @accordion-item-toggle=${this._handleItemToggle}>
         <slot></slot>
       </div>
     `;
+  }
+
+  private _handleItemToggle(e: Event) {
+    const item = e.target as AccordionItem;
+    const itemValue = item.value;
+
+    if (this.type === 'single') {
+      // Single mode: only one item can be open
+      if (this.value === itemValue) {
+        // Clicking the open item
+        this.value = this.collapsible ? '' : itemValue;
+      } else {
+        this.value = itemValue;
+      }
+    } else {
+      // Multiple mode: track array of open items
+      const values = this.value ? this.value.split(',') : [];
+      const index = values.indexOf(itemValue);
+
+      if (index === -1) {
+        values.push(itemValue);
+      } else {
+        values.splice(index, 1);
+      }
+
+      this.value = values.join(',');
     }
 
-    private _handleItemToggle(e: Event) {
-        const item = e.target as AccordionItem;
-        const itemValue = item.value;
+    this._updateItems();
 
-        if (this.type === 'single') {
-            // Single mode: only one item can be open
-            if (this.value === itemValue) {
-                // Clicking the open item
-                this.value = this.collapsible ? '' : itemValue;
-            } else {
-                this.value = itemValue;
-            }
-        } else {
-            // Multiple mode: track array of open items
-            const values = this.value ? this.value.split(',') : [];
-            const index = values.indexOf(itemValue);
+    this.dispatchEvent(
+      new CustomEvent('accordion-change', {
+        bubbles: true,
+        composed: true,
+        detail: { value: this.value },
+      })
+    );
+  }
 
-            if (index === -1) {
-                values.push(itemValue);
-            } else {
-                values.splice(index, 1);
-            }
+  private _updateItems() {
+    const items = this._getItems();
+    const values = this.value ? this.value.split(',') : [];
 
-            this.value = values.join(',');
-        }
+    items.forEach(item => {
+      if (this.type === 'single') {
+        item.open = item.value === this.value;
+      } else {
+        item.open = values.includes(item.value);
+      }
+    });
+  }
 
-        this._updateItems();
+  private _getItems(): AccordionItem[] {
+    const slot = this.shadowRoot?.querySelector('slot');
+    if (!slot) return [];
 
-        this.dispatchEvent(
-            new CustomEvent('accordion-change', {
-                bubbles: true,
-                composed: true,
-                detail: { value: this.value },
-            })
-        );
+    const nodes = slot.assignedElements({ flatten: true });
+    return nodes.filter((node): node is AccordionItem => node.tagName.toLowerCase() === 'shadcn-accordion-item');
+  }
+
+  updated(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('value')) {
+      this._updateItems();
     }
+  }
 
-    private _updateItems() {
-        const items = this._getItems();
-        const values = this.value ? this.value.split(',') : [];
-
-        items.forEach(item => {
-            if (this.type === 'single') {
-                item.open = item.value === this.value;
-            } else {
-                item.open = values.includes(item.value);
-            }
-        });
-    }
-
-    private _getItems(): AccordionItem[] {
-        const slot = this.shadowRoot?.querySelector('slot');
-        if (!slot) return [];
-
-        const nodes = slot.assignedElements({ flatten: true });
-        return nodes.filter((node): node is AccordionItem => node.tagName.toLowerCase() === 'shadcn-accordion-item');
-    }
-
-    updated(changedProperties: Map<string, unknown>) {
-        if (changedProperties.has('value')) {
-            this._updateItems();
-        }
-    }
-
-    firstUpdated() {
-        this._updateItems();
-    }
+  firstUpdated() {
+    this._updateItems();
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'shadcn-accordion': Accordion;
-        'shadcn-accordion-item': AccordionItem;
-    }
+  interface HTMLElementTagNameMap {
+    'shadcn-accordion': Accordion;
+    'shadcn-accordion-item': AccordionItem;
+  }
 }

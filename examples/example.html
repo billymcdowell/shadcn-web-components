@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shadcn Web Components Demo</title>
+    <script type="importmap">
+        {
+            "imports": {
+                "lit": "https://esm.sh/lit@3.2.1",
+                "lit/decorators.js": "https://esm.sh/lit@3.2.1/decorators.js"
+            }
+        }
+    </script>
+    <script type="module" src="../dist/index.js"></script>
+    <style>
+        :root {
+            /* Dark mode tokens matching the project defaults */
+            --background: 0.145 0 0;
+            --foreground: 0.985 0 0;
+            --card: 0.205 0 0;
+            --card-foreground: 0.985 0 0;
+            --popover: 0.269 0 0;
+            --popover-foreground: 0.985 0 0;
+            --primary: 0.922 0 0;
+            --primary-foreground: 0.205 0 0;
+            --secondary: 0.269 0 0;
+            --secondary-foreground: 0.985 0 0;
+            --muted: 0.269 0 0;
+            --muted-foreground: 0.708 0 0;
+            --accent: 0.371 0 0;
+            --accent-foreground: 0.985 0 0;
+            --destructive: 0.704 0.191 22.216;
+            --destructive-foreground: 0.985 0 0;
+            --border: 1 0 0 0.1;
+            /* oklch(1 0 0 / 10%) */
+            --input: 1 0 0 0.15;
+            /* oklch(1 0 0 / 15%) */
+            --ring: 0.556 0 0;
+            --radius-md: 0.375rem;
+        }
+
+        body {
+            background-color: oklch(var(--background));
+            color: oklch(var(--foreground));
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.5;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-weight: 600;
+            letter-spacing: -0.025em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid oklch(var(--border));
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: oklch(var(--muted-foreground));
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .flex-col {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .flex-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .p-4 {
+            padding: 1rem;
+        }
+
+        .border {
+            border: 1px solid oklch(var(--border));
+            border-radius: var(--radius-md);
+        }
+
+        /* Demo specific styles */
+        shadcn-card {
+            width: 100%;
+        }
+
+        shadcn-sidebar {
+            height: 400px;
+            border: 1px solid oklch(var(--border));
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Shadcn Web Components</h1>
+    <p class="mb-4" style="color: oklch(var(--muted-foreground))">A collection of framework-agnostic web components
+        built with Lit.</p>
+
+    <!-- Navigation Components -->
+    <h2>Navigation</h2>
+
+    <h3>Menubar</h3>
+    <div class="mb-4">
+        <shadcn-menubar>
+            <shadcn-menubar-menu>
+                <shadcn-menubar-trigger>File</shadcn-menubar-trigger>
+                <shadcn-menubar-content>
+                    <shadcn-menubar-item>New Tab <span slot="shortcut">⌘T</span></shadcn-menubar-item>
+                    <shadcn-menubar-item>New Window <span slot="shortcut">⌘N</span></shadcn-menubar-item>
+                    <shadcn-menubar-separator></shadcn-menubar-separator>
+                    <shadcn-menubar-item>Share</shadcn-menubar-item>
+                    <shadcn-menubar-separator></shadcn-menubar-separator>
+                    <shadcn-menubar-item>Print... <span slot="shortcut">⌘P</span></shadcn-menubar-item>
+                </shadcn-menubar-content>
+            </shadcn-menubar-menu>
+            <shadcn-menubar-menu>
+                <shadcn-menubar-trigger>Edit</shadcn-menubar-trigger>
+                <shadcn-menubar-content>
+                    <shadcn-menubar-item>Undo <span slot="shortcut">⌘Z</span></shadcn-menubar-item>
+                    <shadcn-menubar-item>Redo <span slot="shortcut">⇧⌘Z</span></shadcn-menubar-item>
+                </shadcn-menubar-content>
+            </shadcn-menubar-menu>
+            <shadcn-menubar-menu>
+                <shadcn-menubar-trigger>View</shadcn-menubar-trigger>
+                <shadcn-menubar-content>
+                    <shadcn-menubar-checkbox-item checked>Always Show Bookmarks Bar</shadcn-menubar-checkbox-item>
+                    <shadcn-menubar-checkbox-item checked>Always Show Full URLs</shadcn-menubar-checkbox-item>
+                </shadcn-menubar-content>
+            </shadcn-menubar-menu>
+        </shadcn-menubar>
+    </div>
+
+    <h3>Breadcrumb</h3>
+    <div class="mb-4">
+        <shadcn-breadcrumb>
+            <shadcn-breadcrumb-item>
+                <shadcn-breadcrumb-link href="#">Home</shadcn-breadcrumb-link>
+            </shadcn-breadcrumb-item>
+            <shadcn-breadcrumb-separator></shadcn-breadcrumb-separator>
+            <shadcn-breadcrumb-item>
+                <shadcn-breadcrumb-link href="#">Components</shadcn-breadcrumb-link>
+            </shadcn-breadcrumb-item>
+            <shadcn-breadcrumb-separator></shadcn-breadcrumb-separator>
+            <shadcn-breadcrumb-item>
+                <shadcn-breadcrumb-page>Breadcrumb</shadcn-breadcrumb-page>
+            </shadcn-breadcrumb-item>
+        </shadcn-breadcrumb>
+    </div>
+
+    <!-- Buttons -->
+    <h2>Buttons</h2>
+    <div class="flex-row">
+        <shadcn-button>Default</shadcn-button>
+        <shadcn-button variant="secondary">Secondary</shadcn-button>
+        <shadcn-button variant="destructive">Destructive</shadcn-button>
+        <shadcn-button variant="outline">Outline</shadcn-button>
+        <shadcn-button variant="ghost">Ghost</shadcn-button>
+        <shadcn-button variant="link">Link</shadcn-button>
+    </div>
+    <div class="flex-row" style="margin-top: 1rem;">
+        <shadcn-button size="sm">Small</shadcn-button>
+        <shadcn-button size="default">Default</shadcn-button>
+        <shadcn-button size="lg">Large</shadcn-button>
+        <shadcn-button size="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m5 12 7-7 7 7" />
+                <path d="M12 19V5" />
+            </svg>
+        </shadcn-button>
+    </div>
+
+    <!-- Form Controls -->
+    <h2>Form Controls</h2>
+    <div class="grid">
+        <div class="flex-col">
+            <h3>Input & Textarea</h3>
+            <div class="flex-col">
+                <shadcn-field>
+                    <shadcn-label>Email</shadcn-label>
+                    <shadcn-input type="email" placeholder="Email address"></shadcn-input>
+                </shadcn-field>
+                <shadcn-field>
+                    <shadcn-label>Bio</shadcn-label>
+                    <shadcn-textarea placeholder="Tell us about yourself"></shadcn-textarea>
+                </shadcn-field>
+                <shadcn-field>
+                    <shadcn-label>Framework</shadcn-label>
+                    <shadcn-native-select>
+                        <option>React</option>
+                        <option>Vue</option>
+                        <option>Svelte</option>
+                        <option>Lit</option>
+                    </shadcn-native-select>
+                </shadcn-field>
+            </div>
+        </div>
+
+        <div class="flex-col">
+            <h3>Selection Controls</h3>
+            <div class="flex-col">
+                <div class="flex-row">
+                    <shadcn-checkbox id="terms"></shadcn-checkbox>
+                    <label for="terms" style="font-size: 0.875rem; font-weight: 500;">Accept terms and
+                        conditions</label>
+                </div>
+
+                <div class="flex-row">
+                    <shadcn-switch id="airplane-mode"></shadcn-switch>
+                    <label for="airplane-mode" style="font-size: 0.875rem; font-weight: 500;">Airplane Mode</label>
+                </div>
+
+                <shadcn-radio-group defaultValue="comfortable">
+                    <div class="flex-row">
+                        <shadcn-radio value="default" id="r1"></shadcn-radio>
+                        <label for="r1">Default</label>
+                    </div>
+                    <div class="flex-row">
+                        <shadcn-radio value="comfortable" id="r2"></shadcn-radio>
+                        <label for="r2">Comfortable</label>
+                    </div>
+                    <div class="flex-row">
+                        <shadcn-radio value="compact" id="r3"></shadcn-radio>
+                        <label for="r3">Compact</label>
+                    </div>
+                </shadcn-radio-group>
+            </div>
+        </div>
+
+        <div class="flex-col">
+            <h3>Slider & Toggles</h3>
+            <div class="flex-col">
+                <shadcn-slider value="50" max="100" step="1"></shadcn-slider>
+
+                <div class="flex-row">
+                    <shadcn-toggle aria-label="Toggle italic">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="19" x2="10" y1="4" y2="4" />
+                            <line x1="14" x2="5" y1="20" y2="20" />
+                            <line x1="15" x2="9" y1="4" y2="20" />
+                        </svg>
+                    </shadcn-toggle>
+                    <shadcn-toggle variant="outline" aria-label="Toggle bold">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" />
+                            <path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z" />
+                        </svg>
+                    </shadcn-toggle>
+                </div>
+
+                <shadcn-toggle-group type="single">
+                    <shadcn-toggle value="bold" aria-label="Toggle bold">B</shadcn-toggle>
+                    <shadcn-toggle value="italic" aria-label="Toggle italic">I</shadcn-toggle>
+                    <shadcn-toggle value="underline" aria-label="Toggle underline">U</shadcn-toggle>
+                </shadcn-toggle-group>
+            </div>
+        </div>
+    </div>
+
+    <!-- Layout -->
+    <h2>Layout & Cards</h2>
+    <div class="grid">
+        <shadcn-card>
+            <shadcn-card-header>
+                <shadcn-card-title>Create project</shadcn-card-title>
+                <shadcn-card-description>Deploy your new project in one-click.</shadcn-card-description>
+            </shadcn-card-header>
+            <shadcn-card-content>
+                <form>
+                    <div class="flex-col">
+                        <shadcn-field>
+                            <shadcn-label>Name</shadcn-label>
+                            <shadcn-input placeholder="Name of your project"></shadcn-input>
+                        </shadcn-field>
+                        <shadcn-field>
+                            <shadcn-label>Framework</shadcn-label>
+                            <shadcn-native-select>
+                                <option value="next">Next.js</option>
+                                <option value="sveltekit">SvelteKit</option>
+                                <option value="astro">Astro</option>
+                                <option value="nuxt">Nuxt.js</option>
+                            </shadcn-native-select>
+                        </shadcn-field>
+                    </div>
+                </form>
+            </shadcn-card-content>
+            <shadcn-card-footer style="justify-content: space-between;">
+                <shadcn-button variant="outline">Cancel</shadcn-button>
+                <shadcn-button>Deploy</shadcn-button>
+            </shadcn-card-footer>
+        </shadcn-card>
+
+        <div class="flex-col">
+            <shadcn-card>
+                <shadcn-card-header>
+                    <shadcn-card-title>Notifications</shadcn-card-title>
+                    <shadcn-card-description>Choose what you want to be notified about.</shadcn-card-description>
+                </shadcn-card-header>
+                <shadcn-card-content class="flex-col">
+                    <div class="flex-row" style="justify-content: space-between;">
+                        <div class="flex-col" style="gap: 0.25rem;">
+                            <span style="font-size: 0.875rem; font-weight: 500;">Everything</span>
+                            <span style="font-size: 0.875rem; color: oklch(var(--muted-foreground));">Email digest,
+                                mentions & all activity.</span>
+                        </div>
+                        <shadcn-switch></shadcn-switch>
+                    </div>
+                    <shadcn-separator></shadcn-separator>
+                    <div class="flex-row" style="justify-content: space-between;">
+                        <div class="flex-col" style="gap: 0.25rem;">
+                            <span style="font-size: 0.875rem; font-weight: 500;">Available</span>
+                            <span style="font-size: 0.875rem; color: oklch(var(--muted-foreground));">Only mentions and
+                                comments.</span>
+                        </div>
+                        <shadcn-switch></shadcn-switch>
+                    </div>
+                </shadcn-card-content>
+            </shadcn-card>
+        </div>
+    </div>
+
+    <!-- Menus & Overlays -->
+    <h2>Menus & Overlays</h2>
+    <div class="flex-row" style="align-items: flex-start; gap: 4rem;">
+        <div class="flex-col">
+            <h3>Dropdown Menu</h3>
+            <shadcn-dropdown-menu>
+                <shadcn-dropdown-menu-trigger>
+                    <shadcn-button variant="outline">Open Menu</shadcn-button>
+                </shadcn-dropdown-menu-trigger>
+                <shadcn-dropdown-menu-content>
+                    <shadcn-dropdown-menu-label>My Account</shadcn-dropdown-menu-label>
+                    <shadcn-dropdown-menu-separator></shadcn-dropdown-menu-separator>
+                    <shadcn-dropdown-menu-item>Profile</shadcn-dropdown-menu-item>
+                    <shadcn-dropdown-menu-item>Billing</shadcn-dropdown-menu-item>
+                    <shadcn-dropdown-menu-item>Team</shadcn-dropdown-menu-item>
+                    <shadcn-dropdown-menu-item>Subscription</shadcn-dropdown-menu-item>
+                </shadcn-dropdown-menu-content>
+            </shadcn-dropdown-menu>
+        </div>
+
+        <div class="flex-col">
+            <h3>Context Menu</h3>
+            <shadcn-context-menu>
+                <div class="border p-4"
+                    style="border-style: dashed; width: 300px; height: 150px; display: flex; align-items: center; justify-content: center; color: oklch(var(--muted-foreground));">
+                    Right click here
+                </div>
+                <shadcn-context-menu-content slot="menu">
+                    <shadcn-context-menu-item>Back</shadcn-context-menu-item>
+                    <shadcn-context-menu-item disabled>Forward</shadcn-context-menu-item>
+                    <shadcn-context-menu-item>Reload</shadcn-context-menu-item>
+                    <shadcn-context-menu-separator></shadcn-context-menu-separator>
+                    <shadcn-context-menu-checkbox-item checked>Show Bookmarks Bar</shadcn-context-menu-checkbox-item>
+                    <shadcn-context-menu-checkbox-item>Show Full URLs</shadcn-context-menu-checkbox-item>
+                </shadcn-context-menu-content>
+            </shadcn-context-menu>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <h2>Sidebar</h2>
+    <div
+        style="height: 400px; border: 1px solid oklch(var(--border)); display: flex; border-radius: var(--radius-md); overflow: hidden;">
+        <shadcn-sidebar id="demo-sidebar">
+            <div
+                style="padding: 1rem; font-weight: bold; display: flex; align-items: center; justify-content: space-between;">
+                <span class="sidebar-logo">My App</span>
+            </div>
+            <shadcn-separator></shadcn-separator>
+            <div style="padding: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                <shadcn-button variant="ghost" style="justify-content: flex-start;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="margin-right: 0.5rem;">
+                        <rect width="7" height="9" x="3" y="3" rx="1" />
+                        <rect width="7" height="5" x="14" y="3" rx="1" />
+                        <rect width="7" height="9" x="14" y="12" rx="1" />
+                        <rect width="7" height="5" x="3" y="16" rx="1" />
+                    </svg>
+                    <span class="sidebar-text">Dashboard</span>
+                </shadcn-button>
+                <shadcn-button variant="ghost" style="justify-content: flex-start;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="margin-right: 0.5rem;">
+                        <path
+                            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.1a2 2 0 0 1-1-1.72v-.51a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
+                    <span class="sidebar-text">Settings</span>
+                </shadcn-button>
+                <shadcn-button variant="ghost" style="justify-content: flex-start;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        style="margin-right: 0.5rem;">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    <span class="sidebar-text">Profile</span>
+                </shadcn-button>
+            </div>
+            <div style="margin-top: auto; padding: 1rem; border-top: 1px solid oklch(var(--border));">
+                <shadcn-button id="sidebar-toggle" variant="ghost" size="icon"
+                    style="width: 100%; justify-content: center;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m15 18-6-6 6-6" />
+                    </svg>
+                </shadcn-button>
+            </div>
+        </shadcn-sidebar>
+        <div style="flex: 1; padding: 2rem; background-color: oklch(var(--muted) / 0.3);">
+            <h3>Main Content</h3>
+            <p>This is the main content area next to the sidebar.</p>
+        </div>
+    </div>
+
+    <script>
+        const sidebar = document.getElementById('demo-sidebar');
+        const toggleBtn = document.getElementById('sidebar-toggle');
+        const toggleIcon = toggleBtn.querySelector('svg');
+
+        toggleBtn.addEventListener('click', () => {
+            sidebar.collapsed = !sidebar.collapsed;
+
+            // Rotate icon
+            if (sidebar.collapsed) {
+                toggleIcon.innerHTML = '<path d="m9 18 6-6-6-6"/>';
+            } else {
+                toggleIcon.innerHTML = '<path d="m15 18-6-6 6-6"/>';
+            }
+
+            // Hide text when collapsed (simple implementation)
+            const texts = sidebar.querySelectorAll('.sidebar-text');
+            const logo = sidebar.querySelector('.sidebar-logo');
+
+            if (sidebar.collapsed) {
+                texts.forEach(t => t.style.display = 'none');
+                logo.style.display = 'none';
+            } else {
+                setTimeout(() => {
+                    texts.forEach(t => t.style.display = 'inline');
+                    logo.style.display = 'block';
+                }, 150); // wait for transition
+            }
+        });
+    </script>
+
+    <div style="height: 4rem;"></div>
+</body>
+
+</html>

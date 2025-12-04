@@ -17,10 +17,10 @@ import { tokens, focusRing } from '../../styles/index.js';
  */
 @customElement('shadcn-native-select')
 export class NativeSelect extends LitElement {
-    static styles = [
-        tokens,
-        focusRing,
-        css`
+  static styles = [
+    tokens,
+    focusRing,
+    css`
       :host {
         display: block;
       }
@@ -68,32 +68,61 @@ export class NativeSelect extends LitElement {
         color: var(--muted-foreground);
       }
     `,
-    ];
+  ];
 
-    @query('.select') selectElement!: HTMLSelectElement;
+  @query('.select') selectElement!: HTMLSelectElement;
 
-    /**
-     * Select value
-     */
-    @property({ type: String }) value = '';
+  /**
+   * Select value
+   */
+  @property({ type: String }) value = '';
 
-    /**
-     * Whether the select is disabled
-     */
-    @property({ type: Boolean }) disabled = false;
+  /**
+   * Whether the select is disabled
+   */
+  @property({ type: Boolean }) disabled = false;
 
-    /**
-     * Whether the select is required
-     */
-    @property({ type: Boolean }) required = false;
+  /**
+   * Whether the select is required
+   */
+  @property({ type: Boolean }) required = false;
 
-    /**
-     * Name attribute
-     */
-    @property({ type: String }) name = '';
+  /**
+   * Name attribute
+   */
+  @property({ type: String }) name = '';
 
-    render() {
-        return html`
+  @query('slot') private _slot!: HTMLSlotElement;
+
+  firstUpdated() {
+    this._updateOptions();
+    this._slot.addEventListener('slotchange', () => this._updateOptions());
+  }
+
+  private _updateOptions() {
+    // Clear existing options
+    while (this.selectElement.firstChild) {
+      this.selectElement.removeChild(this.selectElement.firstChild);
+    }
+
+    // Get assigned nodes from slot
+    const nodes = this._slot.assignedNodes({ flatten: true });
+
+    // Clone and append options to the internal select
+    nodes.forEach(node => {
+      if (node instanceof HTMLOptionElement || node instanceof HTMLOptGroupElement) {
+        this.selectElement.appendChild(node.cloneNode(true));
+      }
+    });
+
+    // Restore value if set
+    if (this.value) {
+      this.selectElement.value = this.value;
+    }
+  }
+
+  render() {
+    return html`
       <div class="select-wrapper">
         <select
           part="select"
@@ -104,38 +133,38 @@ export class NativeSelect extends LitElement {
           name=${this.name}
           @change=${this._handleChange}
         >
-          <slot></slot>
         </select>
+        <slot style="display: none;"></slot>
         <svg class="select-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="m6 9 6 6 6-6"/>
         </svg>
       </div>
     `;
-    }
+  }
 
-    private _handleChange(e: Event) {
-        const target = e.target as HTMLSelectElement;
-        this.value = target.value;
+  private _handleChange(e: Event) {
+    const target = e.target as HTMLSelectElement;
+    this.value = target.value;
 
-        this.dispatchEvent(
-            new CustomEvent('select-change', {
-                bubbles: true,
-                composed: true,
-                detail: { value: this.value },
-            })
-        );
-    }
+    this.dispatchEvent(
+      new CustomEvent('select-change', {
+        bubbles: true,
+        composed: true,
+        detail: { value: this.value },
+      })
+    );
+  }
 
-    /**
-     * Focus the select
-     */
-    focus() {
-        this.selectElement?.focus();
-    }
+  /**
+   * Focus the select
+   */
+  focus() {
+    this.selectElement?.focus();
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'shadcn-native-select': NativeSelect;
-    }
+  interface HTMLElementTagNameMap {
+    'shadcn-native-select': NativeSelect;
+  }
 }

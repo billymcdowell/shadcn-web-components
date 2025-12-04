@@ -15,6 +15,10 @@
       "types": "./dist/components/accordion/index.d.ts",
       "default": "./dist/components/accordion/index.js"
     },
+    "./breadcrumb": {
+      "types": "./dist/components/breadcrumb/index.d.ts",
+      "default": "./dist/components/breadcrumb/index.js"
+    },
     "./button": {
       "types": "./dist/components/button/index.d.ts",
       "default": "./dist/components/button/index.js"
@@ -30,6 +34,14 @@
     "./checkbox": {
       "types": "./dist/components/checkbox/index.d.ts",
       "default": "./dist/components/checkbox/index.js"
+    },
+    "./context-menu": {
+      "types": "./dist/components/context-menu/index.d.ts",
+      "default": "./dist/components/context-menu/index.js"
+    },
+    "./dropdown-menu": {
+      "types": "./dist/components/dropdown-menu/index.d.ts",
+      "default": "./dist/components/dropdown-menu/index.js"
     },
     "./empty": {
       "types": "./dist/components/empty/index.d.ts",
@@ -59,9 +71,17 @@
       "types": "./dist/components/label/index.d.ts",
       "default": "./dist/components/label/index.js"
     },
+    "./menubar": {
+      "types": "./dist/components/menubar/index.d.ts",
+      "default": "./dist/components/menubar/index.js"
+    },
     "./native-select": {
       "types": "./dist/components/native-select/index.d.ts",
       "default": "./dist/components/native-select/index.js"
+    },
+    "./navigation-menu": {
+      "types": "./dist/components/navigation-menu/index.d.ts",
+      "default": "./dist/components/navigation-menu/index.js"
     },
     "./radio-group": {
       "types": "./dist/components/radio-group/index.d.ts",
@@ -70,6 +90,10 @@
     "./separator": {
       "types": "./dist/components/separator/index.d.ts",
       "default": "./dist/components/separator/index.js"
+    },
+    "./sidebar": {
+      "types": "./dist/components/sidebar/index.d.ts",
+      "default": "./dist/components/sidebar/index.js"
     },
     "./skeleton": {
       "types": "./dist/components/skeleton/index.d.ts",
