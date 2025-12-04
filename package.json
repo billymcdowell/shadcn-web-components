@@ -142,7 +142,6 @@
     "analyze": "cem analyze --litelement --outdir .",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepublishOnly": "npm run build && npm run type-check && npm run analyze",
     "changeset": "changeset",
     "release": "changeset publish --access=public --provenance"
   },
