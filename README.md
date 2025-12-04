@@ -17,7 +17,15 @@ A professional, enterprise-grade web component library built with [Lit](https://
 ### Installation
 
 ```bash
-npm install shadcn-web-components
+npm install @billy_mcdowell/shadcn-web-components
+```
+
+### CDN Usage
+
+You can also use the components via CDN:
+
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.0.2/dist/index.min.js"></script>
 ```
 
 ### Usage
@@ -25,13 +33,13 @@ npm install shadcn-web-components
 Import individual components:
 
 ```typescript
-import 'shadcn-web-components/button';
+import '@billy_mcdowell/shadcn-web-components/button';
 ```
 
 Or import all components:
 
 ```typescript
-import 'shadcn-web-components';
+import '@billy_mcdowell/shadcn-web-components';
 ```
 
 Use in your HTML:
