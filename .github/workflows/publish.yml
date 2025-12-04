@@ -10,17 +10,12 @@ permissions:
   contents: write
   pull-requests: write
 
-# TEMPORARILY REMOVE THIS LINE:
-# concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: write
-      pull-requests: write
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
@@ -29,7 +24,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
         run: npm install --frozen-lockfile
@@ -40,16 +34,6 @@ jobs:
           npm run type-check
           npm run analyze
 
-      - name: Inject OIDC Auth into .npmrc
-        run: |
-          # Use the standard token injected by setup-node for the registry
-          # We manually write the registry scope config
-          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> "$HOME/.npmrc"
-        env:
-          # The NODE_AUTH_TOKEN is automatically set by actions/setup-node 
-          # when registry-url is specified. We use it here to ensure it's visible.
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Create Release Pull Request or Publish to npm
         id: changesets
         uses: changesets/action@v1
@@ -58,4 +42,4 @@ jobs:
           publish: npm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ""
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
