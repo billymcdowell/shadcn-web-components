@@ -176,5 +176,9 @@
     "storybook": "^8.4.7",
     "typescript": "^5.6.3",
     "vite": "^6.0.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }
