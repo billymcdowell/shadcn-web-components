@@ -157,12 +157,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/williammcdowell/shadcn-web-components.git"
+    "url": "https://github.com/billymcdowell/shadcn-web-components.git"
   },
   "bugs": {
-    "url": "https://github.com/williammcdowell/shadcn-web-components/issues"
+    "url": "https://github.com/billymcdowell/shadcn-web-components/issues"
   },
-  "homepage": "https://github.com/williammcdowell/shadcn-web-components#readme",
+  "homepage": "https://github.com/billymcdowell/shadcn-web-components#readme",
   "dependencies": {
     "lit": "^3.2.1"
   },
