@@ -1,5 +1,5 @@
 {
-  "name": "shadcn-web-components",
+  "name": "@billy_mcdowell/shadcn-web-components",
   "version": "0.0.2",
   "description": "A professional web component library built with Lit, following shadcn design principles",
   "type": "module",
