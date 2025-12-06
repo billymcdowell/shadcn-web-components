@@ -31,6 +31,15 @@ jobs:
           node-version: 20.x
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Install latest npm
+        run: npm install -g npm@latest
+
+      - name: Inject OIDC Auth into .npmrc
+        run: |
+          # Use the standard token injected by setup-node for the registry
+          # We manually write the registry scope config
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> "$HOME/.npmrc"
+
       - name: Install Dependencies
         run: npm install --frozen-lockfile
 
@@ -39,8 +48,6 @@ jobs:
           npm run build
           npm run type-check
           npm run analyze
-
-      
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
