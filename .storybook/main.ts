@@ -14,7 +14,7 @@ const config: StorybookConfig = {
     docs: {},
     async viteFinal(config: UserConfig) {
         // Set base path for GitHub Pages deployment
-        config.base = process.env.BASE_PATH || '/shadcn-web-components/';
+        config.base = '/shadcn-web-components/';
         return config;
     },
 };
