@@ -1,0 +1,1 @@
+const a={parameters:{controls:{matchers:{color:/(background|color)$/i,date:/Date$/i}},backgrounds:{default:"dark",values:[{name:"dark",value:"oklch(0.145 0 0)"},{name:"light",value:"#ffffff"}]},docs:{toc:!0}},tags:["autodocs"]};export{a as default};
