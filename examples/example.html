@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en" class="dark">
 
 <head>
@@ -387,6 +388,66 @@
                     <shadcn-context-menu-checkbox-item>Show Full URLs</shadcn-context-menu-checkbox-item>
                 </shadcn-context-menu-content>
             </shadcn-context-menu>
+        </div>
+    </div>
+
+    <div class="flex-row" style="align-items: flex-start; gap: 4rem; margin-top: 2rem;">
+        <div class="flex-col">
+            <h3>Dialog</h3>
+            <shadcn-dialog>
+                <shadcn-dialog-trigger>
+                    <shadcn-button>Open Dialog</shadcn-button>
+                </shadcn-dialog-trigger>
+                <shadcn-dialog-portal>
+                    <shadcn-dialog-overlay></shadcn-dialog-overlay>
+                    <shadcn-dialog-content>
+                        <shadcn-dialog-title>Edit Profile</shadcn-dialog-title>
+                        <shadcn-dialog-description>
+                            Make changes to your profile here. Click save when you're done.
+                        </shadcn-dialog-description>
+                        <div style="margin-top: 1rem;">
+                            <div class="flex-col">
+                                <shadcn-field>
+                                    <shadcn-label>Name</shadcn-label>
+                                    <shadcn-input type="text" placeholder="Enter your name"></shadcn-input>
+                                </shadcn-field>
+                                <shadcn-field>
+                                    <shadcn-label>Email</shadcn-label>
+                                    <shadcn-input type="email" placeholder="Enter your email"></shadcn-input>
+                                </shadcn-field>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1.5rem;">
+                            <shadcn-dialog-close>
+                                <shadcn-button variant="outline">Cancel</shadcn-button>
+                            </shadcn-dialog-close>
+                            <shadcn-button>Save Changes</shadcn-button>
+                        </div>
+                    </shadcn-dialog-content>
+                </shadcn-dialog-portal>
+            </shadcn-dialog>
+        </div>
+
+        <div class="flex-col">
+            <h3>Popover</h3>
+            <shadcn-popover>
+                <shadcn-popover-trigger>
+                    <shadcn-button variant="outline">Open Popover</shadcn-button>
+                </shadcn-popover-trigger>
+                <shadcn-popover-content>
+                    <div style="padding: 0.75rem; background-color: oklch(var(--popover)); border: 1px solid oklch(var(--border)); border-radius: var(--radius-md); box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); min-width: 200px;">
+                        <div style="margin-bottom: 0.5rem;">
+                            <h4 style="font-weight: 500; font-size: 0.875rem; margin: 0 0 0.25rem 0; color: oklch(var(--popover-foreground));">Menu Options</h4>
+                            <p style="font-size: 0.75rem; color: oklch(var(--muted-foreground)); margin: 0;">Choose an option from the menu.</p>
+                        </div>
+                        <div class="flex-col" style="gap: 0.25rem; margin-top: 0.5rem;">
+                            <button style="padding: 0.5rem; text-align: left; border-radius: var(--radius-md); background: transparent; border: none; color: oklch(var(--popover-foreground)); cursor: pointer; font-size: 0.875rem;">Profile</button>
+                            <button style="padding: 0.5rem; text-align: left; border-radius: var(--radius-md); background: transparent; border: none; color: oklch(var(--popover-foreground)); cursor: pointer; font-size: 0.875rem;">Settings</button>
+                            <button style="padding: 0.5rem; text-align: left; border-radius: var(--radius-md); background: transparent; border: none; color: oklch(var(--popover-foreground)); cursor: pointer; font-size: 0.875rem;">Help</button>
+                        </div>
+                    </div>
+                </shadcn-popover-content>
+            </shadcn-popover>
         </div>
     </div>
 

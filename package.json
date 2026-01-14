@@ -164,6 +164,9 @@
   },
   "homepage": "https://github.com/billymcdowell/shadcn-web-components#readme",
   "dependencies": {
+    "@floating-ui/dom": "^1.7.4",
+    "@lit/context": "^1.1.6",
+    "focus-trap": "^7.8.0",
     "lit": "^3.2.1"
   },
   "devDependencies": {
