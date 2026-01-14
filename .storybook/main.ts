@@ -12,8 +12,15 @@ const config: StorybookConfig = {
         options: {},
     },
     docs: {},
+
+    // Set base for the manager (the Storybook UI)
+    managerHead: (head) => `
+        ${head}
+        <base href="/shadcn-web-components/" />
+    `,
+
+    // Set base for the preview iframe (where stories render)
     async viteFinal(config: UserConfig) {
-        // Set base path for GitHub Pages deployment
         config.base = '/shadcn-web-components/';
         return config;
     },
