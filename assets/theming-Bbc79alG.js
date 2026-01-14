@@ -1,4 +1,4 @@
-import{j as e,M as c}from"./index-wk9oFoki.js";import{useMDXComponents as s}from"./index-DsF_OtMc.js";import"./iframe-BMAUX1rs.js";import"./_commonjsHelpers-CqkleIqs.js";import"./index-C__6K5js.js";import"./index-DrFu-skq.js";function o(r){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",h4:"h4",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...s(),...r.components};return e.jsxs(e.Fragment,{children:[e.jsx(c,{title:"Guides/Theming"}),`
+import{j as e,M as c}from"./index-BNAF-Y82.js";import{useMDXComponents as s}from"./index--T25v1fs.js";import"./iframe-DZSw-OIw.js";import"./_commonjsHelpers-CqkleIqs.js";import"./index-C__6K5js.js";import"./index-DrFu-skq.js";function o(r){const n={a:"a",code:"code",h1:"h1",h2:"h2",h3:"h3",h4:"h4",li:"li",ol:"ol",p:"p",pre:"pre",strong:"strong",ul:"ul",...s(),...r.components};return e.jsxs(e.Fragment,{children:[e.jsx(c,{title:"Guides/Theming"}),`
 `,e.jsx(n.h1,{id:"theming-guide",children:"Theming Guide"}),`
 `,e.jsx(n.p,{children:"This guide explains how to customize the appearance of shadcn-web-components using CSS variables."}),`
 `,e.jsx(n.h2,{id:"overview",children:"Overview"}),`
