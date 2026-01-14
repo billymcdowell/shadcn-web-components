@@ -1,11 +1,15 @@
-name: CI
+name: CI and Deploy Storybook to GitHub Pages
+
 on:
   push:
     branches:
       - "**"
 
+permissions:
+  contents: write
+
 jobs:
-  build:
+  build-and-deploy-storybook:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -21,3 +25,12 @@ jobs:
 
       - name: Run Prepublish Only
         run: npm run prepublishOnly
+
+      - name: Install and Build
+        run: |
+          npm run build-storybook
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: storybook-static
