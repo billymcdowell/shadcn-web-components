@@ -3,31 +3,27 @@ name: CI and Deploy Storybook to GitHub Pages
 on:
   push:
     branches:
-      - "**"
+      - master
 
 permissions:
   contents: write
 
 jobs:
-  build-and-deploy-storybook:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js 20.x
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.x
-
-      - name: Install Dependencies
-        run: npm install --frozen-lockfile
-
-      - name: Run Prepublish Only
-        run: npm run prepublishOnly
+          node-version: '20'
 
       - name: Install and Build
         run: |
+          npm ci
+          npm run prepublishOnly
           npm run build-storybook
 
       - name: Deploy
