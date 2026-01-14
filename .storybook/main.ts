@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/web-components-vite';
+import type { UserConfig } from 'vite';
 
 const config: StorybookConfig = {
     stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -11,6 +12,11 @@ const config: StorybookConfig = {
         options: {},
     },
     docs: {},
+    async viteFinal(config: UserConfig) {
+        // Set base path for GitHub Pages deployment
+        config.base = process.env.BASE_PATH || '/shadcn-web-components/';
+        return config;
+    },
 };
 
 export default config;
