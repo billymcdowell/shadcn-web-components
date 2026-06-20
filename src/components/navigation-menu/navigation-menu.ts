@@ -249,7 +249,10 @@ export class NavigationMenuContent extends LitElement {
         opacity: 1;
         pointer-events: auto;
         transform: translateY(0) scale(1);
+        animation: shadcn-fade-in var(--transition-normal);
       }
+
+      @media (prefers-reduced-motion: reduce) { :host([open]) { animation: none; } }
 
       .content {
         margin-top: var(--spacing-1-5);

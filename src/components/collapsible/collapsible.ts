@@ -102,14 +102,16 @@ export class CollapsibleTrigger extends LitElement {
 export class CollapsibleContent extends LitElement {
   static styles = [tokens, css`
     :host { display: block; }
-    [hidden] { display: none !important; }
-    .content { overflow: hidden; }
+    :host { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--transition-normal); }
+    :host([open]) { grid-template-rows: 1fr; }
+    .content { min-height: 0; overflow: hidden; }
+    @media (prefers-reduced-motion: reduce) { :host { transition-duration: 0ms; } }
   `];
 
   @property({ type: Boolean, reflect: true }) open = false;
 
   protected render() {
-    return html`<div part="content" class="content" ?hidden=${!this.open}><slot></slot></div>`;
+    return html`<div part="content" class="content" ?inert=${!this.open} aria-hidden=${String(!this.open)}><slot></slot></div>`;
   }
 }
 

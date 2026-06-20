@@ -10,9 +10,9 @@ import { tokens } from '../../styles/index.js';
 export abstract class ModalSurface extends LitElement {
   static styles = [tokens, css`
     :host { position: fixed; inset: 0; z-index: 50; display: flex; pointer-events: none; }
-    .backdrop { position: fixed; inset: 0; z-index: 49; background: oklch(0 0 0 / 80%); pointer-events: auto; }
-    .surface { position: relative; z-index: 50; box-sizing: border-box; display: flex; flex-direction: column; border: 1px solid var(--border); background: var(--background); color: var(--foreground); box-shadow: 0 20px 25px -5px oklch(0 0 0 / .2), 0 8px 10px -6px oklch(0 0 0 / .2); pointer-events: auto; }
-    @media (prefers-reduced-motion: reduce) { .surface, .backdrop { transition-duration: 0ms !important; } }
+    .backdrop { position: fixed; inset: 0; z-index: 49; background: oklch(0 0 0 / 80%); pointer-events: auto; animation: shadcn-fade-in var(--transition-base); }
+    .surface { position: relative; z-index: 50; box-sizing: border-box; display: flex; flex-direction: column; border: 1px solid var(--border); background: var(--background); color: var(--foreground); box-shadow: 0 20px 25px -5px oklch(0 0 0 / .2), 0 8px 10px -6px oklch(0 0 0 / .2); pointer-events: auto; animation: shadcn-zoom-in var(--transition-base); }
+    @media (prefers-reduced-motion: reduce) { .surface, .backdrop { animation: none !important; transition-duration: 0ms !important; } }
   `];
 
   /** Accessible name used when no title element is present. */

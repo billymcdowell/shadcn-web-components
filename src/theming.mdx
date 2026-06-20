@@ -8,7 +8,7 @@ This guide explains how to customize the appearance of shadcn-web-components usi
 
 ## Overview
 
-shadcn-web-components uses CSS custom properties (CSS variables) for theming. All design tokens are defined in the `tokens.css` file and can be overridden to match your application's design system.
+shadcn-web-components uses CSS custom properties (CSS variables) for theming. Load the global `tokens.css` file described in **Guides / Getting Started**, then override its values to match your application's design system.
 
 ## Getting Started
 
@@ -51,18 +51,27 @@ Override variables for a specific container or component:
 </div>
 ```
 
-### Method 3: Import and Override
+### Method 3: Load Defaults and Override
 
-If you're importing the styles, you can override them after import:
+Load the published global tokens, then override them in your own stylesheet:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/tokens.css"
+>
+<link rel="stylesheet" href="/styles/app.css">
+```
 
 ```css
-@import '@billy_mcdowell/shadcn-web-components/dist/styles/index.js';
-
 :root {
   --primary: oklch(0.5 0.2 250);
   --primary-foreground: oklch(0.98 0 0);
 }
 ```
+
+The package's `/styles` JavaScript subpath exports Lit `CSSResult` helpers. It is
+not a global CSS file and cannot be loaded with CSS `@import` or `<link>`.
 
 ## Available CSS Variables
 
@@ -141,6 +150,7 @@ The library provides a comprehensive color system based on the shadcn design pri
 ### Spacing Tokens
 
 - `--spacing-1`: 0.25rem (4px)
+- `--spacing-1-5`: 0.375rem (6px)
 - `--spacing-2`: 0.5rem (8px)
 - `--spacing-3`: 0.75rem (12px)
 - `--spacing-4`: 1rem (16px)
@@ -169,8 +179,30 @@ The library provides a comprehensive color system based on the shadcn design pri
 ### Transition Tokens
 
 - `--transition-fast`: 150ms cubic-bezier(0.4, 0, 0.2, 1)
+- `--transition-base`: 300ms cubic-bezier(0.4, 0, 0.2, 1)
 - `--transition-normal`: 300ms cubic-bezier(0.4, 0, 0.2, 1)
 - `--transition-slow`: 500ms cubic-bezier(0.4, 0, 0.2, 1)
+
+`--transition-base` and `--transition-normal` are equivalent aliases used by
+different component families.
+
+### Animation Tokens
+
+- `--animation-spin-duration`: 600ms
+- `--animation-spin-easing`: linear
+- `--animation-pulse-duration`: 2s
+- `--animation-pulse-easing`: cubic-bezier(0.4, 0, 0.6, 1)
+- `--animation-caret-duration`: 1s
+- `--animation-caret-easing`: steps(1)
+
+These tokens control spinner rotation, skeleton pulsing, and the input OTP caret.
+Their components disable keyframe animation when `prefers-reduced-motion: reduce`
+is active.
+
+### Letter Spacing Tokens
+
+- `--tracking-tight`: -0.025em
+- `--tracking-widest`: 0.1em
 
 **Note:** Transitions automatically respect `prefers-reduced-motion` and are set to 0ms when the user prefers reduced motion.
 

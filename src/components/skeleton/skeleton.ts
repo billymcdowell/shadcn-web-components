@@ -21,7 +21,7 @@ export class Skeleton extends LitElement {
       .skeleton {
         background-color: var(--skeleton-bg, var(--muted));
         border-radius: var(--skeleton-radius, var(--radius-md));
-        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        animation: pulse var(--animation-pulse-duration, 2s) var(--animation-pulse-easing, cubic-bezier(0.4, 0, 0.6, 1)) infinite;
       }
 
       @keyframes pulse {

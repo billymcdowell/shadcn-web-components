@@ -340,7 +340,11 @@ export class MenubarContent extends LitElement {
         border-radius: var(--radius-md);
         box-shadow: var(--shadow-md);
         overflow: hidden;
+        transform-origin: top;
       }
+
+      :host([open]) .content { animation: shadcn-zoom-in var(--transition-fast); }
+      @media (prefers-reduced-motion: reduce) { .content { animation: none; } }
     `,
     ];
 

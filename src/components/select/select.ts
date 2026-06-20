@@ -145,9 +145,11 @@ export class SelectContent extends LitElement {
   static styles = [tokens, css`
     :host { display: block; position: absolute; z-index: 50; top: calc(100% + var(--spacing-1)); left: 0; width: 100%; }
     [hidden] { display: none !important; }
-    .content { max-height: 15rem; overflow: auto; padding: var(--spacing-1); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--popover); color: var(--popover-foreground); box-shadow: 0 10px 20px rgb(0 0 0 / .15); }
+    .content { max-height: 15rem; overflow: auto; padding: var(--spacing-1); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--popover); color: var(--popover-foreground); box-shadow: 0 10px 20px rgb(0 0 0 / .15); transform-origin: top; }
+    :host([open]) .content { animation: shadcn-zoom-in var(--transition-fast); }
+    @media (prefers-reduced-motion: reduce) { .content { animation: none; } }
   `];
-  @property({ type: Boolean }) open = false;
+  @property({ type: Boolean, reflect: true }) open = false;
   protected render() { return html`<div part="content" class="content" role="listbox" ?hidden=${!this.open}><slot></slot></div>`; }
 }
 

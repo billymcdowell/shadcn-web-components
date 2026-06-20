@@ -100,9 +100,11 @@ export class HoverCardContent extends LitElement {
     :host([align='center']):not([side='left']):not([side='right']) { left: 50%; transform: translateX(-50%); }
     :host([align='end']) { right: 0; }
     [hidden] { display: none !important; }
-    .content { box-sizing: border-box; width: var(--hover-card-width, 20rem); padding: var(--spacing-4); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--popover); color: var(--popover-foreground); box-shadow: 0 10px 15px -3px oklch(0 0 0 / .15); }
+    .content { box-sizing: border-box; width: var(--hover-card-width, 20rem); padding: var(--spacing-4); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--popover); color: var(--popover-foreground); box-shadow: 0 10px 15px -3px oklch(0 0 0 / .15); transform-origin: top; }
+    :host([open]) .content { animation: shadcn-zoom-in var(--transition-fast); }
+    @media (prefers-reduced-motion: reduce) { .content { animation: none; } }
   `];
-  @property({ type: Boolean }) open = false;
+  @property({ type: Boolean, reflect: true }) open = false;
   @property({ type: String, reflect: true }) side: HoverCardSide = 'bottom';
   @property({ type: String, reflect: true }) align: HoverCardAlign = 'center';
   connectedCallback() { super.connectedCallback(); this.addEventListener('pointerenter', this.enter); this.addEventListener('pointerleave', this.leave); }
