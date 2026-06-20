@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Production CDN gallery for shadcn Web Components">
+  <title>shadcn Web Components - Production Gallery</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/tokens.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/reset.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "lit": "https://esm.sh/lit@3.2.1",
+        "lit/decorators.js": "https://esm.sh/lit@3.2.1/decorators.js"
+      }
+    }
+  </script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--background); color: var(--foreground); font: 16px/1.5 var(--font-sans); }
+    header, main { width: min(1200px, calc(100% - 2rem)); margin-inline: auto; }
+    header { padding: 3rem 0 1rem; }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -.04em; }
+    h2 { margin: 3rem 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    h3 { margin: 0 0 1rem; font-size: 1rem; }
+    p { margin: .5rem 0; }
+    a { color: inherit; }
+    .muted { color: var(--muted-foreground); }
+    .source { display: inline-block; margin-top: 1rem; font-family: ui-monospace, monospace; font-size: .8rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 1rem; }
+    .wide { grid-column: 1 / -1; }
+    .demo { min-width: 0; padding: 1.25rem; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--card); }
+    .stack { display: flex; flex-direction: column; gap: .75rem; }
+    .row { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; }
+    .menu-panel { display: grid; gap: .5rem; min-width: 220px; padding: .5rem; }
+    .context-target { display: grid; min-height: 110px; place-items: center; border: 1px dashed var(--border); border-radius: var(--radius-md); }
+    .ratio-art { display: grid; height: 100%; place-items: center; border-radius: var(--radius-md); background: var(--muted); }
+    .sidebar-shell { display: flex; min-height: 260px; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-lg); }
+    shadcn-sidebar { min-height: 260px; }
+    shadcn-card, shadcn-input-group, shadcn-select, shadcn-slider { width: 100%; }
+    shadcn-navigation-menu-content { z-index: 20; }
+    shadcn-popover-content {
+      z-index: 50;
+      padding: .75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--popover);
+      color: var(--popover-foreground);
+      box-shadow: var(--shadow-md);
+    }
+    shadcn-select:not([open]) > shadcn-select-content,
+    shadcn-popover:not([open]) > shadcn-popover-content { display: none; }
+    shadcn-alert-dialog-content:not(:defined),
+    shadcn-collapsible-content:not(:defined),
+    shadcn-context-menu-content:not(:defined),
+    shadcn-dialog-portal:not(:defined),
+    shadcn-drawer-content:not(:defined),
+    shadcn-dropdown-menu-content:not(:defined),
+    shadcn-hover-card-content:not(:defined),
+    shadcn-menubar-content:not(:defined),
+    shadcn-navigation-menu-content:not(:defined),
+    shadcn-popover-content:not(:defined),
+    shadcn-select-content:not(:defined),
+    shadcn-sheet-content:not(:defined),
+    shadcn-tooltip-content:not(:defined) { display: none; }
+    .load-error { margin-top: 1rem; padding: .75rem 1rem; border: 1px solid var(--destructive); border-radius: var(--radius-md); color: var(--destructive); }
+    footer { padding: 4rem 1rem; text-align: center; color: var(--muted-foreground); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>shadcn Web Components</h1>
+    <p id="source-description" class="muted">Every component in the library, loaded from the published npm package.</p>
+    <code id="source-label" class="source">@billy_mcdowell/shadcn-web-components@0.1.0</code>
+    <p id="load-status" class="load-error" role="status">Loading the component library...</p>
+  </header>
+  <main>
+    <h2>Content and feedback</h2>
+    <div class="grid">
+      <section class="demo"><h3>Accordion</h3><shadcn-accordion type="single" collapsible><shadcn-accordion-item value="one"><span slot="trigger">What is this?</span>A framework-agnostic component library built with Lit.</shadcn-accordion-item><shadcn-accordion-item value="two"><span slot="trigger">Is it accessible?</span>The interactive components include keyboard and ARIA behavior.</shadcn-accordion-item></shadcn-accordion></section>
+      <section class="demo stack"><h3>Alert</h3><shadcn-alert><shadcn-alert-title>Heads up</shadcn-alert-title><shadcn-alert-description>You are viewing the production npm build.</shadcn-alert-description></shadcn-alert><shadcn-alert variant="destructive"><shadcn-alert-title>Destructive</shadcn-alert-title><shadcn-alert-description>This variant highlights a dangerous condition.</shadcn-alert-description></shadcn-alert></section>
+      <section class="demo"><h3>Aspect Ratio</h3><shadcn-aspect-ratio ratio="1.7778"><div class="ratio-art">16:9</div></shadcn-aspect-ratio></section>
+      <section class="demo"><h3>Avatar</h3><div class="row"><shadcn-avatar><shadcn-avatar-image src="https://github.com/shadcn.png" alt="shadcn avatar"></shadcn-avatar-image><shadcn-avatar-fallback>SC</shadcn-avatar-fallback></shadcn-avatar><shadcn-avatar><shadcn-avatar-fallback>WM</shadcn-avatar-fallback></shadcn-avatar></div></section>
+      <section class="demo"><h3>Badge</h3><div class="row"><shadcn-badge>Default</shadcn-badge><shadcn-badge variant="secondary">Secondary</shadcn-badge><shadcn-badge variant="destructive">Destructive</shadcn-badge><shadcn-badge variant="outline">Outline</shadcn-badge></div></section>
+      <section class="demo"><h3>Empty</h3><shadcn-empty heading="No projects" description="Create your first project to get started."><shadcn-button slot="action">Create project</shadcn-button></shadcn-empty></section>
+      <section class="demo"><h3>Progress</h3><shadcn-progress value="64" aria-label="64 percent complete"></shadcn-progress></section>
+      <section class="demo"><h3>Skeleton</h3><div class="stack"><shadcn-skeleton style="height: 1rem; width: 65%"></shadcn-skeleton><shadcn-skeleton style="height: 5rem"></shadcn-skeleton></div></section>
+      <section class="demo"><h3>Spinner</h3><div class="row"><shadcn-spinner size="sm" aria-label="Loading"></shadcn-spinner><shadcn-spinner aria-label="Loading"></shadcn-spinner><shadcn-spinner size="lg" aria-label="Loading"></shadcn-spinner></div></section>
+      <section class="demo"><h3>Typography</h3><div class="stack"><shadcn-typography variant="h2">A production gallery</shadcn-typography><shadcn-typography variant="lead">Web components that work anywhere.</shadcn-typography><shadcn-typography variant="muted">Published June 2026</shadcn-typography></div></section>
+    </div>
+
+    <h2>Actions and forms</h2>
+    <div class="grid">
+      <section class="demo"><h3>Button</h3><div class="row"><shadcn-button>Default</shadcn-button><shadcn-button variant="secondary">Secondary</shadcn-button><shadcn-button variant="outline">Outline</shadcn-button><shadcn-button variant="destructive">Delete</shadcn-button></div></section>
+      <section class="demo"><h3>Button Group</h3><shadcn-button-group><shadcn-button variant="outline">Left</shadcn-button><shadcn-button variant="outline">Center</shadcn-button><shadcn-button variant="outline">Right</shadcn-button></shadcn-button-group></section>
+      <section class="demo"><h3>Checkbox</h3><div class="row"><shadcn-checkbox id="terms" checked></shadcn-checkbox><shadcn-label for="terms">Accept the terms</shadcn-label></div></section>
+      <section class="demo stack"><h3>Field, Label and Input</h3><shadcn-field><shadcn-label for="email">Email</shadcn-label><shadcn-input id="email" type="email" placeholder="you@example.com"></shadcn-input></shadcn-field></section>
+      <section class="demo"><h3>Input Group</h3><shadcn-input-group><span slot="prefix">https://</span><shadcn-input placeholder="example.com"></shadcn-input><span slot="suffix">.com</span></shadcn-input-group></section>
+      <section class="demo"><h3>Input OTP</h3><shadcn-input-otp length="6" mode="numeric" value="123"></shadcn-input-otp></section>
+      <section class="demo"><h3>Native Select</h3><shadcn-native-select aria-label="Framework"><option>Lit</option><option>React</option><option>Vue</option><option>Svelte</option></shadcn-native-select></section>
+      <section class="demo"><h3>Radio Group</h3><shadcn-radio-group value="comfortable"><div class="stack"><div class="row"><shadcn-radio id="compact" value="compact"></shadcn-radio><shadcn-label for="compact">Compact</shadcn-label></div><div class="row"><shadcn-radio id="comfortable" value="comfortable"></shadcn-radio><shadcn-label for="comfortable">Comfortable</shadcn-label></div></div></shadcn-radio-group></section>
+      <section class="demo"><h3>Select</h3><shadcn-select placeholder="Select a fruit"><shadcn-select-trigger><shadcn-select-value>Select a fruit</shadcn-select-value></shadcn-select-trigger><shadcn-select-content><shadcn-select-item value="apple">Apple</shadcn-select-item><shadcn-select-item value="banana">Banana</shadcn-select-item><shadcn-select-item value="pear">Pear</shadcn-select-item></shadcn-select-content></shadcn-select></section>
+      <section class="demo"><h3>Slider</h3><shadcn-slider value="55" min="0" max="100" aria-label="Volume"></shadcn-slider></section>
+      <section class="demo"><h3>Switch</h3><div class="row"><shadcn-switch id="notifications" checked></shadcn-switch><shadcn-label for="notifications">Notifications</shadcn-label></div></section>
+      <section class="demo"><h3>Textarea</h3><shadcn-textarea placeholder="Tell us what you think"></shadcn-textarea></section>
+      <section class="demo"><h3>Toggle</h3><div class="row"><shadcn-toggle aria-label="Toggle bold"><strong>B</strong></shadcn-toggle><shadcn-toggle variant="outline" aria-label="Toggle italic"><em>I</em></shadcn-toggle></div></section>
+      <section class="demo"><h3>Toggle Group</h3><shadcn-toggle-group type="single" value="center"><shadcn-toggle value="left">Left</shadcn-toggle><shadcn-toggle value="center">Center</shadcn-toggle><shadcn-toggle value="right">Right</shadcn-toggle></shadcn-toggle-group></section>
+    </div>
+
+    <h2>Layout and data</h2>
+    <div class="grid">
+      <section class="demo"><h3>Card</h3><shadcn-card><shadcn-card-header><shadcn-card-title>Deploy project</shadcn-card-title><shadcn-card-description>Ship the production build.</shadcn-card-description></shadcn-card-header><shadcn-card-content><p class="muted">The package is pinned to an exact npm version.</p></shadcn-card-content><shadcn-card-footer><shadcn-button>Deploy</shadcn-button></shadcn-card-footer></shadcn-card></section>
+      <section class="demo"><h3>Collapsible</h3><shadcn-collapsible><shadcn-collapsible-trigger><shadcn-button variant="outline">Toggle details</shadcn-button></shadcn-collapsible-trigger><shadcn-collapsible-content><p>This content can be expanded and collapsed.</p></shadcn-collapsible-content></shadcn-collapsible></section>
+      <section class="demo"><h3>Item and Kbd</h3><div class="stack"><shadcn-item selected>Command palette <shadcn-kbd slot="suffix">Cmd</shadcn-kbd><shadcn-kbd slot="suffix">K</shadcn-kbd></shadcn-item><shadcn-item disabled>Unavailable item</shadcn-item></div></section>
+      <section class="demo"><h3>Separator</h3><p>Above</p><shadcn-separator></shadcn-separator><p>Below</p></section>
+      <section class="demo wide"><h3>Table</h3><shadcn-table><shadcn-table-caption>Recent invoices</shadcn-table-caption><shadcn-table-header><shadcn-table-row><shadcn-table-head>Invoice</shadcn-table-head><shadcn-table-head>Status</shadcn-table-head><shadcn-table-head>Amount</shadcn-table-head></shadcn-table-row></shadcn-table-header><shadcn-table-body><shadcn-table-row><shadcn-table-cell>INV001</shadcn-table-cell><shadcn-table-cell>Paid</shadcn-table-cell><shadcn-table-cell>$250.00</shadcn-table-cell></shadcn-table-row><shadcn-table-row><shadcn-table-cell>INV002</shadcn-table-cell><shadcn-table-cell>Pending</shadcn-table-cell><shadcn-table-cell>$150.00</shadcn-table-cell></shadcn-table-row></shadcn-table-body><shadcn-table-footer><shadcn-table-row><shadcn-table-cell>Total</shadcn-table-cell><shadcn-table-cell></shadcn-table-cell><shadcn-table-cell>$400.00</shadcn-table-cell></shadcn-table-row></shadcn-table-footer></shadcn-table></section>
+      <section class="demo wide"><h3>Tabs</h3><shadcn-tabs value="account"><shadcn-tabs-list><shadcn-tabs-trigger value="account">Account</shadcn-tabs-trigger><shadcn-tabs-trigger value="password">Password</shadcn-tabs-trigger></shadcn-tabs-list><shadcn-tabs-content value="account"><p>Manage your account details.</p></shadcn-tabs-content><shadcn-tabs-content value="password"><p>Update your password.</p></shadcn-tabs-content></shadcn-tabs></section>
+      <section class="demo wide"><h3>Sidebar</h3><div class="sidebar-shell"><shadcn-sidebar><div class="stack" style="padding: 1rem"><strong>Workspace</strong><shadcn-separator></shadcn-separator><shadcn-button variant="ghost">Dashboard</shadcn-button><shadcn-button variant="ghost">Settings</shadcn-button></div></shadcn-sidebar><div style="padding: 1.5rem"><strong>Main content</strong><p class="muted">A flexible shell beside the sidebar.</p></div></div></section>
+    </div>
+
+    <h2>Navigation</h2>
+    <div class="grid">
+      <section class="demo wide"><h3>Breadcrumb</h3><shadcn-breadcrumb><shadcn-breadcrumb-item><shadcn-breadcrumb-link href="#">Home</shadcn-breadcrumb-link></shadcn-breadcrumb-item><shadcn-breadcrumb-separator></shadcn-breadcrumb-separator><shadcn-breadcrumb-item><shadcn-breadcrumb-ellipsis></shadcn-breadcrumb-ellipsis></shadcn-breadcrumb-item><shadcn-breadcrumb-separator></shadcn-breadcrumb-separator><shadcn-breadcrumb-item><shadcn-breadcrumb-page>Components</shadcn-breadcrumb-page></shadcn-breadcrumb-item></shadcn-breadcrumb></section>
+      <section class="demo wide"><h3>Menubar</h3><shadcn-menubar><shadcn-menubar-menu><shadcn-menubar-trigger>File</shadcn-menubar-trigger><shadcn-menubar-content><shadcn-menubar-label>Actions</shadcn-menubar-label><shadcn-menubar-item>New tab</shadcn-menubar-item><shadcn-menubar-separator></shadcn-menubar-separator><shadcn-menubar-checkbox-item checked>Autosave</shadcn-menubar-checkbox-item></shadcn-menubar-content></shadcn-menubar-menu><shadcn-menubar-menu><shadcn-menubar-trigger>Edit</shadcn-menubar-trigger><shadcn-menubar-content><shadcn-menubar-item>Undo</shadcn-menubar-item><shadcn-menubar-item>Redo</shadcn-menubar-item></shadcn-menubar-content></shadcn-menubar-menu></shadcn-menubar></section>
+      <section class="demo wide"><h3>Navigation Menu</h3><shadcn-navigation-menu><shadcn-navigation-menu-list><shadcn-navigation-menu-item><shadcn-navigation-menu-trigger>Getting started</shadcn-navigation-menu-trigger><shadcn-navigation-menu-content><div class="menu-panel"><shadcn-navigation-menu-link href="#installation"><strong>Installation</strong><br><span class="muted">Add the package to your project.</span></shadcn-navigation-menu-link><shadcn-navigation-menu-link href="#components"><strong>Components</strong><br><span class="muted">Browse the complete library.</span></shadcn-navigation-menu-link></div></shadcn-navigation-menu-content></shadcn-navigation-menu-item><shadcn-navigation-menu-item><shadcn-navigation-menu-link href="#docs">Documentation</shadcn-navigation-menu-link></shadcn-navigation-menu-item></shadcn-navigation-menu-list></shadcn-navigation-menu></section>
+    </div>
+
+    <h2>Menus and overlays</h2>
+    <div class="grid">
+      <section class="demo"><h3>Alert Dialog</h3><shadcn-alert-dialog><shadcn-alert-dialog-trigger><shadcn-button variant="destructive">Delete account</shadcn-button></shadcn-alert-dialog-trigger><shadcn-alert-dialog-content><shadcn-alert-dialog-header><shadcn-alert-dialog-title>Are you sure?</shadcn-alert-dialog-title><shadcn-alert-dialog-description>This action cannot be undone.</shadcn-alert-dialog-description></shadcn-alert-dialog-header><shadcn-alert-dialog-footer><shadcn-alert-dialog-cancel><shadcn-button variant="outline">Cancel</shadcn-button></shadcn-alert-dialog-cancel><shadcn-alert-dialog-action><shadcn-button variant="destructive">Continue</shadcn-button></shadcn-alert-dialog-action></shadcn-alert-dialog-footer></shadcn-alert-dialog-content></shadcn-alert-dialog></section>
+      <section class="demo"><h3>Context Menu</h3><shadcn-context-menu><div class="context-target">Right-click here</div><shadcn-context-menu-content slot="menu"><shadcn-context-menu-label>Actions</shadcn-context-menu-label><shadcn-context-menu-item>Back</shadcn-context-menu-item><shadcn-context-menu-separator></shadcn-context-menu-separator><shadcn-context-menu-checkbox-item checked>Show toolbar</shadcn-context-menu-checkbox-item></shadcn-context-menu-content></shadcn-context-menu></section>
+      <section class="demo"><h3>Dialog</h3><shadcn-dialog><shadcn-dialog-trigger><shadcn-button variant="outline">Edit profile</shadcn-button></shadcn-dialog-trigger><shadcn-dialog-portal><shadcn-dialog-overlay></shadcn-dialog-overlay><shadcn-dialog-content><shadcn-dialog-header><shadcn-dialog-title>Edit profile</shadcn-dialog-title><shadcn-dialog-description>Make changes to your public details.</shadcn-dialog-description></shadcn-dialog-header><shadcn-field><shadcn-label>Name</shadcn-label><shadcn-input value="Ada Lovelace"></shadcn-input></shadcn-field><shadcn-dialog-footer><shadcn-dialog-close><shadcn-button variant="outline">Cancel</shadcn-button></shadcn-dialog-close><shadcn-button>Save</shadcn-button></shadcn-dialog-footer></shadcn-dialog-content></shadcn-dialog-portal></shadcn-dialog></section>
+      <section class="demo"><h3>Drawer</h3><shadcn-drawer><shadcn-drawer-trigger><shadcn-button variant="outline">Open drawer</shadcn-button></shadcn-drawer-trigger><shadcn-drawer-content direction="bottom"><shadcn-drawer-header><shadcn-drawer-title>Activity goal</shadcn-drawer-title><shadcn-drawer-description>Set your daily target.</shadcn-drawer-description></shadcn-drawer-header><shadcn-drawer-footer><shadcn-drawer-close><shadcn-button>Done</shadcn-button></shadcn-drawer-close></shadcn-drawer-footer></shadcn-drawer-content></shadcn-drawer></section>
+      <section class="demo"><h3>Dropdown Menu</h3><shadcn-dropdown-menu><shadcn-dropdown-menu-trigger><shadcn-button variant="outline">Open menu</shadcn-button></shadcn-dropdown-menu-trigger><shadcn-dropdown-menu-content><shadcn-dropdown-menu-label>Account</shadcn-dropdown-menu-label><shadcn-dropdown-menu-item>Profile</shadcn-dropdown-menu-item><shadcn-dropdown-menu-separator></shadcn-dropdown-menu-separator><shadcn-dropdown-menu-checkbox-item checked>Notifications</shadcn-dropdown-menu-checkbox-item></shadcn-dropdown-menu-content></shadcn-dropdown-menu></section>
+      <section class="demo"><h3>Hover Card</h3><shadcn-hover-card><shadcn-hover-card-trigger><a href="#hover-card">@shadcn</a></shadcn-hover-card-trigger><shadcn-hover-card-content><strong>shadcn/ui</strong><p class="muted">Beautifully designed components.</p></shadcn-hover-card-content></shadcn-hover-card></section>
+      <section class="demo"><h3>Popover</h3><shadcn-popover><shadcn-popover-trigger><shadcn-button variant="outline">Open popover</shadcn-button></shadcn-popover-trigger><shadcn-popover-content><div class="menu-panel"><strong>Dimensions</strong><shadcn-input value="100%"></shadcn-input></div></shadcn-popover-content></shadcn-popover></section>
+      <section class="demo"><h3>Sheet</h3><shadcn-sheet><shadcn-sheet-trigger><shadcn-button variant="outline">Open sheet</shadcn-button></shadcn-sheet-trigger><shadcn-sheet-content side="right"><shadcn-sheet-header><shadcn-sheet-title>Project settings</shadcn-sheet-title><shadcn-sheet-description>Adjust settings for this project.</shadcn-sheet-description></shadcn-sheet-header><shadcn-sheet-footer><shadcn-sheet-close><shadcn-button>Save</shadcn-button></shadcn-sheet-close></shadcn-sheet-footer></shadcn-sheet-content></shadcn-sheet></section>
+      <section class="demo"><h3>Tooltip</h3><shadcn-tooltip><shadcn-tooltip-trigger><shadcn-button size="icon" aria-label="Add item">+</shadcn-button></shadcn-tooltip-trigger><shadcn-tooltip-content>Add item</shadcn-tooltip-content></shadcn-tooltip></section>
+    </div>
+  </main>
+  <footer id="source-footer">Loaded directly from the hosted npm release through jsDelivr.</footer>
+  <script type="module">
+    const status = document.querySelector('#load-status');
+    const isLocal = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+    const moduleUrl = isLocal
+      ? '../src/index.ts'
+      : 'https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/dist/index.js';
+
+    if (isLocal) {
+      document.querySelector('#source-description').textContent = 'Every component in the library, loaded from the local source.';
+      document.querySelector('#source-label').textContent = '../src/index.ts';
+      document.querySelector('#source-footer').textContent = 'Loaded from the local source through Vite.';
+    }
+
+    try {
+      await import(/* @vite-ignore */ moduleUrl);
+      await customElements.whenDefined('shadcn-tooltip-content');
+      status.hidden = true;
+    } catch (error) {
+      status.textContent = 'The component library could not be loaded. Check the browser console for details.';
+      console.error(error);
+    }
+  </script>
+</body>
+</html>
