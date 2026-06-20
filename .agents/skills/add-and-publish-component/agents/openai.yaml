@@ -1,0 +1,4 @@
+interface:
+  display_name: "Add and Publish Component"
+  short_description: "Complete the component release checklist"
+  default_prompt: "Use $add-and-publish-component to add and prepare a component for publication."

@@ -16,6 +16,22 @@
       "types": "./dist/components/accordion/accordion.d.ts",
       "default": "./dist/components/accordion/accordion.js"
     },
+    "./alert": {
+      "types": "./dist/components/alert/alert.d.ts",
+      "default": "./dist/components/alert/alert.js"
+    },
+    "./aspect-ratio": {
+      "types": "./dist/components/aspect-ratio/aspect-ratio.d.ts",
+      "default": "./dist/components/aspect-ratio/aspect-ratio.js"
+    },
+    "./avatar": {
+      "types": "./dist/components/avatar/avatar.d.ts",
+      "default": "./dist/components/avatar/avatar.js"
+    },
+    "./badge": {
+      "types": "./dist/components/badge/badge.d.ts",
+      "default": "./dist/components/badge/badge.js"
+    },
     "./breadcrumb": {
       "types": "./dist/components/breadcrumb/breadcrumb.d.ts",
       "default": "./dist/components/breadcrumb/breadcrumb.js"
@@ -92,6 +108,10 @@
       "types": "./dist/components/popover/popover.d.ts",
       "default": "./dist/components/popover/popover.js"
     },
+    "./progress": {
+      "types": "./dist/components/progress/progress.d.ts",
+      "default": "./dist/components/progress/progress.js"
+    },
     "./radio-group": {
       "types": "./dist/components/radio-group/radio-group.d.ts",
       "default": "./dist/components/radio-group/radio-group.js"
@@ -120,6 +140,10 @@
       "types": "./dist/components/switch/switch.d.ts",
       "default": "./dist/components/switch/switch.js"
     },
+    "./table": {
+      "types": "./dist/components/table/table.d.ts",
+      "default": "./dist/components/table/table.js"
+    },
     "./textarea": {
       "types": "./dist/components/textarea/textarea.d.ts",
       "default": "./dist/components/textarea/textarea.js"
@@ -131,6 +155,10 @@
     "./toggle-group": {
       "types": "./dist/components/toggle-group/toggle-group.d.ts",
       "default": "./dist/components/toggle-group/toggle-group.js"
+    },
+    "./typography": {
+      "types": "./dist/components/typography/typography.d.ts",
+      "default": "./dist/components/typography/typography.js"
     },
     "./styles": {
       "types": "./dist/styles/index.d.ts",

@@ -52,9 +52,15 @@ Use in your HTML:
 
 ## Components
 
+See [COMPONENT_STATUS.md](./COMPONENT_STATUS.md) for the complete shadcn/ui catalog and implementation status.
+
 ### Currently Available
 
 - **Accordion**
+- **Alert**
+- **Aspect Ratio**
+- **Avatar**
+- **Badge**
 - **Breadcrumb**
 - **Button**
 - **Button Group**
@@ -74,6 +80,7 @@ Use in your HTML:
 - **Native Select**
 - **Navigation Menu**
 - **Popover**
+- **Progress**
 - **Radio Group**
 - **Separator**
 - **Sidebar**
@@ -81,9 +88,11 @@ Use in your HTML:
 - **Slider**
 - **Spinner**
 - **Switch**
+- **Table**
 - **Textarea**
 - **Toggle**
 - **Toggle Group**
+- **Typography**
 
 ### Implementation Status
 
