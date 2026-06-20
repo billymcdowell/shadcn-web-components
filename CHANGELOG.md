@@ -1,5 +1,11 @@
 # shadcn-web-components
 
+## 0.1.1
+
+### Patch Changes
+
+- 5c9486d: Align global and shadow-root design tokens, including transition aliases, reduced-motion behavior, spacing, typography, shadows, and configurable keyframe animation timing.
+
 ## 0.1.0
 
 ### Minor Changes
