@@ -58,6 +58,7 @@ export class Dialog extends LitElement {
 
   private contextProvider: ContextProviderController<DialogContextValue>;
   private escapeKeyHandler: ((event: KeyboardEvent) => void) | null = null;
+  private previouslyFocusedElement: HTMLElement | null = null;
 
   constructor() {
     super();
@@ -66,11 +67,43 @@ export class Dialog extends LitElement {
       dialogContext,
       {
         open: this.open,
-        setOpen: (open: boolean) => {
-          this.open = open;
-        },
+        setOpen: (open: boolean) => this.setDialogOpen(open),
       }
     );
+  }
+
+  private setDialogOpen(open: boolean): void {
+    if (open === this.open) {
+      return;
+    }
+
+    if (open) {
+      this.previouslyFocusedElement = document.activeElement instanceof HTMLElement
+        ? document.activeElement
+        : null;
+      this.open = true;
+      this.dispatchEvent(
+        new CustomEvent('open', {
+          bubbles: true,
+          composed: true,
+        })
+      );
+      return;
+    }
+
+    this.open = false;
+    this.dispatchEvent(
+      new CustomEvent('close', {
+        bubbles: true,
+        composed: true,
+      })
+    );
+
+    const focusTarget = this.previouslyFocusedElement;
+    requestAnimationFrame(() => {
+      focusTarget?.focus();
+      this.previouslyFocusedElement = null;
+    });
   }
 
   /**
@@ -78,13 +111,8 @@ export class Dialog extends LitElement {
    */
   private handleEscapeKey = (event: KeyboardEvent): void => {
     if (event.key === 'Escape' && this.open) {
-      this.open = false;
-      this.dispatchEvent(
-        new CustomEvent('close', {
-          bubbles: true,
-          composed: true,
-        })
-      );
+      event.preventDefault();
+      this.setDialogOpen(false);
     }
   };
 
@@ -102,9 +130,7 @@ export class Dialog extends LitElement {
     if (changedProperties.has('open')) {
       this.contextProvider.setValue({
         open: this.open,
-        setOpen: (open: boolean) => {
-          this.open = open;
-        },
+        setOpen: (open: boolean) => this.setDialogOpen(open),
       });
 
       // Add or remove Escape key listener based on open state
@@ -495,7 +521,7 @@ export class DialogContent extends LitElement {
   private _stateSync: StateSyncController<DialogContextValue>;
   private focusTrap: FocusTrapController;
   private dialogContainer: HTMLElement | null = null;
-  private originalBodyOverflow: string = '';
+  private originalBodyOverflow: string | null = null;
   private backdropElement: HTMLElement | null = null;
 
   constructor() {
@@ -526,23 +552,8 @@ export class DialogContent extends LitElement {
       return;
     }
 
-    // Find the default slot
-    const slot = this.shadowRoot?.querySelector('slot');
-    if (!slot) {
-      return;
-    }
-
-    // Get assigned elements from the slot
-    const assignedElements = slot.assignedElements({ flatten: true });
-
-    // Find shadcn-dialog-title and shadcn-dialog-description elements
-    const titleElement = assignedElements.find(
-      (el) => el.tagName?.toLowerCase() === 'shadcn-dialog-title'
-    ) as HTMLElement | undefined;
-
-    const descriptionElement = assignedElements.find(
-      (el) => el.tagName?.toLowerCase() === 'shadcn-dialog-description'
-    ) as HTMLElement | undefined;
+    const titleElement = this.querySelector<HTMLElement>('shadcn-dialog-title');
+    const descriptionElement = this.querySelector<HTMLElement>('shadcn-dialog-description');
 
     // Set aria-labelledby if title exists
     if (titleElement) {
@@ -625,7 +636,7 @@ export class DialogContent extends LitElement {
    * Locks body scroll when dialog is open
    */
   private lockBodyScroll(): void {
-    if (typeof document !== 'undefined' && !this.originalBodyOverflow) {
+    if (typeof document !== 'undefined' && this.originalBodyOverflow === null) {
       this.originalBodyOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
     }
@@ -635,9 +646,9 @@ export class DialogContent extends LitElement {
    * Unlocks body scroll when dialog is closed
    */
   private unlockBodyScroll(): void {
-    if (typeof document !== 'undefined' && this.originalBodyOverflow !== undefined) {
+    if (typeof document !== 'undefined' && this.originalBodyOverflow !== null) {
       document.body.style.overflow = this.originalBodyOverflow;
-      this.originalBodyOverflow = '';
+      this.originalBodyOverflow = null;
     }
   }
 

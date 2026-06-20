@@ -51,6 +51,7 @@ export class Popover extends LitElement {
   private positioningController: PositioningController;
   private triggerElement: HTMLElement | null = null;
   private contentElement: HTMLElement | null = null;
+  private previouslyFocusedElement: HTMLElement | null = null;
 
   constructor() {
     super();
@@ -60,18 +61,51 @@ export class Popover extends LitElement {
       popoverContext,
       {
         open: this.open,
-        openPopover: () => {
-          this.open = true;
-        },
-        close: () => {
-          this.open = false;
-        },
-        toggle: () => {
-          this.open = !this.open;
-        },
+        openPopover: () => this.openPopover(),
+        close: () => this.closePopover(),
+        toggle: () => this.togglePopoverOpen(),
       }
     );
     this.positioningController = new PositioningController(this);
+  }
+
+  private openPopover(): void {
+    if (this.open) {
+      return;
+    }
+
+    this.previouslyFocusedElement = document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null;
+    this.open = true;
+  }
+
+  private closePopover(): void {
+    if (!this.open) {
+      return;
+    }
+
+    this.open = false;
+    this.dispatchEvent(
+      new CustomEvent('close', {
+        bubbles: true,
+        composed: true,
+      })
+    );
+
+    const focusTarget = this.triggerElement ?? this.previouslyFocusedElement;
+    requestAnimationFrame(() => {
+      focusTarget?.focus();
+      this.previouslyFocusedElement = null;
+    });
+  }
+
+  private togglePopoverOpen(): void {
+    if (this.open) {
+      this.closePopover();
+    } else {
+      this.openPopover();
+    }
   }
 
   /**
@@ -107,6 +141,29 @@ export class Popover extends LitElement {
     this.positioningController.start();
   }
 
+  private updateTriggerAttributes(): void {
+    if (!this.triggerElement) {
+      return;
+    }
+
+    this.triggerElement.setAttribute('data-state', this.open ? 'open' : 'closed');
+    this.triggerElement.setAttribute('aria-haspopup', 'dialog');
+    this.triggerElement.setAttribute('aria-expanded', String(this.open));
+
+    const assignedControl = this.triggerElement.querySelector<HTMLElement>(
+      'button, [role="button"], a, input, select, textarea, [tabindex]'
+    );
+    assignedControl?.setAttribute('aria-expanded', String(this.open));
+    assignedControl?.setAttribute('aria-haspopup', 'dialog');
+  }
+
+  private handleKeyDown = (event: KeyboardEvent): void => {
+    if (event.key === 'Escape' && this.open) {
+      event.preventDefault();
+      this.closePopover();
+    }
+  };
+
   willUpdate(): void {
     this.dataset.state = this.open ? 'open' : 'closed';
   }
@@ -119,16 +176,11 @@ export class Popover extends LitElement {
     // Safe to do in firstUpdated() as it's called after the first render completes
     this.contextProvider.setValue({
       open: this.open,
-      openPopover: () => {
-        this.open = true;
-      },
-      close: () => {
-        this.open = false;
-      },
-      toggle: () => {
-        this.open = !this.open;
-      },
+      openPopover: () => this.openPopover(),
+      close: () => this.closePopover(),
+      toggle: () => this.togglePopoverOpen(),
     });
+    this.updateTriggerAttributes();
   }
 
   /**
@@ -142,21 +194,18 @@ export class Popover extends LitElement {
       // Update context value when open property changes
       this.contextProvider.setValue({
         open: this.open,
-        openPopover: () => {
-          this.open = true;
-        },
-        close: () => {
-          this.open = false;
-        },
-        toggle: () => {
-          this.open = !this.open;
-        },
+        openPopover: () => this.openPopover(),
+        close: () => this.closePopover(),
+        toggle: () => this.togglePopoverOpen(),
       });
+      this.updateTriggerAttributes();
 
       // Setup or cleanup positioning based on open state
       if (this.open) {
+        document.addEventListener('keydown', this.handleKeyDown);
         // Refresh element references in case they changed
         this.getSlottedElements();
+        this.updateTriggerAttributes();
         // Use requestAnimationFrame to ensure the DOM is fully updated
         requestAnimationFrame(() => {
           if (this.isConnected) {
@@ -164,6 +213,7 @@ export class Popover extends LitElement {
           }
         });
       } else {
+        document.removeEventListener('keydown', this.handleKeyDown);
         this.positioningController.stop();
       }
     }
@@ -174,6 +224,7 @@ export class Popover extends LitElement {
    */
   disconnectedCallback(): void {
     super.disconnectedCallback();
+    document.removeEventListener('keydown', this.handleKeyDown);
     this.positioningController.stop();
   }
 
@@ -251,6 +302,9 @@ export class PopoverContent extends LitElement {
    */
   private setupClickOutsideListener(isOpen: boolean): void {
     if (isOpen) {
+      if (this.clickOutsideHandler) {
+        return;
+      }
       // Add event listener when popover opens
       // Use mousedown instead of click to catch the event earlier
       this.clickOutsideHandler = this.handleClickOutside;

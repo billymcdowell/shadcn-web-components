@@ -25,7 +25,7 @@ npm install @billy_mcdowell/shadcn-web-components
 You can also use the components via CDN:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.0.2/dist/index.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.0.3/dist/index.js"></script>
 ```
 
 ### Usage
@@ -52,21 +52,85 @@ Use in your HTML:
 
 ## Components
 
+See [Component Status](./src/component-status.mdx) for the complete shadcn/ui catalog and implementation status.
+
 ### Currently Available
 
-- ✅ **Button** - Versatile button with 6 variants and 4 sizes
+- **Accordion**
+- **Alert**
+- **Alert Dialog**
+- **Aspect Ratio**
+- **Avatar**
+- **Badge**
+- **Breadcrumb**
+- **Button**
+- **Button Group**
+- **Card**
+- **Checkbox**
+- **Collapsible**
+- **Context Menu**
+- **Dialog**
+- **Drawer**
+- **Dropdown Menu**
+- **Empty**
+- **Field**
+- **Hover Card**
+- **Input**
+- **Input OTP**
+- **Input Group**
+- **Item**
+- **Kbd**
+- **Label**
+- **Menubar**
+- **Native Select**
+- **Navigation Menu**
+- **Popover**
+- **Progress**
+- **Radio Group**
+- **Select**
+- **Separator**
+- **Sheet**
+- **Sidebar**
+- **Skeleton**
+- **Slider**
+- **Spinner**
+- **Switch**
+- **Table**
+- **Tabs**
+- **Textarea**
+- **Toggle**
+- **Toggle Group**
+- **Tooltip**
+- **Typography**
 
-### Coming Soon
+### Implementation Status
 
-- Input
-- Label
-- Card
-- Badge
-- Dialog
-- Select
-- Checkbox
-- Switch
-- And 50+ more...
+- **Stable primitives**: Button, Card, Input, Label, Separator, Skeleton, Spinner, Textarea, Kbd.
+- **Interactive controls**: Checkbox, Collapsible, Hover Card, Input OTP, Radio Group, Select, Slider, Switch, Tabs, Toggle, Toggle Group, Tooltip.
+- **Modal surfaces**: Alert Dialog, Dialog, Drawer, Sheet.
+- **Implemented, parity hardening in progress**: Popover, Dropdown Menu, Context Menu, Menubar, Navigation Menu.
+
+### Import Paths
+
+Import the full library:
+
+```typescript
+import '@billy_mcdowell/shadcn-web-components';
+```
+
+Import individual components:
+
+```typescript
+import '@billy_mcdowell/shadcn-web-components/button';
+import '@billy_mcdowell/shadcn-web-components/dialog';
+import '@billy_mcdowell/shadcn-web-components/popover';
+```
+
+Import styles:
+
+```typescript
+import '@billy_mcdowell/shadcn-web-components/styles';
+```
 
 ## Button Component
 

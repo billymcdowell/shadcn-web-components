@@ -12,6 +12,5 @@ storybook-static/
 *~
 coverage/
 .nyc_output/
-custom-elements.json
 *.tsbuildinfo
 .DS_Store

@@ -41,10 +41,16 @@ export class FocusTrapController implements ReactiveController {
     }
 
     // Create a new focus trap instance for the host element
-    this.focusTrap = createFocusTrap(this.host, {
-      // Use default focus-trap configuration
-      // This handles edge cases like finding tabbable elements
-      returnFocusOnDeactivate: true,
+    const hostElement = this.host as HTMLElement;
+    if (!hostElement.hasAttribute('tabindex')) hostElement.tabIndex = -1;
+
+    this.focusTrap = createFocusTrap(hostElement, {
+      fallbackFocus: hostElement,
+      escapeDeactivates: false,
+      returnFocusOnDeactivate: false,
+      tabbableOptions: {
+        getShadowRoot: (node) => node.shadowRoot ?? undefined,
+      },
     });
 
     // Start trapping focus
