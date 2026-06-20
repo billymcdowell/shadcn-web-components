@@ -9,8 +9,6 @@ on:
       - ".changeset/**"
       - "package.json"
       - "CHANGELOG.md"
-    paths-ignore:
-      - "src/components/**/*.stories.ts"
 
 permissions:
   id-token: write
@@ -21,8 +19,31 @@ permissions:
 # concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
+  changes:
+    name: Detect release-worthy changes
+    runs-on: ubuntu-latest
+    outputs:
+      release: ${{ steps.filter.outputs.release }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Filter changed paths
+        uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            release:
+              - 'src/components/**'
+              - '!src/components/**/*.stories.ts'
+              - '.changeset/**'
+              - 'package.json'
+              - 'CHANGELOG.md'
+
   release:
     name: Release
+    needs: changes
+    if: needs.changes.outputs.release == 'true'
     runs-on: ubuntu-latest
     permissions:
       id-token: write
