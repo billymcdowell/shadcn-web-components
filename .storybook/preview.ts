@@ -40,6 +40,19 @@ const preview: Preview = {
         docs: {
             toc: true,
         },
+        options: {
+            storySort: {
+                order: [
+                    'Getting Started',
+                    'Component Status',
+                    'Guides',
+                    'Components',
+                    'Examples',
+                    '*',
+                    'Component Guides',
+                ],
+            },
+        },
     },
 
     tags: ['autodocs'],

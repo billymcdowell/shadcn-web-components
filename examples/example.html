@@ -1,10 +1,14 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Production CDN gallery for shadcn Web Components">
   <title>shadcn Web Components - Production Gallery</title>
+  <script>
+    const requestedTheme = new URLSearchParams(location.search).get('theme');
+    document.documentElement.dataset.theme = requestedTheme === 'light' ? 'light' : 'dark';
+  </script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/tokens.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/reset.css">
   <script type="importmap">

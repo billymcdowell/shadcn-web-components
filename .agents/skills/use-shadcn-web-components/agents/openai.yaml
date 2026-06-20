@@ -1,0 +1,4 @@
+interface:
+  display_name: "Use shadcn Web Components"
+  short_description: "Integrate published components in any framework"
+  default_prompt: "Use $use-shadcn-web-components to install or load the library and implement the requested UI correctly in my framework."

@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
-<Meta title="Guides/Getting Started" />
+<Meta title="Getting Started" />
 
 # Getting Started
 
@@ -229,9 +229,82 @@ The Angular template still needs `CUSTOM_ELEMENTS_SCHEMA`. Do not also import th
 same component from npm, because loading both sources can register the same custom
 element twice.
 
+## Agent skill for consumer applications
+
+The repository includes a reusable
+[`use-shadcn-web-components` Agent Skill](https://github.com/billymcdowell/shadcn-web-components/tree/main/.agents/skills/use-shadcn-web-components)
+for building with the published npm package or CDN files. It helps an agent choose
+components, inspect the published Custom Elements Manifest, use the correct
+attributes, properties, events, slots, and compound markup, and configure plain
+HTML, Angular, React, Vue, Lit, Svelte, and other frameworks.
+
+Run the [`skills.sh` CLI](https://skills.sh/docs/cli) from the root of the
+application where you want to use the component library:
+
+```bash
+npx skills add https://github.com/billymcdowell/shadcn-web-components --skill use-shadcn-web-components
+```
+
+The installer discovers the skill in `.agents/skills`, asks which detected
+agents should receive it, and installs it for the current project by default.
+Select Cursor, Claude Code, Codex, or any combination of them.
+
+To install non-interactively for all three agents:
+
+```bash
+npx skills add https://github.com/billymcdowell/shadcn-web-components \
+  --skill use-shadcn-web-components \
+  --agent cursor \
+  --agent claude-code \
+  --agent codex \
+  --yes
+```
+
+Add `--global` to either command to make the skill available across all of your
+projects. Run `npx skills update use-shadcn-web-components` later to update an
+installed copy.
+
+### Cursor
+
+Choose `cursor` in the installer. Let Cursor select the skill from the request,
+or type `/` in Agent chat and choose `use-shadcn-web-components`.
+
+See the [Cursor Agent Skills documentation](https://cursor.com/docs/skills).
+
+### Claude Code
+
+Choose `claude-code` in the installer. Claude can select the skill automatically
+from its description, or you can invoke it explicitly with:
+
+```text
+/use-shadcn-web-components
+```
+
+Restart Claude Code if a newly installed skill does not appear in the current
+session.
+
+See the [Claude Code Skills documentation](https://code.claude.com/docs/en/skills).
+
+### Codex
+
+Choose `codex` in the installer. Codex can select the skill automatically, or
+you can invoke it explicitly in the CLI, IDE extension, or app:
+
+```text
+Use $use-shadcn-web-components to add a settings form with the published package.
+```
+
+Run `/skills` or type `$` in the CLI or IDE to confirm that Codex discovered it.
+Codex normally detects skill changes automatically; restart it if the skill does
+not appear.
+
+See the [Codex Agent Skills documentation](https://developers.openai.com/codex/skills).
+
 ## Next steps
 
 - Open **Examples / Production Gallery** in Storybook to see every component
   loaded from the published npm release.
+- Install the **use-shadcn-web-components** Agent Skill when an agent will build
+  the consumer integration.
 - Browse **Components** for attributes, properties, events, slots, and examples.
 - See **Guides / Theming** before overriding the default design tokens.

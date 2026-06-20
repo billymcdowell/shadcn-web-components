@@ -204,7 +204,8 @@
   "files": [
     "dist",
     "src",
-    "custom-elements.json"
+    "custom-elements.json",
+    "llms.txt"
   ],
   "customElements": "custom-elements.json",
   "scripts": {
@@ -214,6 +215,7 @@
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
     "analyze": "cem analyze --litelement --outdir .",
+    "docs:llms": "node scripts/generate-llms-docs.mjs",
     "storybook": "node scripts/storybook-dev.mjs -p 6006",
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build && npm run type-check && npm run analyze",
