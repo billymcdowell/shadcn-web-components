@@ -318,8 +318,8 @@ This library follows shadcn's design principles with a dark theme color palette 
 
 ## Resources
 
-- [Storybook Documentation](http://localhost:6006)
-- [Custom Elements Manifest](./custom-elements.json)
+- [Storybook Documentation](https://billymcdowell.github.io/shadcn-web-components/)
+- [Custom Elements Manifest](https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/custom-elements.json)
 
 ## License
 
