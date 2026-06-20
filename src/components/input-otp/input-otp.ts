@@ -26,7 +26,7 @@ export class InputOTP extends LitElement {
     .slot:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
     .slot:last-child { border-right-width: 1px; border-radius: 0 var(--radius-md) var(--radius-md) 0; }
     .slot.active { border-right-width: 1px; border-color: var(--ring); box-shadow: 0 0 0 2px var(--ring); z-index: 1; }
-    .caret { width: 1px; height: 1rem; background: currentColor; animation: blink 1s steps(1) infinite; }
+    .caret { width: 1px; height: 1rem; background: currentColor; animation: blink var(--animation-caret-duration, 1s) var(--animation-caret-easing, steps(1)) infinite; }
     input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; border: 0; margin: 0; cursor: text; }
     input:disabled { cursor: not-allowed; }
     :host([disabled]) { opacity: .5; }

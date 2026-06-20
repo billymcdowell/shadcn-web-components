@@ -36,6 +36,10 @@ export class SheetContent extends ModalSurface {
     :host([side='left']) .surface { inset: 0 auto 0 0; width: min(var(--sheet-size, 24rem), 85vw); border-width: 0 1px 0 0; }
     :host([side='top']) .surface { inset: 0 0 auto; min-height: var(--sheet-size, 16rem); border-width: 0 0 1px; }
     :host([side='bottom']) .surface { inset: auto 0 0; min-height: var(--sheet-size, 16rem); border-width: 1px 0 0; }
+    :host([side='right']) .surface { animation-name: shadcn-slide-in-from-right; }
+    :host([side='left']) .surface { animation-name: shadcn-slide-in-from-left; }
+    :host([side='top']) .surface { animation-name: shadcn-slide-in-from-top; }
+    :host([side='bottom']) .surface { animation-name: shadcn-slide-in-from-bottom; }
   `];
   /** Viewport edge from which the sheet appears. */
   @property({ type: String, reflect: true }) side: SheetSide = 'right';

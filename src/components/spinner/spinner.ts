@@ -25,7 +25,7 @@ export class Spinner extends LitElement {
         border-radius: 50%;
         border: 2px solid var(--border);
         border-top-color: var(--spinner-color, var(--foreground));
-        animation: spin 0.6s linear infinite;
+        animation: spin var(--animation-spin-duration, 600ms) var(--animation-spin-easing, linear) infinite;
       }
 
       @keyframes spin {

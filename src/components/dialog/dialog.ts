@@ -461,6 +461,7 @@ export class DialogContent extends LitElement {
         -webkit-backdrop-filter: blur(4px);
         transition: opacity var(--transition-base);
         pointer-events: auto;
+        animation: shadcn-fade-in var(--transition-base);
       }
 
       :host([data-state='open']) .backdrop {
@@ -488,6 +489,7 @@ export class DialogContent extends LitElement {
         transition: opacity var(--transition-base), transform var(--transition-base);
         transform-origin: center;
         pointer-events: auto;
+        animation: shadcn-zoom-in var(--transition-base);
       }
 
       :host([data-state='open']) .dialog-container {
@@ -498,6 +500,10 @@ export class DialogContent extends LitElement {
       :host([data-state='closed']) .dialog-container {
         opacity: 0;
         transform: scale(0.95);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .backdrop, .dialog-container { animation: none; transition-duration: 0ms; }
       }
 
       @media (max-width: 640px) {

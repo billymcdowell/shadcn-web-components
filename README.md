@@ -2,6 +2,8 @@
 
 A professional, enterprise-grade web component library built with [Lit](https://lit.dev), following [shadcn/ui](https://ui.shadcn.com) design principles.
 
+[Storybook documentation](https://billymcdowell.github.io/shadcn-web-components/) · [Production component gallery](https://billymcdowell.github.io/shadcn-web-components/examples/example.html)
+
 ## Features
 
 ✨ **Modern & Accessible**: Built with Lit and WCAG 2.1 AA compliant  
@@ -20,13 +22,48 @@ A professional, enterprise-grade web component library built with [Lit](https://
 npm install @billy_mcdowell/shadcn-web-components
 ```
 
-### CDN Usage
-
-You can also use the components via CDN:
+Load the default design tokens and optional reset in your document `<head>`:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.0.3/dist/index.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/tokens.css"
+>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/reset.css"
+>
 ```
+
+Then register all components or selected component subpaths from your application
+entry point. Bundlers resolve Lit automatically, so npm applications do not need
+an import map.
+
+### CDN Usage
+
+For plain HTML without a build step, use the styles above followed by an import
+map and the exact published module:
+
+```html
+<script type="importmap">
+  {
+    "imports": {
+      "lit": "https://esm.sh/lit@3.2.1",
+      "lit/decorators.js": "https://esm.sh/lit@3.2.1/decorators.js"
+    }
+  }
+</script>
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/dist/index.js"
+></script>
+```
+
+The import map must appear before the module script. Use the direct `dist` entry
+rather than a transformed `+esm` endpoint so importing the root reliably
+registers every component.
+
+See every component running from this published package in the [production component gallery](https://billymcdowell.github.io/shadcn-web-components/examples/example.html).
 
 ### Usage
 
@@ -126,11 +163,15 @@ import '@billy_mcdowell/shadcn-web-components/dialog';
 import '@billy_mcdowell/shadcn-web-components/popover';
 ```
 
-Import styles:
+Use the Lit style helpers when authoring your own Lit components:
 
 ```typescript
 import '@billy_mcdowell/shadcn-web-components/styles';
 ```
+
+This JavaScript subpath exports Lit `CSSResult` helpers for component authors. It
+does not load the global design tokens; use the stylesheet links shown above for
+the default application theme.
 
 ## Button Component
 

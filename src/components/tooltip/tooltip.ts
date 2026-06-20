@@ -61,10 +61,12 @@ export class TooltipContent extends LitElement {
     :host([side='left']) { right: calc(100% + .375rem); top: 50%; transform: translateY(-50%); }
     :host([side='right']) { left: calc(100% + .375rem); top: 50%; transform: translateY(-50%); }
     [hidden] { display: none !important; }
-    .content { width: max-content; max-width: 18rem; padding: .375rem var(--spacing-2); border-radius: var(--radius-md); background: var(--primary); color: var(--primary-foreground); font-family: var(--font-sans); font-size: var(--font-size-xs); line-height: 1.25; box-shadow: 0 4px 8px oklch(0 0 0 / .15); }
+    .content { width: max-content; max-width: 18rem; padding: .375rem var(--spacing-2); border-radius: var(--radius-md); background: var(--primary); color: var(--primary-foreground); font-family: var(--font-sans); font-size: var(--font-size-xs); line-height: 1.25; box-shadow: 0 4px 8px oklch(0 0 0 / .15); transform-origin: center; }
+    :host([open]) .content { animation: shadcn-zoom-in var(--transition-fast); }
+    @media (prefers-reduced-motion: reduce) { .content { animation: none; } }
   `];
   readonly contentId = `shadcn-tooltip-${++tooltipId}`;
-  @property({ type: Boolean }) open = false;
+  @property({ type: Boolean, reflect: true }) open = false;
   @property({ type: String, reflect: true }) side: TooltipSide = 'top';
   protected render() { return html`<div id=${this.contentId} part="content" class="content" role="tooltip" ?hidden=${!this.open}><slot></slot></div>`; }
 }

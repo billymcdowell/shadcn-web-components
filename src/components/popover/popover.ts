@@ -1,8 +1,9 @@
-import { LitElement, html, nothing } from 'lit';
+import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { ContextProviderController, ContextConsumerController, createContext } from '../../context';
 import { PositioningController } from '../../controllers/positioning-controller';
 import { StateSyncController } from '../../controllers/state-sync-controller';
+import { tokens } from '../../styles/index.js';
 
 /**
  * The shape of the popover context value.
@@ -247,6 +248,11 @@ export class Popover extends LitElement {
  */
 @customElement('shadcn-popover-content')
 export class PopoverContent extends LitElement {
+  static styles = [tokens, css`
+    :host { display: block; transform-origin: top; animation: shadcn-zoom-in var(--transition-fast); }
+    @media (prefers-reduced-motion: reduce) { :host { animation: none; } }
+  `];
+
   private contextConsumer: ContextConsumerController<PopoverContextValue>;
   private stateSync: StateSyncController<PopoverContextValue>;
   private clickOutsideHandler: ((event: MouseEvent) => void) | null = null;

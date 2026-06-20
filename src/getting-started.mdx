@@ -4,14 +4,21 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Getting Started
 
-shadcn Web Components are standards-based custom elements built with Lit. Once a
-component module has been imported, its `shadcn-*` element can be used in HTML,
-Angular templates, or any other framework that supports custom elements.
+shadcn Web Components are standards-based custom elements built with Lit. Setup
+has two parts:
 
-The examples below use `shadcn-button`. You can import the package root to register
-every component, or use a component subpath to register only what you need.
+1. Load the global design tokens so component colors inherit valid CSS values.
+2. Import component modules so their `shadcn-*` elements are registered.
 
-## Package imports
+Component layout and interaction styles live inside each element's shadow root.
+The global token stylesheet supplies colors, typography, radii, shadows, and
+other values shared across those shadow roots. The reset is recommended for a
+consistent page baseline, but it is optional.
+
+## npm and a bundler
+
+Use this path with Vite, Angular CLI, or another tool that resolves npm package
+imports.
 
 Install the package:
 
@@ -19,80 +26,149 @@ Install the package:
 npm install @billy_mcdowell/shadcn-web-components
 ```
 
-Register every component from your application's JavaScript or TypeScript entry
-point:
+Load the default global styles in your document head. Version the URLs alongside
+the installed package version, or host copies of these files with your app:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/tokens.css"
+>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/reset.css"
+>
+```
+
+Register every component from your JavaScript or TypeScript entry point:
 
 ```ts
 import '@billy_mcdowell/shadcn-web-components';
 ```
 
-For a smaller application bundle, import individual components instead:
+For a smaller application bundle, import only the component modules you use:
 
 ```ts
 import '@billy_mcdowell/shadcn-web-components/button';
 import '@billy_mcdowell/shadcn-web-components/card';
 ```
 
-After the import runs, use the registered elements in your HTML:
+Then use the registered elements in your templates:
 
 ```html
 <shadcn-button variant="default">Save changes</shadcn-button>
 <shadcn-button variant="outline">Cancel</shadcn-button>
 ```
 
-This npm approach expects a build tool, such as Vite, Angular CLI, or another
-bundler, to process the package imports.
+You do not need an import map in this setup. The bundler resolves `lit` and the
+package's other JavaScript dependencies.
 
 ## CDN and plain HTML
 
-For a page without an npm build step, load the package from an ESM CDN. The root
-URL registers every component:
+For a page without a build step, use the exact published files shown below. The
+import map is required because the distributed modules intentionally retain bare
+imports for `lit` and `lit/decorators.js`. It must appear before the module script.
 
 ```html
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shadcn Web Components</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/tokens.css"
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/reset.css"
+    >
+
+    <script type="importmap">
+      {
+        "imports": {
+          "lit": "https://esm.sh/lit@3.2.1",
+          "lit/decorators.js": "https://esm.sh/lit@3.2.1/decorators.js"
+        }
+      }
+    </script>
     <script
       type="module"
-      src="https://esm.sh/@billy_mcdowell/shadcn-web-components@0.0.3"
+      src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/dist/index.js"
     ></script>
   </head>
   <body>
     <shadcn-button variant="default">Save changes</shadcn-button>
-
-    <script>
-      document.querySelector('shadcn-button').addEventListener('button-click', (event) => {
-        console.log('Button clicked', event.detail);
-      });
-    </script>
   </body>
 </html>
 ```
 
-Load a single component when you do not need the full library:
+The root `dist/index.js` registers every component. To register only a button,
+keep the same styles and import map but replace the module script with:
 
 ```html
 <script
   type="module"
-  src="https://esm.sh/@billy_mcdowell/shadcn-web-components@0.0.3/button"
+  src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/dist/components/button/button.js"
 ></script>
 ```
 
-The examples pin `0.0.3` so deployments do not change unexpectedly. Update that
-version deliberately when you upgrade the library.
+Use the direct `dist` files rather than a transformed `+esm` package endpoint.
+The direct root module preserves the registration side effects for every custom
+element. Pin the package and Lit versions so production deployments only change
+when you deliberately upgrade them.
+
+See the complete working setup in the [production component gallery](./examples/example.html).
+
+## Global styles and themes
+
+`tokens.css` defines complete CSS color values such as
+`--background: oklch(0.145 0 0)`. Keep the `oklch(...)` wrapper when overriding a
+color; a channel-only value such as `0.145 0 0` is not valid when a component uses
+`background: var(--background)`.
+
+Set `data-theme="light"` on the root element to use the bundled light palette:
+
+```html
+<html lang="en" data-theme="light">
+```
+
+Override tokens after the default stylesheet to create your own theme:
+
+```css
+:root {
+  --primary: oklch(0.62 0.19 255);
+  --primary-foreground: oklch(0.985 0 0);
+  --radius: 0.75rem;
+}
+```
+
+The JavaScript subpath `@billy_mcdowell/shadcn-web-components/styles` exports Lit
+`CSSResult` helpers for component authors. It is not a browser stylesheet and
+should not be used in a CSS `@import` or `<link>`.
+
+## Events and properties
+
+Listen for component events with normal DOM APIs:
+
+```html
+<shadcn-button id="save">Save changes</shadcn-button>
+<script>
+  document.querySelector('#save').addEventListener('button-click', (event) => {
+    console.log('Button clicked', event.detail);
+  });
+</script>
+```
+
+Use HTML attributes for static string and boolean values. Set JavaScript
+properties when passing non-string values or controlling a component directly.
 
 ## Angular with npm
 
-Install the package in the Angular workspace:
-
-```bash
-npm install @billy_mcdowell/shadcn-web-components
-```
-
-Import all components, or selected component subpaths, once from `src/main.ts`:
+Install the package, load the global styles from your app shell, and import all
+components or selected subpaths once from `src/main.ts`:
 
 ```ts
 import '@billy_mcdowell/shadcn-web-components/button';
@@ -103,8 +179,8 @@ import { AppComponent } from './app/app.component';
 bootstrapApplication(AppComponent).catch((error) => console.error(error));
 ```
 
-Angular validates the elements used in its templates. Add
-`CUSTOM_ELEMENTS_SCHEMA` to each standalone component that uses custom elements:
+Add `CUSTOM_ELEMENTS_SCHEMA` to each standalone component that uses custom
+elements:
 
 ```ts
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -132,52 +208,30 @@ export class AppComponent {
 }
 ```
 
-Use normal HTML attributes for static string values, property binding (`[value]`)
-for dynamic values, and event binding (`(event-name)`) for custom events.
-
-For an NgModule-based application, add the schema to the module instead:
-
-```ts
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-
-@NgModule({
-  declarations: [AppComponent],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-})
-export class AppModule {}
-```
+For an NgModule application, add `CUSTOM_ELEMENTS_SCHEMA` to the module's
+`schemas` array instead. Use attributes for static strings, property binding for
+dynamic values, and event binding for custom events.
 
 ## Angular with a CDN
 
-To keep the component package out of the Angular npm bundle, load it as a module
-from `src/index.html`:
+To keep the component library out of the Angular bundle, put the same stylesheet
+links and import map from the plain HTML example in `src/index.html`, followed by
+the direct component module:
 
 ```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>My Angular App</title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script
-      type="module"
-      src="https://esm.sh/@billy_mcdowell/shadcn-web-components@0.0.3/button"
-    ></script>
-  </head>
-  <body>
-    <app-root></app-root>
-  </body>
-</html>
+<script
+  type="module"
+  src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/dist/components/button/button.js"
+></script>
 ```
 
-The Angular component template is the same as in the npm example, and it still
-needs `CUSTOM_ELEMENTS_SCHEMA`. Do not also import the same component from npm;
-loading both sources can attempt to register the same custom element twice.
+The Angular template still needs `CUSTOM_ELEMENTS_SCHEMA`. Do not also import the
+same component from npm, because loading both sources can register the same custom
+element twice.
 
 ## Next steps
 
-- Browse **Components** in the sidebar for each element's attributes, properties,
-  events, slots, and examples.
-- See **Guides/Theming** to customize the design tokens with CSS custom properties.
+- Open **Examples / Production Gallery** in Storybook to see every component
+  loaded from the published npm release.
+- Browse **Components** for attributes, properties, events, slots, and examples.
+- See **Guides / Theming** before overriding the default design tokens.
