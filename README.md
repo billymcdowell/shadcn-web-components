@@ -25,7 +25,7 @@ npm install @billy_mcdowell/shadcn-web-components
 You can also use the components via CDN:
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.0.2/dist/index.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.0.3/dist/index.js"></script>
 ```
 
 ### Usage
@@ -54,19 +54,64 @@ Use in your HTML:
 
 ### Currently Available
 
-- ✅ **Button** - Versatile button with 6 variants and 4 sizes
+- **Accordion**
+- **Breadcrumb**
+- **Button**
+- **Button Group**
+- **Card**
+- **Checkbox**
+- **Context Menu**
+- **Dialog**
+- **Dropdown Menu**
+- **Empty**
+- **Field**
+- **Input**
+- **Input Group**
+- **Item**
+- **Kbd**
+- **Label**
+- **Menubar**
+- **Native Select**
+- **Navigation Menu**
+- **Popover**
+- **Radio Group**
+- **Separator**
+- **Sidebar**
+- **Skeleton**
+- **Slider**
+- **Spinner**
+- **Switch**
+- **Textarea**
+- **Toggle**
+- **Toggle Group**
 
-### Coming Soon
+### Implementation Status
 
-- Input
-- Label
-- Card
-- Badge
-- Dialog
-- Select
-- Checkbox
-- Switch
-- And 50+ more...
+- **Stable primitives**: Button, Card, Input, Label, Separator, Skeleton, Spinner, Textarea, Kbd.
+- **Interactive controls**: Checkbox, Radio Group, Slider, Switch, Toggle, Toggle Group.
+- **Implemented, parity hardening in progress**: Dialog, Popover, Dropdown Menu, Context Menu, Menubar, Navigation Menu.
+
+### Import Paths
+
+Import the full library:
+
+```typescript
+import '@billy_mcdowell/shadcn-web-components';
+```
+
+Import individual components:
+
+```typescript
+import '@billy_mcdowell/shadcn-web-components/button';
+import '@billy_mcdowell/shadcn-web-components/dialog';
+import '@billy_mcdowell/shadcn-web-components/popover';
+```
+
+Import styles:
+
+```typescript
+import '@billy_mcdowell/shadcn-web-components/styles';
+```
 
 ## Button Component
 

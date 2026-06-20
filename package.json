@@ -13,118 +13,127 @@
       "default": "./dist/index.js"
     },
     "./accordion": {
-      "types": "./dist/components/accordion/index.d.ts",
-      "default": "./dist/components/accordion/index.js"
+      "types": "./dist/components/accordion/accordion.d.ts",
+      "default": "./dist/components/accordion/accordion.js"
     },
     "./breadcrumb": {
-      "types": "./dist/components/breadcrumb/index.d.ts",
-      "default": "./dist/components/breadcrumb/index.js"
+      "types": "./dist/components/breadcrumb/breadcrumb.d.ts",
+      "default": "./dist/components/breadcrumb/breadcrumb.js"
     },
     "./button": {
-      "types": "./dist/components/button/index.d.ts",
-      "default": "./dist/components/button/index.js"
+      "types": "./dist/components/button/button.d.ts",
+      "default": "./dist/components/button/button.js"
     },
     "./button-group": {
-      "types": "./dist/components/button-group/index.d.ts",
-      "default": "./dist/components/button-group/index.js"
+      "types": "./dist/components/button-group/button-group.d.ts",
+      "default": "./dist/components/button-group/button-group.js"
     },
     "./card": {
-      "types": "./dist/components/card/index.d.ts",
-      "default": "./dist/components/card/index.js"
+      "types": "./dist/components/card/card.d.ts",
+      "default": "./dist/components/card/card.js"
     },
     "./checkbox": {
-      "types": "./dist/components/checkbox/index.d.ts",
-      "default": "./dist/components/checkbox/index.js"
+      "types": "./dist/components/checkbox/checkbox.d.ts",
+      "default": "./dist/components/checkbox/checkbox.js"
     },
     "./context-menu": {
-      "types": "./dist/components/context-menu/index.d.ts",
-      "default": "./dist/components/context-menu/index.js"
+      "types": "./dist/components/context-menu/context-menu.d.ts",
+      "default": "./dist/components/context-menu/context-menu.js"
+    },
+    "./dialog": {
+      "types": "./dist/components/dialog/dialog.d.ts",
+      "default": "./dist/components/dialog/dialog.js"
     },
     "./dropdown-menu": {
-      "types": "./dist/components/dropdown-menu/index.d.ts",
-      "default": "./dist/components/dropdown-menu/index.js"
+      "types": "./dist/components/dropdown-menu/dropdown-menu.d.ts",
+      "default": "./dist/components/dropdown-menu/dropdown-menu.js"
     },
     "./empty": {
-      "types": "./dist/components/empty/index.d.ts",
-      "default": "./dist/components/empty/index.js"
+      "types": "./dist/components/empty/empty.d.ts",
+      "default": "./dist/components/empty/empty.js"
     },
     "./field": {
-      "types": "./dist/components/field/index.d.ts",
-      "default": "./dist/components/field/index.js"
+      "types": "./dist/components/field/field.d.ts",
+      "default": "./dist/components/field/field.js"
     },
     "./input": {
-      "types": "./dist/components/input/index.d.ts",
-      "default": "./dist/components/input/index.js"
+      "types": "./dist/components/input/input.d.ts",
+      "default": "./dist/components/input/input.js"
     },
     "./input-group": {
-      "types": "./dist/components/input-group/index.d.ts",
-      "default": "./dist/components/input-group/index.js"
+      "types": "./dist/components/input-group/input-group.d.ts",
+      "default": "./dist/components/input-group/input-group.js"
     },
     "./item": {
-      "types": "./dist/components/item/index.d.ts",
-      "default": "./dist/components/item/index.js"
+      "types": "./dist/components/item/item.d.ts",
+      "default": "./dist/components/item/item.js"
     },
     "./kbd": {
-      "types": "./dist/components/kbd/index.d.ts",
-      "default": "./dist/components/kbd/index.js"
+      "types": "./dist/components/kbd/kbd.d.ts",
+      "default": "./dist/components/kbd/kbd.js"
     },
     "./label": {
-      "types": "./dist/components/label/index.d.ts",
-      "default": "./dist/components/label/index.js"
+      "types": "./dist/components/label/label.d.ts",
+      "default": "./dist/components/label/label.js"
     },
     "./menubar": {
-      "types": "./dist/components/menubar/index.d.ts",
-      "default": "./dist/components/menubar/index.js"
+      "types": "./dist/components/menubar/menubar.d.ts",
+      "default": "./dist/components/menubar/menubar.js"
     },
     "./native-select": {
-      "types": "./dist/components/native-select/index.d.ts",
-      "default": "./dist/components/native-select/index.js"
+      "types": "./dist/components/native-select/native-select.d.ts",
+      "default": "./dist/components/native-select/native-select.js"
     },
     "./navigation-menu": {
-      "types": "./dist/components/navigation-menu/index.d.ts",
-      "default": "./dist/components/navigation-menu/index.js"
+      "types": "./dist/components/navigation-menu/navigation-menu.d.ts",
+      "default": "./dist/components/navigation-menu/navigation-menu.js"
+    },
+    "./popover": {
+      "types": "./dist/components/popover/popover.d.ts",
+      "default": "./dist/components/popover/popover.js"
     },
     "./radio-group": {
-      "types": "./dist/components/radio-group/index.d.ts",
-      "default": "./dist/components/radio-group/index.js"
+      "types": "./dist/components/radio-group/radio-group.d.ts",
+      "default": "./dist/components/radio-group/radio-group.js"
     },
     "./separator": {
-      "types": "./dist/components/separator/index.d.ts",
-      "default": "./dist/components/separator/index.js"
+      "types": "./dist/components/separator/separator.d.ts",
+      "default": "./dist/components/separator/separator.js"
     },
     "./sidebar": {
-      "types": "./dist/components/sidebar/index.d.ts",
-      "default": "./dist/components/sidebar/index.js"
+      "types": "./dist/components/sidebar/sidebar.d.ts",
+      "default": "./dist/components/sidebar/sidebar.js"
     },
     "./skeleton": {
-      "types": "./dist/components/skeleton/index.d.ts",
-      "default": "./dist/components/skeleton/index.js"
+      "types": "./dist/components/skeleton/skeleton.d.ts",
+      "default": "./dist/components/skeleton/skeleton.js"
     },
     "./slider": {
-      "types": "./dist/components/slider/index.d.ts",
-      "default": "./dist/components/slider/index.js"
+      "types": "./dist/components/slider/slider.d.ts",
+      "default": "./dist/components/slider/slider.js"
     },
     "./spinner": {
-      "types": "./dist/components/spinner/index.d.ts",
-      "default": "./dist/components/spinner/index.js"
+      "types": "./dist/components/spinner/spinner.d.ts",
+      "default": "./dist/components/spinner/spinner.js"
     },
     "./switch": {
-      "types": "./dist/components/switch/index.d.ts",
-      "default": "./dist/components/switch/index.js"
+      "types": "./dist/components/switch/switch.d.ts",
+      "default": "./dist/components/switch/switch.js"
     },
     "./textarea": {
-      "types": "./dist/components/textarea/index.d.ts",
-      "default": "./dist/components/textarea/index.js"
+      "types": "./dist/components/textarea/textarea.d.ts",
+      "default": "./dist/components/textarea/textarea.js"
     },
     "./toggle": {
-      "types": "./dist/components/toggle/index.d.ts",
-      "default": "./dist/components/toggle/index.js"
+      "types": "./dist/components/toggle/toggle.d.ts",
+      "default": "./dist/components/toggle/toggle.js"
     },
     "./toggle-group": {
-      "types": "./dist/components/toggle-group/index.d.ts",
-      "default": "./dist/components/toggle-group/index.js"
+      "types": "./dist/components/toggle-group/toggle-group.d.ts",
+      "default": "./dist/components/toggle-group/toggle-group.js"
     },
     "./styles": {
+      "types": "./dist/styles/index.d.ts",
       "default": "./dist/styles/index.js"
     }
   },
@@ -137,10 +146,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "verify:exports": "node scripts/verify-exports.mjs",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
     "analyze": "cem analyze --litelement --outdir .",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "node scripts/storybook-dev.mjs -p 6006",
     "build-storybook": "storybook build",
     "prepublishOnly": "npm run build && npm run type-check && npm run analyze",
     "changeset": "changeset",
@@ -172,11 +182,11 @@
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
     "@custom-elements-manifest/analyzer": "^0.10.4",
-    "@storybook/addon-a11y": "^8.4.7",
-    "@storybook/addon-essentials": "^8.4.7",
-    "@storybook/web-components": "^8.4.7",
-    "@storybook/web-components-vite": "^8.4.7",
-    "storybook": "^8.4.7",
+    "@storybook/addon-a11y": "^10.4.6",
+    "@storybook/addon-docs": "^10.4.6",
+    "@storybook/web-components": "^10.4.6",
+    "@storybook/web-components-vite": "^10.4.6",
+    "storybook": "^10.4.6",
     "typescript": "^5.6.3",
     "vite": "^6.0.1"
   },

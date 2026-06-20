@@ -31,6 +31,18 @@ export class Menubar extends LitElement {
     `,
     ];
 
+    connectedCallback() {
+        super.connectedCallback();
+        this.addEventListener('menubar-menu-open', this._handleMenuOpen as EventListener);
+        this.addEventListener('keydown', this._handleKeyDown);
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this.removeEventListener('menubar-menu-open', this._handleMenuOpen as EventListener);
+        this.removeEventListener('keydown', this._handleKeyDown);
+    }
+
     render() {
         return html`
       <div class="menubar" role="menubar">
@@ -38,6 +50,55 @@ export class Menubar extends LitElement {
       </div>
     `;
     }
+
+    private _triggers(): MenubarTrigger[] {
+        return Array.from(this.querySelectorAll('shadcn-menubar-trigger'))
+            .filter((trigger): trigger is MenubarTrigger => trigger instanceof MenubarTrigger);
+    }
+
+    private _focusedTriggerIndex(): number {
+        const triggers = this._triggers();
+        const activeElement = document.activeElement;
+        return triggers.findIndex((trigger) => trigger.contains(activeElement) || trigger.shadowRoot?.contains(activeElement));
+    }
+
+    private _handleMenuOpen = (event: Event) => {
+        const openedMenu = event.target;
+        const menus = Array.from(this.querySelectorAll('shadcn-menubar-menu'))
+            .filter((menu): menu is MenubarMenu => menu instanceof MenubarMenu);
+
+        for (const menu of menus) {
+            if (menu !== openedMenu) {
+                menu.closeMenu(false);
+            }
+        }
+    };
+
+    private _handleKeyDown = (event: KeyboardEvent) => {
+        const triggers = this._triggers();
+        if (triggers.length === 0) {
+            return;
+        }
+
+        const focusedIndex = this._focusedTriggerIndex();
+        if (focusedIndex === -1) {
+            return;
+        }
+
+        if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+            event.preventDefault();
+            const direction = event.key === 'ArrowRight' ? 1 : -1;
+            const nextIndex = (focusedIndex + direction + triggers.length) % triggers.length;
+            triggers[nextIndex]?.focusTrigger();
+            return;
+        }
+
+        if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            const menu = triggers[focusedIndex]?.closest('shadcn-menubar-menu') as MenubarMenu | null;
+            menu?.openMenu();
+        }
+    };
 }
 
 /**
@@ -61,6 +122,17 @@ export class MenubarMenu extends LitElement {
 
     @state() private _open = false;
 
+    connectedCallback() {
+        super.connectedCallback();
+        this.addEventListener('select', this._handleItemSelect as EventListener);
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback();
+        this.removeEventListener('select', this._handleItemSelect as EventListener);
+        document.removeEventListener('keydown', this._handleDocumentKeyDown);
+    }
+
     render() {
         return html`
       <div 
@@ -77,8 +149,11 @@ export class MenubarMenu extends LitElement {
         // In a real app, this would coordinate with other menus in the bar.
         const trigger = e.target as HTMLElement;
         if (trigger.tagName.toLowerCase() === 'shadcn-menubar-trigger') {
-            this._open = !this._open;
-            this._updateChildren();
+            if (this._open) {
+                this.closeMenu();
+            } else {
+                this.openMenu();
+            }
         }
     }
 
@@ -86,6 +161,74 @@ export class MenubarMenu extends LitElement {
         if (!this.contains(e.relatedTarget as Node)) {
             this._open = false;
             this._updateChildren();
+            document.removeEventListener('keydown', this._handleDocumentKeyDown);
+        }
+    }
+
+    private _handleItemSelect = () => {
+        this.closeMenu();
+    };
+
+    private _handleDocumentKeyDown = (event: KeyboardEvent) => {
+        if (!this._open) {
+            return;
+        }
+
+        const content = this.querySelector('shadcn-menubar-content') as MenubarContent | null;
+
+        switch (event.key) {
+            case 'Escape':
+                event.preventDefault();
+                this.closeMenu();
+                break;
+            case 'ArrowDown':
+                event.preventDefault();
+                content?.focusNext();
+                break;
+            case 'ArrowUp':
+                event.preventDefault();
+                content?.focusPrevious();
+                break;
+            case 'Home':
+                event.preventDefault();
+                content?.focusFirst();
+                break;
+            case 'End':
+                event.preventDefault();
+                content?.focusLast();
+                break;
+            case 'Enter':
+            case ' ':
+                event.preventDefault();
+                content?.activateFocused();
+                break;
+        }
+    };
+
+    openMenu(): void {
+        this._open = true;
+        this._updateChildren();
+        this.dispatchEvent(new CustomEvent('menubar-menu-open', { bubbles: true, composed: true }));
+        document.addEventListener('keydown', this._handleDocumentKeyDown);
+
+        requestAnimationFrame(() => {
+            const content = this.querySelector('shadcn-menubar-content') as MenubarContent | null;
+            content?.focusFirst();
+        });
+    }
+
+    closeMenu(returnFocus = true): void {
+        if (!this._open) {
+            return;
+        }
+
+        this._open = false;
+        this._updateChildren();
+        document.removeEventListener('keydown', this._handleDocumentKeyDown);
+
+        if (returnFocus) {
+            const trigger = this.querySelector('shadcn-menubar-trigger') as MenubarTrigger | null;
+            trigger?.focusTrigger();
         }
     }
 
@@ -97,11 +240,12 @@ export class MenubarMenu extends LitElement {
 
         const trigger = this.querySelector('shadcn-menubar-trigger');
         if (trigger) {
-            if (this._open) {
-                trigger.setAttribute('data-state', 'open');
-            } else {
-                trigger.removeAttribute('data-state');
-            }
+            trigger.setAttribute('data-state', this._open ? 'open' : 'closed');
+            trigger.setAttribute('aria-expanded', String(this._open));
+            trigger.setAttribute('aria-haspopup', 'menu');
+            const button = trigger.shadowRoot?.querySelector<HTMLButtonElement>('button');
+            button?.setAttribute('aria-expanded', String(this._open));
+            button?.setAttribute('aria-haspopup', 'menu');
         }
     }
 }
@@ -151,10 +295,14 @@ export class MenubarTrigger extends LitElement {
 
     render() {
         return html`
-      <button type="button" role="menuitem" aria-haspopup="true">
+      <button type="button" role="menuitem" aria-haspopup="true" aria-expanded=${this.getAttribute('aria-expanded') ?? 'false'}>
         <slot></slot>
       </button>
     `;
+    }
+
+    focusTrigger(): void {
+        this.shadowRoot?.querySelector<HTMLButtonElement>('button')?.focus();
     }
 }
 
@@ -204,6 +352,50 @@ export class MenubarContent extends LitElement {
         <slot></slot>
       </div>
     `;
+    }
+
+    private _items(): Array<MenubarItem | MenubarCheckboxItem> {
+        return Array.from(this.querySelectorAll('shadcn-menubar-item, shadcn-menubar-checkbox-item'))
+            .filter((item): item is MenubarItem | MenubarCheckboxItem => {
+                return item instanceof MenubarItem || item instanceof MenubarCheckboxItem;
+            })
+            .filter((item) => !item.disabled);
+    }
+
+    private _focusedIndex(): number {
+        const items = this._items();
+        const activeElement = document.activeElement;
+        return items.findIndex((item) => item.contains(activeElement) || item.shadowRoot?.contains(activeElement));
+    }
+
+    focusFirst(): void {
+        this._items()[0]?.focusItem();
+    }
+
+    focusLast(): void {
+        const items = this._items();
+        items[items.length - 1]?.focusItem();
+    }
+
+    focusNext(): void {
+        const items = this._items();
+        if (items.length === 0) return;
+        const nextIndex = (this._focusedIndex() + 1) % items.length;
+        items[nextIndex]?.focusItem();
+    }
+
+    focusPrevious(): void {
+        const items = this._items();
+        if (items.length === 0) return;
+        const index = this._focusedIndex();
+        const nextIndex = index <= 0 ? items.length - 1 : index - 1;
+        items[nextIndex]?.focusItem();
+    }
+
+    activateFocused(): void {
+        const items = this._items();
+        const focusedItem = items[this._focusedIndex()];
+        focusedItem?.activate();
     }
 }
 
@@ -265,11 +457,20 @@ export class MenubarItem extends LitElement {
 
     render() {
         return html`
-      <div class="item" role="menuitem" ?aria-disabled=${this.disabled}>
+      <div class="item" role="menuitem" tabindex="-1" ?aria-disabled=${this.disabled} @click=${this.activate}>
         <slot></slot>
         <slot name="shortcut" class="shortcut"></slot>
       </div>
     `;
+    }
+
+    focusItem(): void {
+        this.shadowRoot?.querySelector<HTMLElement>('.item')?.focus();
+    }
+
+    activate(): void {
+        if (this.disabled) return;
+        this.dispatchEvent(new CustomEvent('select', { bubbles: true, composed: true }));
     }
 }
 
@@ -390,6 +591,7 @@ export class MenubarCheckboxItem extends LitElement {
       <div 
         class="item" 
         role="menuitemcheckbox" 
+        tabindex="-1"
         aria-checked=${this.checked}
         ?aria-disabled=${this.disabled}
         @click=${this._toggle}
@@ -410,6 +612,14 @@ export class MenubarCheckboxItem extends LitElement {
         if (this.disabled) return;
         this.checked = !this.checked;
         this.dispatchEvent(new CustomEvent('change', { detail: { checked: this.checked } }));
+    }
+
+    focusItem(): void {
+        this.shadowRoot?.querySelector<HTMLElement>('.item')?.focus();
+    }
+
+    activate(): void {
+        this._toggle();
     }
 }
 

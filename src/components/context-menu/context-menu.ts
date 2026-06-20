@@ -25,6 +25,17 @@ export class ContextMenu extends LitElement {
   @state() private _x = 0;
   @state() private _y = 0;
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('select', this._handleItemSelect as EventListener);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('select', this._handleItemSelect as EventListener);
+    this._removeDocumentListeners();
+  }
+
   render() {
     return html`
       <div @contextmenu=${this._handleContextMenu}>
@@ -43,13 +54,72 @@ export class ContextMenu extends LitElement {
 
     // Close on click outside
     document.addEventListener('click', this._handleDocumentClick);
+    document.addEventListener('keydown', this._handleDocumentKeyDown);
+
+    requestAnimationFrame(() => {
+      const menu = this.querySelector('shadcn-context-menu-content') as ContextMenuContent | null;
+      menu?.focusFirst();
+    });
   }
 
   private _handleDocumentClick = () => {
+    this._close();
+  };
+
+  private _handleItemSelect = () => {
+    this._close();
+  };
+
+  private _handleDocumentKeyDown = (event: KeyboardEvent) => {
+    if (!this._open) {
+      return;
+    }
+
+    const menu = this.querySelector('shadcn-context-menu-content') as ContextMenuContent | null;
+
+    switch (event.key) {
+      case 'Escape':
+        event.preventDefault();
+        this._close();
+        break;
+      case 'ArrowDown':
+        event.preventDefault();
+        menu?.focusNext();
+        break;
+      case 'ArrowUp':
+        event.preventDefault();
+        menu?.focusPrevious();
+        break;
+      case 'Home':
+        event.preventDefault();
+        menu?.focusFirst();
+        break;
+      case 'End':
+        event.preventDefault();
+        menu?.focusLast();
+        break;
+      case 'Enter':
+      case ' ':
+        event.preventDefault();
+        menu?.activateFocused();
+        break;
+    }
+  };
+
+  private _close() {
+    if (!this._open) {
+      return;
+    }
+
     this._open = false;
     this._updateMenu();
+    this._removeDocumentListeners();
+  }
+
+  private _removeDocumentListeners() {
     document.removeEventListener('click', this._handleDocumentClick);
-  };
+    document.removeEventListener('keydown', this._handleDocumentKeyDown);
+  }
 
   private _updateMenu() {
     const menu = this.querySelector('shadcn-context-menu-content');
@@ -101,12 +171,58 @@ export class ContextMenuContent extends LitElement {
   @property({ type: Number }) y = 0;
 
   render() {
-    const style = `top: ${this.y}px; left: ${this.x}px;`;
+    const safeX = Math.max(8, Math.min(this.x, window.innerWidth - 8));
+    const safeY = Math.max(8, Math.min(this.y, window.innerHeight - 8));
+    const style = `top: ${safeY}px; left: ${safeX}px; max-width: calc(100vw - 16px); max-height: calc(100vh - 16px); overflow: auto;`;
     return html`
       <div class="content" role="menu" style=${style}>
         <slot></slot>
       </div>
     `;
+  }
+
+  private _items(): Array<ContextMenuItem | ContextMenuCheckboxItem> {
+    return Array.from(this.querySelectorAll('shadcn-context-menu-item, shadcn-context-menu-checkbox-item'))
+      .filter((item): item is ContextMenuItem | ContextMenuCheckboxItem => {
+        return item instanceof ContextMenuItem || item instanceof ContextMenuCheckboxItem;
+      })
+      .filter((item) => !item.disabled);
+  }
+
+  private _focusedIndex(): number {
+    const items = this._items();
+    const activeElement = document.activeElement;
+    return items.findIndex((item) => item.contains(activeElement) || item.shadowRoot?.contains(activeElement));
+  }
+
+  focusFirst(): void {
+    this._items()[0]?.focusItem();
+  }
+
+  focusLast(): void {
+    const items = this._items();
+    items[items.length - 1]?.focusItem();
+  }
+
+  focusNext(): void {
+    const items = this._items();
+    if (items.length === 0) return;
+    const nextIndex = (this._focusedIndex() + 1) % items.length;
+    items[nextIndex]?.focusItem();
+  }
+
+  focusPrevious(): void {
+    const items = this._items();
+    if (items.length === 0) return;
+    const index = this._focusedIndex();
+    const nextIndex = index <= 0 ? items.length - 1 : index - 1;
+    items[nextIndex]?.focusItem();
+  }
+
+  activateFocused(): void {
+    const items = this._items();
+    const focusedItem = items[this._focusedIndex()];
+    focusedItem?.activate();
   }
 }
 
@@ -168,11 +284,20 @@ export class ContextMenuItem extends LitElement {
 
   render() {
     return html`
-      <div class="item" role="menuitem" ?aria-disabled=${this.disabled}>
+      <div class="item" role="menuitem" tabindex="-1" ?aria-disabled=${this.disabled} @click=${this.activate}>
         <slot></slot>
         <slot name="shortcut" class="shortcut"></slot>
       </div>
     `;
+  }
+
+  focusItem(): void {
+    this.shadowRoot?.querySelector<HTMLElement>('.item')?.focus();
+  }
+
+  activate(): void {
+    if (this.disabled) return;
+    this.dispatchEvent(new CustomEvent('select', { bubbles: true, composed: true }));
   }
 }
 
@@ -293,6 +418,7 @@ export class ContextMenuCheckboxItem extends LitElement {
       <div 
         class="item" 
         role="menuitemcheckbox" 
+        tabindex="-1"
         aria-checked=${this.checked}
         ?aria-disabled=${this.disabled}
         @click=${this._toggle}
@@ -313,6 +439,14 @@ export class ContextMenuCheckboxItem extends LitElement {
     if (this.disabled) return;
     this.checked = !this.checked;
     this.dispatchEvent(new CustomEvent('change', { detail: { checked: this.checked } }));
+  }
+
+  focusItem(): void {
+    this.shadowRoot?.querySelector<HTMLElement>('.item')?.focus();
+  }
+
+  activate(): void {
+    this._toggle();
   }
 }
 

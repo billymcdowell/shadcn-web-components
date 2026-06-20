@@ -1,5 +1,5 @@
-import type { Preview } from '@storybook/web-components';
-import { setCustomElementsManifest } from '@storybook/web-components';
+import type { Preview } from '@storybook/web-components-vite';
+import { setCustomElementsManifest } from '@storybook/web-components-vite';
 
 // Import design tokens
 import '../src/styles/tokens.css';
@@ -15,23 +15,30 @@ const preview: Preview = {
             },
         },
         backgrounds: {
-            default: 'dark',
-            values: [
-                {
+            options: {
+                dark: {
                     name: 'dark',
                     value: 'oklch(0.145 0 0)',
                 },
-                {
+
+                light: {
                     name: 'light',
                     value: '#ffffff',
-                },
-            ],
+                }
+            }
         },
         docs: {
             toc: true,
         },
     },
+
     tags: ['autodocs'],
+
+    initialGlobals: {
+        backgrounds: {
+            value: 'dark'
+        }
+    }
 };
 
 export default preview;
