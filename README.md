@@ -52,12 +52,13 @@ Use in your HTML:
 
 ## Components
 
-See [COMPONENT_STATUS.md](./COMPONENT_STATUS.md) for the complete shadcn/ui catalog and implementation status.
+See [Component Status](./src/component-status.mdx) for the complete shadcn/ui catalog and implementation status.
 
 ### Currently Available
 
 - **Accordion**
 - **Alert**
+- **Alert Dialog**
 - **Aspect Ratio**
 - **Avatar**
 - **Badge**
@@ -66,12 +67,16 @@ See [COMPONENT_STATUS.md](./COMPONENT_STATUS.md) for the complete shadcn/ui cata
 - **Button Group**
 - **Card**
 - **Checkbox**
+- **Collapsible**
 - **Context Menu**
 - **Dialog**
+- **Drawer**
 - **Dropdown Menu**
 - **Empty**
 - **Field**
+- **Hover Card**
 - **Input**
+- **Input OTP**
 - **Input Group**
 - **Item**
 - **Kbd**
@@ -82,23 +87,28 @@ See [COMPONENT_STATUS.md](./COMPONENT_STATUS.md) for the complete shadcn/ui cata
 - **Popover**
 - **Progress**
 - **Radio Group**
+- **Select**
 - **Separator**
+- **Sheet**
 - **Sidebar**
 - **Skeleton**
 - **Slider**
 - **Spinner**
 - **Switch**
 - **Table**
+- **Tabs**
 - **Textarea**
 - **Toggle**
 - **Toggle Group**
+- **Tooltip**
 - **Typography**
 
 ### Implementation Status
 
 - **Stable primitives**: Button, Card, Input, Label, Separator, Skeleton, Spinner, Textarea, Kbd.
-- **Interactive controls**: Checkbox, Radio Group, Slider, Switch, Toggle, Toggle Group.
-- **Implemented, parity hardening in progress**: Dialog, Popover, Dropdown Menu, Context Menu, Menubar, Navigation Menu.
+- **Interactive controls**: Checkbox, Collapsible, Hover Card, Input OTP, Radio Group, Select, Slider, Switch, Tabs, Toggle, Toggle Group, Tooltip.
+- **Modal surfaces**: Alert Dialog, Dialog, Drawer, Sheet.
+- **Implemented, parity hardening in progress**: Popover, Dropdown Menu, Context Menu, Menubar, Navigation Menu.
 
 ### Import Paths
 

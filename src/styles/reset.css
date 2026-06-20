@@ -19,6 +19,8 @@ body {
     min-height: 100vh;
     line-height: var(--leading-normal, 1.5);
     font-family: var(--font-sans);
+    color: var(--foreground);
+    background-color: var(--background);
 }
 
 img,

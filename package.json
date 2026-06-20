@@ -20,6 +20,10 @@
       "types": "./dist/components/alert/alert.d.ts",
       "default": "./dist/components/alert/alert.js"
     },
+    "./alert-dialog": {
+      "types": "./dist/components/alert-dialog/alert-dialog.d.ts",
+      "default": "./dist/components/alert-dialog/alert-dialog.js"
+    },
     "./aspect-ratio": {
       "types": "./dist/components/aspect-ratio/aspect-ratio.d.ts",
       "default": "./dist/components/aspect-ratio/aspect-ratio.js"
@@ -52,6 +56,10 @@
       "types": "./dist/components/checkbox/checkbox.d.ts",
       "default": "./dist/components/checkbox/checkbox.js"
     },
+    "./collapsible": {
+      "types": "./dist/components/collapsible/collapsible.d.ts",
+      "default": "./dist/components/collapsible/collapsible.js"
+    },
     "./context-menu": {
       "types": "./dist/components/context-menu/context-menu.d.ts",
       "default": "./dist/components/context-menu/context-menu.js"
@@ -59,6 +67,10 @@
     "./dialog": {
       "types": "./dist/components/dialog/dialog.d.ts",
       "default": "./dist/components/dialog/dialog.js"
+    },
+    "./drawer": {
+      "types": "./dist/components/drawer/drawer.d.ts",
+      "default": "./dist/components/drawer/drawer.js"
     },
     "./dropdown-menu": {
       "types": "./dist/components/dropdown-menu/dropdown-menu.d.ts",
@@ -72,9 +84,17 @@
       "types": "./dist/components/field/field.d.ts",
       "default": "./dist/components/field/field.js"
     },
+    "./hover-card": {
+      "types": "./dist/components/hover-card/hover-card.d.ts",
+      "default": "./dist/components/hover-card/hover-card.js"
+    },
     "./input": {
       "types": "./dist/components/input/input.d.ts",
       "default": "./dist/components/input/input.js"
+    },
+    "./input-otp": {
+      "types": "./dist/components/input-otp/input-otp.d.ts",
+      "default": "./dist/components/input-otp/input-otp.js"
     },
     "./input-group": {
       "types": "./dist/components/input-group/input-group.d.ts",
@@ -120,6 +140,14 @@
       "types": "./dist/components/separator/separator.d.ts",
       "default": "./dist/components/separator/separator.js"
     },
+    "./select": {
+      "types": "./dist/components/select/select.d.ts",
+      "default": "./dist/components/select/select.js"
+    },
+    "./sheet": {
+      "types": "./dist/components/sheet/sheet.d.ts",
+      "default": "./dist/components/sheet/sheet.js"
+    },
     "./sidebar": {
       "types": "./dist/components/sidebar/sidebar.d.ts",
       "default": "./dist/components/sidebar/sidebar.js"
@@ -144,6 +172,10 @@
       "types": "./dist/components/table/table.d.ts",
       "default": "./dist/components/table/table.js"
     },
+    "./tabs": {
+      "types": "./dist/components/tabs/tabs.d.ts",
+      "default": "./dist/components/tabs/tabs.js"
+    },
     "./textarea": {
       "types": "./dist/components/textarea/textarea.d.ts",
       "default": "./dist/components/textarea/textarea.js"
@@ -155,6 +187,10 @@
     "./toggle-group": {
       "types": "./dist/components/toggle-group/toggle-group.d.ts",
       "default": "./dist/components/toggle-group/toggle-group.js"
+    },
+    "./tooltip": {
+      "types": "./dist/components/tooltip/tooltip.d.ts",
+      "default": "./dist/components/tooltip/tooltip.js"
     },
     "./typography": {
       "types": "./dist/components/typography/typography.d.ts",
@@ -216,7 +252,8 @@
     "@storybook/web-components-vite": "^10.4.6",
     "storybook": "^10.4.6",
     "typescript": "^5.6.3",
-    "vite": "^6.0.1"
+    "vite": "^6.0.1",
+    "remark-gfm": "^4.0.1"
   },
   "publishConfig": {
     "access": "public",

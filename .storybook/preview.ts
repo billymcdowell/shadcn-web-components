@@ -7,6 +7,16 @@ import '../src/styles/reset.css';
 import '../src/styles/utilities.css';
 
 const preview: Preview = {
+    decorators: [
+        (story, { globals }) => {
+            const theme = globals.backgrounds?.value === 'light' ? 'light' : 'dark';
+
+            document.documentElement.dataset.theme = theme;
+
+            return story();
+        },
+    ],
+
     parameters: {
         controls: {
             matchers: {
@@ -23,7 +33,7 @@ const preview: Preview = {
 
                 light: {
                     name: 'light',
-                    value: '#ffffff',
+                    value: 'oklch(1 0 0)',
                 }
             }
         },

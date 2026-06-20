@@ -1,0 +1,183 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Getting Started" />
+
+# Getting Started
+
+shadcn Web Components are standards-based custom elements built with Lit. Once a
+component module has been imported, its `shadcn-*` element can be used in HTML,
+Angular templates, or any other framework that supports custom elements.
+
+The examples below use `shadcn-button`. You can import the package root to register
+every component, or use a component subpath to register only what you need.
+
+## Package imports
+
+Install the package:
+
+```bash
+npm install @billy_mcdowell/shadcn-web-components
+```
+
+Register every component from your application's JavaScript or TypeScript entry
+point:
+
+```ts
+import '@billy_mcdowell/shadcn-web-components';
+```
+
+For a smaller application bundle, import individual components instead:
+
+```ts
+import '@billy_mcdowell/shadcn-web-components/button';
+import '@billy_mcdowell/shadcn-web-components/card';
+```
+
+After the import runs, use the registered elements in your HTML:
+
+```html
+<shadcn-button variant="default">Save changes</shadcn-button>
+<shadcn-button variant="outline">Cancel</shadcn-button>
+```
+
+This npm approach expects a build tool, such as Vite, Angular CLI, or another
+bundler, to process the package imports.
+
+## CDN and plain HTML
+
+For a page without an npm build step, load the package from an ESM CDN. The root
+URL registers every component:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>shadcn Web Components</title>
+    <script
+      type="module"
+      src="https://esm.sh/@billy_mcdowell/shadcn-web-components@0.0.3"
+    ></script>
+  </head>
+  <body>
+    <shadcn-button variant="default">Save changes</shadcn-button>
+
+    <script>
+      document.querySelector('shadcn-button').addEventListener('button-click', (event) => {
+        console.log('Button clicked', event.detail);
+      });
+    </script>
+  </body>
+</html>
+```
+
+Load a single component when you do not need the full library:
+
+```html
+<script
+  type="module"
+  src="https://esm.sh/@billy_mcdowell/shadcn-web-components@0.0.3/button"
+></script>
+```
+
+The examples pin `0.0.3` so deployments do not change unexpectedly. Update that
+version deliberately when you upgrade the library.
+
+## Angular with npm
+
+Install the package in the Angular workspace:
+
+```bash
+npm install @billy_mcdowell/shadcn-web-components
+```
+
+Import all components, or selected component subpaths, once from `src/main.ts`:
+
+```ts
+import '@billy_mcdowell/shadcn-web-components/button';
+
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+
+bootstrapApplication(AppComponent).catch((error) => console.error(error));
+```
+
+Angular validates the elements used in its templates. Add
+`CUSTOM_ELEMENTS_SCHEMA` to each standalone component that uses custom elements:
+
+```ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <shadcn-button
+      variant="default"
+      [disabled]="isSaving"
+      (button-click)="save()"
+    >
+      {{ isSaving ? 'Saving...' : 'Save changes' }}
+    </shadcn-button>
+  `,
+})
+export class AppComponent {
+  isSaving = false;
+
+  save(): void {
+    this.isSaving = true;
+  }
+}
+```
+
+Use normal HTML attributes for static string values, property binding (`[value]`)
+for dynamic values, and event binding (`(event-name)`) for custom events.
+
+For an NgModule-based application, add the schema to the module instead:
+
+```ts
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+
+@NgModule({
+  declarations: [AppComponent],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+```
+
+## Angular with a CDN
+
+To keep the component package out of the Angular npm bundle, load it as a module
+from `src/index.html`:
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Angular App</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script
+      type="module"
+      src="https://esm.sh/@billy_mcdowell/shadcn-web-components@0.0.3/button"
+    ></script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>
+```
+
+The Angular component template is the same as in the npm example, and it still
+needs `CUSTOM_ELEMENTS_SCHEMA`. Do not also import the same component from npm;
+loading both sources can attempt to register the same custom element twice.
+
+## Next steps
+
+- Browse **Components** in the sidebar for each element's attributes, properties,
+  events, slots, and examples.
+- See **Guides/Theming** to customize the design tokens with CSS custom properties.
