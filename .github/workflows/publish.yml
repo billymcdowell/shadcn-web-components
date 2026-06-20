@@ -4,7 +4,14 @@ on:
   push:
     branches:
       - main
-    
+    paths:
+      - "src/components/**"
+      - ".changeset/**"
+      - "package.json"
+      - "CHANGELOG.md"
+    paths-ignore:
+      - "src/components/**/*.stories.ts"
+
 permissions:
   id-token: write
   contents: write

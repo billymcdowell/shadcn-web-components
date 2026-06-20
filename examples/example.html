@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Production CDN gallery for shadcn Web Components">
   <title>shadcn Web Components - Production Gallery</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/tokens.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/tokens.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/reset.css">
   <script type="importmap">
     {
       "imports": {
@@ -71,7 +71,7 @@
   <header>
     <h1>shadcn Web Components</h1>
     <p id="source-description" class="muted">Every component in the library, loaded from the published npm package.</p>
-    <code id="source-label" class="source">@billy_mcdowell/shadcn-web-components@0.1.0</code>
+    <code id="source-label" class="source">@billy_mcdowell/shadcn-web-components@latest</code>
     <p id="load-status" class="load-error" role="status">Loading the component library...</p>
   </header>
   <main>
@@ -144,7 +144,7 @@
     const isLocal = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
     const moduleUrl = isLocal
       ? '../src/index.ts'
-      : 'https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/dist/index.js';
+      : 'https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/index.js';
 
     if (isLocal) {
       document.querySelector('#source-description').textContent = 'Every component in the library, loaded from the local source.';

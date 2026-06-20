@@ -27,11 +27,11 @@ Load the default design tokens and optional reset in your document `<head>`:
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/tokens.css"
+  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/tokens.css"
 >
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/src/styles/reset.css"
+  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/reset.css"
 >
 ```
 
@@ -55,7 +55,7 @@ map and the exact published module:
 </script>
 <script
   type="module"
-  src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@0.1.0/dist/index.js"
+  src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/index.js"
 ></script>
 ```
 
