@@ -48,6 +48,10 @@
       "types": "./dist/components/button-group/button-group.d.ts",
       "default": "./dist/components/button-group/button-group.js"
     },
+    "./calendar": {
+      "types": "./dist/components/calendar/calendar.d.ts",
+      "default": "./dist/components/calendar/calendar.js"
+    },
     "./card": {
       "types": "./dist/components/card/card.d.ts",
       "default": "./dist/components/card/card.js"
@@ -67,6 +71,10 @@
     "./context-menu": {
       "types": "./dist/components/context-menu/context-menu.d.ts",
       "default": "./dist/components/context-menu/context-menu.js"
+    },
+    "./date-picker": {
+      "types": "./dist/components/date-picker/date-picker.d.ts",
+      "default": "./dist/components/date-picker/date-picker.js"
     },
     "./dialog": {
       "types": "./dist/components/dialog/dialog.d.ts",

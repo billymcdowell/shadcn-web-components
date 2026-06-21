@@ -102,14 +102,15 @@ See [Component Status](./src/component-status.mdx) for the complete shadcn/ui ca
 - **Breadcrumb**
 - **Button**
 - **Button Group**
+- **Calendar**
 - **Card**
 - **Checkbox**
 - **Collapsible**
-- **Combobox**
 - **Context Menu**
 - **Dialog**
 - **Drawer**
 - **Dropdown Menu**
+- **Date Picker**
 - **Empty**
 - **Field**
 - **Hover Card**
@@ -131,7 +132,6 @@ See [Component Status](./src/component-status.mdx) for the complete shadcn/ui ca
 - **Sidebar**
 - **Skeleton**
 - **Slider**
-- **Sonner**
 - **Spinner**
 - **Switch**
 - **Table**
@@ -145,7 +145,7 @@ See [Component Status](./src/component-status.mdx) for the complete shadcn/ui ca
 ### Implementation Status
 
 - **Stable primitives**: Button, Card, Input, Label, Separator, Skeleton, Spinner, Textarea, Kbd.
-- **Interactive controls**: Checkbox, Collapsible, Combobox, Hover Card, Input OTP, Radio Group, Select, Slider, Switch, Tabs, Toggle, Toggle Group, Tooltip.
+- **Interactive controls**: Calendar, Checkbox, Collapsible, Date Picker, Hover Card, Input OTP, Radio Group, Select, Slider, Switch, Tabs, Toggle, Toggle Group, Tooltip.
 - **Modal surfaces**: Alert Dialog, Dialog, Drawer, Sheet.
 - **Implemented, parity hardening in progress**: Popover, Dropdown Menu, Context Menu, Menubar, Navigation Menu.
 
