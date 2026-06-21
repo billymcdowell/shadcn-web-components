@@ -103,6 +103,7 @@ See [Component Status](./src/component-status.mdx) for the complete shadcn/ui ca
 - **Button**
 - **Button Group**
 - **Card**
+- **Carousel**
 - **Checkbox**
 - **Collapsible**
 - **Context Menu**
@@ -124,7 +125,6 @@ See [Component Status](./src/component-status.mdx) for the complete shadcn/ui ca
 - **Popover**
 - **Progress**
 - **Radio Group**
-- **Resizable**
 - **Select**
 - **Separator**
 - **Sheet**
@@ -144,7 +144,7 @@ See [Component Status](./src/component-status.mdx) for the complete shadcn/ui ca
 ### Implementation Status
 
 - **Stable primitives**: Button, Card, Input, Label, Separator, Skeleton, Spinner, Textarea, Kbd.
-- **Interactive controls**: Checkbox, Collapsible, Hover Card, Input OTP, Radio Group, Resizable, Select, Slider, Switch, Tabs, Toggle, Toggle Group, Tooltip.
+- **Interactive controls**: Carousel, Checkbox, Collapsible, Hover Card, Input OTP, Radio Group, Select, Slider, Switch, Tabs, Toggle, Toggle Group, Tooltip.
 - **Modal surfaces**: Alert Dialog, Dialog, Drawer, Sheet.
 - **Implemented, parity hardening in progress**: Popover, Dropdown Menu, Context Menu, Menubar, Navigation Menu.
 

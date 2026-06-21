@@ -14,6 +14,8 @@ export type { ButtonGroupOrientation } from './button-group/index.js';
 export { Calendar } from './calendar/index.js';
 export type { CalendarChangeDetail, CalendarMonthChangeDetail } from './calendar/index.js';
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './card/index.js';
+export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from './carousel/index.js';
+export type { CarouselOrientation, CarouselChangeDetail } from './carousel/index.js';
 export { Checkbox } from './checkbox/index.js';
 export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './collapsible/index.js';
 export { Combobox, ComboboxInput, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxLabel, ComboboxItem, ComboboxSeparator } from './combobox/index.js';
