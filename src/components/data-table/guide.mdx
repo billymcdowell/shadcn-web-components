@@ -1,24 +1,6 @@
-# Data Table
+import { Markdown, Meta } from '@storybook/addon-docs/blocks';
+import guide from './llms.md?raw';
 
-`shadcn-data-table` renders structured data with shadcn-style sorting, filtering, pagination, selection, and column visibility controls.
+<Meta title="Component Guides/Data Table" />
 
-Set `columns` and `data` as JavaScript properties because both accept structured values and columns may contain cell renderer functions.
-
-```ts
-import '@billy_mcdowell/shadcn-web-components/data-table';
-
-const table = document.querySelector('shadcn-data-table');
-table.columns = [
-  { accessorKey: 'email', header: 'Email', sortable: true, hideable: false },
-  { accessorKey: 'amount', header: 'Amount', sortable: true, align: 'right' },
-];
-table.data = [
-  { id: 'payment-1', email: 'ada@example.com', amount: 240 },
-];
-```
-
-```html
-<shadcn-data-table selectable page-size="10"></shadcn-data-table>
-```
-
-Listen for `data-table-sort-change`, `data-table-filter-change`, `data-table-page-change`, `data-table-selection-change`, and `data-table-column-visibility-change` to synchronize external state.
+<Markdown>{guide}</Markdown>

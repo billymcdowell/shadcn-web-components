@@ -47,16 +47,45 @@ const components = {
   <shadcn-button variant="outline">Center</shadcn-button>
   <shadcn-button variant="outline">Right</shadcn-button>
 </shadcn-button-group>`],
+  calendar: ['Calendar', 'An accessible single-date calendar with month navigation.', 'inline date grids, popover content, or custom date-selection UIs', 'a compact labeled form field with validation; use Date Picker', `<shadcn-calendar value="2026-06-21" month="2026-06" min="2026-01-01" max="2026-12-31"></shadcn-calendar>`],
   card: ['Card', 'A visual container that groups related content and actions.', 'summaries, previews, settings groups, or dashboard modules', 'ordinary page sections do not need visual containment', `<shadcn-card>
   <shadcn-card-header><shadcn-card-title>Team plan</shadcn-card-title><shadcn-card-description>For growing teams.</shadcn-card-description></shadcn-card-header>
   <shadcn-card-content>$29 per month</shadcn-card-content>
   <shadcn-card-footer><shadcn-button>Choose plan</shadcn-button></shadcn-card-footer>
 </shadcn-card>`],
+  carousel: ['Carousel', 'A scrollable gallery of slides with previous and next controls.', 'featured content, image galleries, or step previews shown one viewport at a time', 'comparing all items simultaneously; use a grid, list, or Tabs', `<shadcn-carousel label="Featured items">
+  <shadcn-carousel-content>
+    <shadcn-carousel-item>Slide 1</shadcn-carousel-item>
+    <shadcn-carousel-item>Slide 2</shadcn-carousel-item>
+  </shadcn-carousel-content>
+  <shadcn-carousel-previous></shadcn-carousel-previous>
+  <shadcn-carousel-next></shadcn-carousel-next>
+</shadcn-carousel>`],
+  chart: ['Chart', 'A responsive Chart.js visualization using the shadcn chart palette.', 'quantitative trends, comparisons, or distributions that benefit from a canvas chart', 'a single scalar value or known completion percentage; use Progress or typography', `<shadcn-chart type="bar" aria-label="Monthly visitors"></shadcn-chart>`],
   checkbox: ['Checkbox', 'A form control for an independent boolean choice.', 'one or more options that may each be selected independently', 'the choice takes effect immediately and represents on/off state; use Switch', `<label><shadcn-checkbox name="updates" value="yes"></shadcn-checkbox> Email me updates</label>`],
   collapsible: ['Collapsible', 'A disclosure that shows or hides one content region.', 'optional details controlled by one trigger', 'managing several related disclosure sections; use Accordion', `<shadcn-collapsible>
   <shadcn-collapsible-trigger>Show advanced settings</shadcn-collapsible-trigger>
   <shadcn-collapsible-content>Advanced settings go here.</shadcn-collapsible-content>
 </shadcn-collapsible>`],
+  combobox: ['Combobox', 'A filterable, form-associated single-select with typeahead.', 'choosing one option from a longer list where typing to filter helps discovery', 'a short fixed set of mutually exclusive options; use Select or Radio Group', `<shadcn-combobox name="framework" placeholder="Select a framework">
+  <shadcn-combobox-input></shadcn-combobox-input>
+  <shadcn-combobox-content>
+    <shadcn-combobox-empty>No framework found.</shadcn-combobox-empty>
+    <shadcn-combobox-item value="next.js" keywords="react">Next.js</shadcn-combobox-item>
+    <shadcn-combobox-item value="sveltekit">SvelteKit</shadcn-combobox-item>
+    <shadcn-combobox-item value="nuxt.js" keywords="vue">Nuxt.js</shadcn-combobox-item>
+  </shadcn-combobox-content>
+</shadcn-combobox>`],
+  command: ['Command', 'A searchable, keyboard-navigable command menu.', 'power-user workflows, application search, or action pickers filtered by typing', 'a small static choice set without search; use Select, Combobox, or Dropdown Menu', `<shadcn-command>
+  <shadcn-command-input placeholder="Type a command or search..."></shadcn-command-input>
+  <shadcn-command-list>
+    <shadcn-command-empty>No results found.</shadcn-command-empty>
+    <shadcn-command-group heading="Suggestions">
+      <shadcn-command-item value="calendar">Calendar</shadcn-command-item>
+      <shadcn-command-item value="settings">Settings <shadcn-command-shortcut>⌘S</shadcn-command-shortcut></shadcn-command-item>
+    </shadcn-command-group>
+  </shadcn-command-list>
+</shadcn-command>`],
   'context-menu': ['Context Menu', 'A command menu opened from a context-menu gesture.', 'pointer or keyboard actions specific to a target item or canvas', 'the commands must be discoverable as primary actions', `<shadcn-context-menu>
   <div>Right-click this file</div>
   <shadcn-context-menu-content slot="menu">
@@ -65,6 +94,10 @@ const components = {
     <shadcn-context-menu-item>Delete</shadcn-context-menu-item>
   </shadcn-context-menu-content>
 </shadcn-context-menu>`],
+  'data-table': ['Data Table', 'A sortable, filterable, paginated table for structured row data.', 'interactive tabular data with sorting, filtering, pagination, or row selection', 'static semantic tables without built-in data behavior; use Table', `<shadcn-data-table page-size="5" selectable filter-placeholder="Filter emails..."></shadcn-data-table>`],
+  'date-picker': ['Date Picker', 'A form-associated date field with calendar popup and validation.', 'choosing one date in a form with min/max constraints and native validity reporting', 'an inline calendar grid without a trigger; use Calendar', `<shadcn-field label="Start date" required>
+  <shadcn-date-picker name="startDate" placeholder="Pick a date" min="2026-01-01" required></shadcn-date-picker>
+</shadcn-field>`],
   dialog: ['Dialog', 'A modal window for focused content or a short task.', 'forms, details, or workflows that temporarily interrupt the page', 'confirming a destructive action; use Alert Dialog', `<shadcn-dialog>
   <shadcn-dialog-trigger>Edit profile</shadcn-dialog-trigger>
   <shadcn-dialog-content>
@@ -135,6 +168,15 @@ const components = {
     </shadcn-navigation-menu-item>
   </shadcn-navigation-menu-list>
 </shadcn-navigation-menu>`],
+  pagination: ['Pagination', 'Navigation links for moving between paged result sets.', 'splitting long lists or tables across numbered pages with previous and next controls', 'in-table paging with built-in controls; use Data Table', `<shadcn-pagination>
+  <shadcn-pagination-content>
+    <shadcn-pagination-item><shadcn-pagination-previous href="?page=1"></shadcn-pagination-previous></shadcn-pagination-item>
+    <shadcn-pagination-item><shadcn-pagination-link href="?page=1">1</shadcn-pagination-link></shadcn-pagination-item>
+    <shadcn-pagination-item><shadcn-pagination-link href="?page=2" current>2</shadcn-pagination-link></shadcn-pagination-item>
+    <shadcn-pagination-item><shadcn-pagination-ellipsis></shadcn-pagination-ellipsis></shadcn-pagination-item>
+    <shadcn-pagination-item><shadcn-pagination-next href="?page=3"></shadcn-pagination-next></shadcn-pagination-item>
+  </shadcn-pagination-content>
+</shadcn-pagination>`],
   popover: ['Popover', 'A non-modal floating surface anchored to a trigger.', 'compact interactive content such as filters, pickers, or supplemental controls', 'the content is a list of commands; use Dropdown Menu', `<shadcn-popover>
   <shadcn-popover-trigger>Choose date</shadcn-popover-trigger>
   <shadcn-popover-content>Calendar or controls go here.</shadcn-popover-content>
@@ -144,6 +186,11 @@ const components = {
   <shadcn-radio value="free">Free</shadcn-radio>
   <shadcn-radio value="pro">Pro</shadcn-radio>
 </shadcn-radio-group>`],
+  resizable: ['Resizable', 'An accessible split layout with draggable panel handles.', 'IDE-style sidebars, split editors, or adjustable multi-pane layouts', 'temporary modal panels; use Sheet or Drawer', `<shadcn-resizable-panel-group style="height: 12.5rem; max-width: 48rem;">
+  <shadcn-resizable-panel default-size="50"><div>One</div></shadcn-resizable-panel>
+  <shadcn-resizable-handle with-handle></shadcn-resizable-handle>
+  <shadcn-resizable-panel default-size="50"><div>Two</div></shadcn-resizable-panel>
+</shadcn-resizable-panel-group>`],
   select: ['Select', 'A form-associated custom popup for choosing one option.', 'single selection that needs styled options and keyboard navigation', 'native mobile behavior is preferable; use Native Select', `<shadcn-select name="role" placeholder="Choose a role" required>
   <shadcn-select-trigger><shadcn-select-value></shadcn-select-value></shadcn-select-trigger>
   <shadcn-select-content>
@@ -195,6 +242,15 @@ const components = {
 };
 
 const accessibility = {
+  calendar: 'Dates use ISO `YYYY-MM-DD` strings. Arrow keys move between days; Page Up/Down change months. Keep `min` and `max` synchronized with business rules.',
+  carousel: 'Provide a descriptive `label` for the carousel region. Previous and next controls must remain keyboard reachable.',
+  chart: 'Set `aria-label` (the `label` property) to describe the visualization. Do not rely on color alone to distinguish series.',
+  combobox: 'Include `shadcn-combobox-input` and `shadcn-combobox-content` in the documented hierarchy. Provide `shadcn-combobox-empty` when filtering can return no matches.',
+  command: 'Keep the input, list, empty state, groups, and items in the documented hierarchy. Arrow keys, Home, End, and Enter navigate enabled visible items.',
+  'data-table': 'Column headers must describe the data. Loading and empty states should be understandable from surrounding text or the configured empty message.',
+  'date-picker': 'Pair with Field or supply an accessible name. The trigger exposes `aria-haspopup="dialog"` and `aria-expanded`. Validation messages surface through native form validity APIs.',
+  pagination: 'Mark the current page with the `current` attribute on `shadcn-pagination-link`. Disable `shadcn-pagination-previous` on the first page.',
+  resizable: 'Handles remain keyboard operable. Do not remove visible focus indicators on drag handles.',
   'alert-dialog': 'Always include a title and description. Initial focus is trapped in the modal; Escape is intentionally not the primary dismissal path for consequential decisions.',
   dialog: 'Always include `shadcn-dialog-title`; add a description when it improves context. Focus is trapped while open and returned to the trigger on close.',
   drawer: 'Give every drawer a title, and normally a description. Focus is trapped while open and restored on close.',
@@ -212,6 +268,15 @@ const accessibility = {
 };
 
 const extraRules = {
+  calendar: ['Use ISO `YYYY-MM-DD` for `value`, `min`, and `max`; use `YYYY-MM` for `month`. Listen for `calendar-change` and update `value` programmatically with the `.value` property.', 'Do not pass locale-specific display strings as `value`; always use ISO dates.'],
+  carousel: ['Keep `shadcn-carousel-content`, items, and navigation controls in the documented hierarchy.', 'Do not nest interactive controls that steal focus from slide navigation unexpectedly.'],
+  chart: ['Assign Chart.js `data` and `options` through JavaScript properties, not HTML attributes.', 'Do not mutate chart configuration by reaching into the canvas shadow root.'],
+  combobox: ['Keep every `shadcn-combobox-item` `value` unique and include input, content, empty state, and items in the documented hierarchy.', 'Do not omit `shadcn-combobox-input`; the root element coordinates filtering and selection through its slotted children.'],
+  command: ['Listen for `command-select` and read `event.detail.value`. Use `shadcn-command-dialog` when the palette should open modally.', 'Do not omit `shadcn-command-empty`; filtering can legitimately return no matches.'],
+  'data-table': ['Assign typed `columns` and `data` arrays through JavaScript properties. Listen for the documented `data-table-*` events instead of reimplementing sort or pagination externally unless necessary.', 'Do not serialize complex column definitions into HTML attributes.'],
+  'date-picker': ['Use ISO `YYYY-MM-DD` for `value`, `min`, and `max`. Listen for `date-picker-change` and `date-picker-open-change`.', 'Do not use Calendar alone when the UI needs a labeled form field with validation.'],
+  pagination: ['Use real `href` values or application routing for page links; mark the active page with `current`.', 'Do not disable every control when only the previous link should be unavailable on page one.'],
+  resizable: ['Alternate `shadcn-resizable-panel` and `shadcn-resizable-handle` elements inside `shadcn-resizable-panel-group`.', 'Do not nest scrollable page content inside panels without an explicit height on the panel group.'],
   button: ['Set `type="button"` unless the button should submit or reset a form.', 'Do not rely on color alone to distinguish destructive actions.'],
   checkbox: ['Listen for `checkbox-change` or read the form value; do not attach behavior to shadow-DOM internals.', 'Do not use one checkbox to represent a mutually exclusive group.'],
   input: ['Use the reflected attributes for initial markup and the `.value` property for live programmatic updates.', 'Do not use placeholder text as the only label.'],
@@ -224,6 +289,117 @@ const extraRules = {
 };
 
 const additionalGuides = {
+  chart: [
+    '## Configure Chart.js data and options',
+    '',
+    '`data` and `options` are JavaScript objects and must be assigned as element properties. The `type` attribute selects the Chart.js chart type.',
+    '',
+    '### Plain HTML or JavaScript',
+    '',
+    '```html',
+    '<shadcn-chart type="bar" aria-label="Monthly visitors by device"></shadcn-chart>',
+    '',
+    '<script type="module">',
+    "  import '@billy_mcdowell/shadcn-web-components/chart';",
+    '',
+    "  const chart = document.querySelector('shadcn-chart');",
+    '  chart.data = {',
+    "    labels: ['January', 'February', 'March'],",
+    '    datasets: [',
+    "      { label: 'Desktop', data: [186, 305, 237] },",
+    "      { label: 'Mobile', data: [80, 200, 120] },",
+    '    ],',
+    '  };',
+    '  chart.options = {',
+    '    plugins: { legend: { position: \'bottom\' } },',
+    '    scales: { y: { beginAtZero: true } },',
+    '  };',
+    '</script>',
+    '```',
+    '',
+    '### Lit',
+    '',
+    '```ts',
+    "import { html } from 'lit';",
+    "import '@billy_mcdowell/shadcn-web-components/chart';",
+    '',
+    'const view = (data, options) => html`',
+    '  <shadcn-chart',
+    '    type="bar"',
+    '    aria-label="Monthly visitors by device"',
+    '    .data=${data}',
+    '    .options=${options}',
+    '  ></shadcn-chart>',
+    '`;',
+    '```',
+  ].join('\n'),
+  'data-table': [
+    '## Configure columns and row data',
+    '',
+    'Assign typed `columns` and `data` arrays as JavaScript properties. Use attributes such as `page-size`, `selectable`, `filter-placeholder`, `loading`, and `empty-message` for declarative configuration.',
+    '',
+    '### Plain HTML or JavaScript',
+    '',
+    '```html',
+    '<shadcn-data-table page-size="5" selectable filter-placeholder="Filter emails..."></shadcn-data-table>',
+    '',
+    '<script type="module">',
+    "  import '@billy_mcdowell/shadcn-web-components/data-table';",
+    '',
+    "  const table = document.querySelector('shadcn-data-table');",
+    '  table.columns = [',
+    "    { accessorKey: 'status', header: 'Status', sortable: true },",
+    "    { accessorKey: 'email', header: 'Email', sortable: true, filterable: true },",
+    "    { accessorKey: 'amount', header: 'Amount', sortable: true, align: 'right', cell: (value) => `$${Number(value).toFixed(2)}` },",
+    '  ];',
+    '  table.data = [',
+    "    { id: '1', status: 'success', email: 'ada@example.com', amount: 316 },",
+    "    { id: '2', status: 'processing', email: 'grace@example.com', amount: 837 },",
+    '  ];',
+    '',
+    "  table.addEventListener('data-table-sort-change', (event) => {",
+    '    console.log(event.detail);',
+    '  });',
+    '</script>',
+    '```',
+    '',
+    '### Events to observe',
+    '',
+    '- `data-table-sort-change` — active sort key and direction',
+    '- `data-table-filter-change` — current filter query',
+    '- `data-table-page-change` — page, page size, and page count',
+    '- `data-table-selection-change` — selected row ids and rows',
+    '- `data-table-column-visibility-change` — column visibility toggles',
+  ].join('\n'),
+  calendar: [
+    '## ISO dates and live updates',
+    '',
+    'Use ISO `YYYY-MM-DD` for `value`, `min`, and `max`, and `YYYY-MM` for `month`. Listen for `calendar-change` and update the selected date through the `.value` property or attribute.',
+    '',
+    '```js',
+    "calendar.addEventListener('calendar-change', (event) => {",
+    '  console.log(event.detail.value, event.detail.date);',
+    '});',
+    '',
+    "calendar.addEventListener('calendar-month-change', (event) => {",
+    '  console.log(event.detail.month);',
+    '});',
+    '```',
+  ].join('\n'),
+  combobox: [
+    '## Compound structure and filtering',
+    '',
+    'The root coordinates keyboard navigation, filtering, and form submission. Required slotted children:',
+    '',
+    '1. `shadcn-combobox-input` — editable trigger and filter field',
+    '2. `shadcn-combobox-content` — popup container for items',
+    '3. `shadcn-combobox-empty` — shown when filtering yields no matches',
+    '4. One or more `shadcn-combobox-item` elements with unique `value` attributes',
+    '',
+    'Optional helpers: `shadcn-combobox-group`, `shadcn-combobox-label`, and `shadcn-combobox-separator`.',
+    '',
+    'Listen for `combobox-change` when the selected item changes and `combobox-open-change` when the popup opens or closes.',
+  ].join('\n'),
   sonner: [
     '## Show notifications programmatically',
     '',
@@ -385,15 +561,15 @@ import guide from './llms.md?raw';
 }
 
 const categories = [
-  ['Actions and selection', ['button', 'button-group', 'checkbox', 'radio-group', 'select', 'native-select', 'slider', 'switch', 'toggle', 'toggle-group']],
-  ['Forms', ['field', 'input', 'textarea', 'input-otp', 'input-group', 'label']],
-  ['Overlays and disclosure', ['accordion', 'alert-dialog', 'collapsible', 'context-menu', 'dialog', 'drawer', 'dropdown-menu', 'hover-card', 'popover', 'sheet', 'tooltip']],
-  ['Navigation', ['breadcrumb', 'menubar', 'navigation-menu', 'sidebar', 'tabs']],
-  ['Data and content', ['alert', 'aspect-ratio', 'avatar', 'badge', 'card', 'empty', 'item', 'kbd', 'separator', 'table', 'typography']],
+  ['Actions and selection', ['button', 'button-group', 'checkbox', 'combobox', 'radio-group', 'select', 'native-select', 'slider', 'switch', 'toggle', 'toggle-group']],
+  ['Forms', ['field', 'input', 'textarea', 'input-otp', 'input-group', 'label', 'calendar', 'date-picker']],
+  ['Overlays and disclosure', ['accordion', 'alert-dialog', 'collapsible', 'command', 'context-menu', 'dialog', 'drawer', 'dropdown-menu', 'hover-card', 'popover', 'sheet', 'tooltip']],
+  ['Navigation', ['breadcrumb', 'menubar', 'navigation-menu', 'pagination', 'sidebar', 'tabs']],
+  ['Data and content', ['alert', 'aspect-ratio', 'avatar', 'badge', 'card', 'carousel', 'chart', 'data-table', 'empty', 'item', 'kbd', 'resizable', 'separator', 'table', 'typography']],
   ['Feedback', ['progress', 'skeleton', 'sonner', 'spinner']],
 ];
 
-const index = `# shadcn Web Components: agent index\n\n> AI-oriented routing and usage documentation for \`@billy_mcdowell/shadcn-web-components\`, a Lit-based custom-element library.\n\n## Start here\n\n- Install: \`npm install @billy_mcdowell/shadcn-web-components\`\n- Register one family: \`import '@billy_mcdowell/shadcn-web-components/button';\`\n- Register everything: \`import '@billy_mcdowell/shadcn-web-components';\`\n- Elements use the \`shadcn-\` prefix and work in plain HTML, Lit, React, Vue, Svelte, and other environments that support custom elements.\n- Load \`src/styles/tokens.css\` once for the default design tokens. \`src/styles/reset.css\` is optional. The \`/styles\` JavaScript export contains Lit CSS helpers; it does not install the global token stylesheet.\n- Boolean attributes are true when present. Omit \`disabled\`, \`open\`, \`required\`, and similar attributes for false; never write \`disabled="false"\`.\n- Use DOM properties for live values, DOM events for changes, slots for composition, and CSS custom properties for supported theming. Do not reach into component shadow roots.\n\n## Component chooser\n\n${categories.map(([heading, slugs]) => `### ${heading}\n\n${slugs.map(slug => `- [${components[slug][0]}](./src/components/${slug}/llms.md): ${components[slug][1]}`).join('\n')}`).join('\n\n')}\n\n## Framework usage\n\n### Plain HTML or JavaScript\n\n\`\`\`html\n<script type="module">\n  import '@billy_mcdowell/shadcn-web-components/button';\n<\/script>\n<shadcn-button id="save">Save</shadcn-button>\n<script>\n  document.querySelector('#save').addEventListener('button-click', () => save());\n<\/script>\n\`\`\`\n\n### Lit\n\n\`\`\`ts\nimport { html } from 'lit';\nimport '@billy_mcdowell/shadcn-web-components/input';\n\nconst view = (value, onChange) => html\`\n  <shadcn-input\n    .value=\${value}\n    @input-change=\${onChange}\n  ></shadcn-input>\n\`;\n\`\`\`\n\n### React and JSX\n\nImport the registration subpath, use lowercase custom-element tags, and attach custom events through a ref/effect when the framework version does not map unknown \`on*\` props to DOM events. Pass live complex values through element properties. TypeScript JSX projects may need local custom-element intrinsic-element declarations derived from \`custom-elements.json\`.\n\n## Choosing related components\n\n- **Dialog vs Alert Dialog:** Dialog is general modal content; Alert Dialog requires an explicit decision for consequential actions.\n- **Sheet vs Drawer vs Sidebar:** Sheet is an edge modal, Drawer is a compact-screen/modal task surface, and Sidebar is persistent page structure.\n- **Select vs Native Select vs Radio Group:** Select is a custom popup, Native Select prioritizes platform behavior, and Radio Group keeps a small choice set visible.\n- **Checkbox vs Switch vs Toggle:** Checkbox records a form choice, Switch immediately changes a setting, and Toggle represents a pressed toolbar action.\n- **Dropdown Menu vs Context Menu vs Menubar:** Dropdown Menu has a visible trigger, Context Menu is target-specific and gesture-opened, and Menubar exposes persistent desktop-style command categories.\n- **Tooltip vs Hover Card vs Popover:** Tooltip is short non-interactive help, Hover Card is a preview, and Popover holds interactive supplemental content.\n- **Skeleton vs Spinner vs Progress:** Skeleton previews content shape, Spinner represents unknown duration, and Progress represents measurable completion.\n\n## Machine-readable API\n\nThe package includes \`custom-elements.json\`, the authoritative Custom Elements Manifest for tags, attributes, properties, events, slots, and CSS custom properties. The per-component guides combine that generated API with human decision guidance and examples. Regenerate them after updating the manifest with:\n\n\`\`\`sh\nnpm run docs:llms\n\`\`\`\n`;
+const index = `# shadcn Web Components: agent index\n\n> AI-oriented routing and usage documentation for \`@billy_mcdowell/shadcn-web-components\`, a Lit-based custom-element library.\n\n## Start here\n\n- Install: \`npm install @billy_mcdowell/shadcn-web-components\`\n- Register one family: \`import '@billy_mcdowell/shadcn-web-components/button';\`\n- Register everything: \`import '@billy_mcdowell/shadcn-web-components';\`\n- Elements use the \`shadcn-\` prefix and work in plain HTML, Lit, React, Vue, Svelte, and other environments that support custom elements.\n- Load \`src/styles/tokens.css\` once for the default design tokens. \`src/styles/reset.css\` is optional. The \`/styles\` JavaScript export contains Lit CSS helpers; it does not install the global token stylesheet.\n- Boolean attributes are true when present. Omit \`disabled\`, \`open\`, \`required\`, and similar attributes for false; never write \`disabled="false"\`.\n- Use DOM properties for live values, DOM events for changes, slots for composition, and CSS custom properties for supported theming. Do not reach into component shadow roots.\n\n## Component chooser\n\n${categories.map(([heading, slugs]) => `### ${heading}\n\n${slugs.map(slug => `- [${components[slug][0]}](./src/components/${slug}/llms.md): ${components[slug][1]}`).join('\n')}`).join('\n\n')}\n\n## Framework usage\n\n### Plain HTML or JavaScript\n\n\`\`\`html\n<script type="module">\n  import '@billy_mcdowell/shadcn-web-components/button';\n<\/script>\n<shadcn-button id="save">Save</shadcn-button>\n<script>\n  document.querySelector('#save').addEventListener('button-click', () => save());\n<\/script>\n\`\`\`\n\n### Lit\n\n\`\`\`ts\nimport { html } from 'lit';\nimport '@billy_mcdowell/shadcn-web-components/input';\n\nconst view = (value, onChange) => html\`\n  <shadcn-input\n    .value=\${value}\n    @input-change=\${onChange}\n  ></shadcn-input>\n\`;\n\`\`\`\n\n### React and JSX\n\nImport the registration subpath, use lowercase custom-element tags, and attach custom events through a ref/effect when the framework version does not map unknown \`on*\` props to DOM events. Pass live complex values through element properties. TypeScript JSX projects may need local custom-element intrinsic-element declarations derived from \`custom-elements.json\`.\n\n## Choosing related components\n\n- **Dialog vs Alert Dialog:** Dialog is general modal content; Alert Dialog requires an explicit decision for consequential actions.\n- **Sheet vs Drawer vs Sidebar:** Sheet is an edge modal, Drawer is a compact-screen/modal task surface, and Sidebar is persistent page structure.\n- **Select vs Native Select vs Radio Group vs Combobox:** Select is a custom popup for fixed options, Native Select prioritizes platform behavior, Radio Group keeps a small choice set visible, and Combobox adds typeahead filtering for longer lists.\n- **Calendar vs Date Picker:** Calendar is an inline date grid; Date Picker is a form field with trigger, popup, and validation.\n- **Table vs Data Table:** Table is semantic tabular markup; Data Table adds sorting, filtering, pagination, and row selection.\n- **Carousel vs Tabs:** Carousel scrolls through peer slides; Tabs switch labeled panels in place.\n- **Checkbox vs Switch vs Toggle:** Checkbox records a form choice, Switch immediately changes a setting, and Toggle represents a pressed toolbar action.\n- **Dropdown Menu vs Context Menu vs Menubar vs Command:** Dropdown Menu has a visible trigger, Context Menu is target-specific and gesture-opened, Menubar exposes persistent desktop-style command categories, and Command is a searchable keyboard-driven palette.\n- **Tooltip vs Hover Card vs Popover:** Tooltip is short non-interactive help, Hover Card is a preview, and Popover holds interactive supplemental content.\n- **Skeleton vs Spinner vs Progress:** Skeleton previews content shape, Spinner represents unknown duration, and Progress represents measurable completion.\n\n## Machine-readable API\n\nThe package includes \`custom-elements.json\`, the authoritative Custom Elements Manifest for tags, attributes, properties, events, slots, and CSS custom properties. The per-component guides combine that generated API with human decision guidance and examples. Regenerate them after updating the manifest with:\n\n\`\`\`sh\nnpm run docs:llms\n\`\`\`\n`;
 
 await writeFile(path.join(root, 'llms.txt'), index, 'utf8');
 const storybookIndex = `import { Markdown, Meta } from '@storybook/addon-docs/blocks';

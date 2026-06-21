@@ -48,6 +48,10 @@
       "types": "./dist/components/button-group/button-group.d.ts",
       "default": "./dist/components/button-group/button-group.js"
     },
+    "./calendar": {
+      "types": "./dist/components/calendar/calendar.d.ts",
+      "default": "./dist/components/calendar/calendar.js"
+    },
     "./card": {
       "types": "./dist/components/card/card.d.ts",
       "default": "./dist/components/card/card.js"
@@ -55,6 +59,7 @@
     "./carousel": {
       "types": "./dist/components/carousel/carousel.d.ts",
       "default": "./dist/components/carousel/carousel.js"
+    },
     "./chart": {
       "types": "./dist/components/chart/chart.d.ts",
       "default": "./dist/components/chart/chart.js"
@@ -67,6 +72,10 @@
       "types": "./dist/components/collapsible/collapsible.d.ts",
       "default": "./dist/components/collapsible/collapsible.js"
     },
+    "./combobox": {
+      "types": "./dist/components/combobox/combobox.d.ts",
+      "default": "./dist/components/combobox/combobox.js"
+    },
     "./command": {
       "types": "./dist/components/command/command.d.ts",
       "default": "./dist/components/command/command.js"
@@ -78,6 +87,10 @@
     "./data-table": {
       "types": "./dist/components/data-table/data-table.d.ts",
       "default": "./dist/components/data-table/data-table.js"
+    },
+    "./date-picker": {
+      "types": "./dist/components/date-picker/date-picker.d.ts",
+      "default": "./dist/components/date-picker/date-picker.js"
     },
     "./dialog": {
       "types": "./dist/components/dialog/dialog.d.ts",
@@ -182,6 +195,10 @@
     "./slider": {
       "types": "./dist/components/slider/slider.d.ts",
       "default": "./dist/components/slider/slider.js"
+    },
+    "./sonner": {
+      "types": "./dist/components/sonner/sonner.d.ts",
+      "default": "./dist/components/sonner/sonner.js"
     },
     "./spinner": {
       "types": "./dist/components/spinner/spinner.d.ts",

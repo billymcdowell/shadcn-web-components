@@ -80,6 +80,7 @@ Run each command separately and fix failures before continuing:
 npm run type-check
 npm run build
 npm run analyze
+npm run docs:llms
 npm run verify:exports
 npm run build-storybook
 npm pack --dry-run --json
@@ -91,6 +92,7 @@ Then verify the resulting artifacts:
 
 - Confirm `dist/components/<component>/<component>.js` and `.d.ts` exist and are current.
 - Confirm `custom-elements.json` contains every new tag and its documented public API. Commit this generated manifest because it is included in the published package.
+- Regenerate AI docs with `npm run docs:llms` so `llms.txt`, each `src/components/<component>/llms.md`, and the matching Storybook `guide.mdx` stay aligned with the manifest.
 - Inspect the dry-run pack result. Confirm the implementation, declarations, source, and manifest are included; reject unexpected secrets, logs, or unrelated artifacts.
 - Confirm `verify:exports` checks the new package subpath and succeeds.
 - Review the complete diff for accidental generated churn and unrelated user changes.
