@@ -20,6 +20,8 @@ export { Checkbox } from './checkbox/index.js';
 export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './collapsible/index.js';
 export { Combobox, ComboboxInput, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxLabel, ComboboxItem, ComboboxSeparator } from './combobox/index.js';
 export type { ComboboxChangeDetail } from './combobox/index.js';
+export { Command, CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from './command/index.js';
+export type { CommandSelectDetail } from './command/index.js';
 export { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuSeparator, ContextMenuLabel, ContextMenuCheckboxItem } from './context-menu/index.js';
 export { DataTable } from './data-table/index.js';
 export type { DataTableColumn, DataTableColumnAlign, DataTablePageChangeDetail, DataTableSelectionChangeDetail, DataTableSortChangeDetail, DataTableSortDirection } from './data-table/index.js';

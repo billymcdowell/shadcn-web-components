@@ -64,6 +64,10 @@
       "types": "./dist/components/collapsible/collapsible.d.ts",
       "default": "./dist/components/collapsible/collapsible.js"
     },
+    "./command": {
+      "types": "./dist/components/command/command.d.ts",
+      "default": "./dist/components/command/command.js"
+    },
     "./context-menu": {
       "types": "./dist/components/context-menu/context-menu.d.ts",
       "default": "./dist/components/context-menu/context-menu.js"
