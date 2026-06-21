@@ -9,8 +9,18 @@
     const requestedTheme = new URLSearchParams(location.search).get('theme');
     document.documentElement.dataset.theme = requestedTheme === 'light' ? 'light' : 'dark';
   </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/styles/tokens.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/styles/reset.css">
+  <script>
+    const stylesheetBase = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname)
+      ? '../src/styles/'
+      : 'https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/styles/';
+
+    for (const stylesheet of ['tokens.css', 'reset.css']) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = `${stylesheetBase}${stylesheet}`;
+      document.head.append(link);
+    }
+  </script>
   <script type="importmap">
     {
       "imports": {
