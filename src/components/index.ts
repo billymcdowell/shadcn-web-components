@@ -19,6 +19,8 @@ export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './collapsib
 export { Combobox, ComboboxInput, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxLabel, ComboboxItem, ComboboxSeparator } from './combobox/index.js';
 export type { ComboboxChangeDetail } from './combobox/index.js';
 export { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuSeparator, ContextMenuLabel, ContextMenuCheckboxItem } from './context-menu/index.js';
+export { DataTable } from './data-table/index.js';
+export type { DataTableColumn, DataTableColumnAlign, DataTablePageChangeDetail, DataTableSelectionChangeDetail, DataTableSortChangeDetail, DataTableSortDirection } from './data-table/index.js';
 export { Dialog, DialogTrigger, DialogOverlay, DialogPortal, DialogContent, DialogTitle, DialogDescription, DialogClose, DialogHeader, DialogFooter, dialogContext } from './dialog/index.js';
 export type { DialogContextValue } from './dialog/index.js';
 export { Drawer, DrawerTrigger, DrawerClose, DrawerContent, DrawerTitle, DrawerDescription, DrawerHeader, DrawerFooter } from './drawer/index.js';

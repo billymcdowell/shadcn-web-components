@@ -107,6 +107,7 @@ See [Component Status](./src/component-status.mdx) for the complete shadcn/ui ca
 - **Checkbox**
 - **Collapsible**
 - **Context Menu**
+- **Data Table**
 - **Dialog**
 - **Drawer**
 - **Dropdown Menu**
