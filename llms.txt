@@ -76,6 +76,7 @@
 
 - [Progress](./src/components/progress/llms.md): A visual indicator of determinate task completion.
 - [Skeleton](./src/components/skeleton/llms.md): A placeholder that approximates content while it loads.
+- [Sonner](./src/components/sonner/llms.md): A notification host for brief, non-blocking feedback.
 - [Spinner](./src/components/spinner/llms.md): An indeterminate indicator for an in-progress operation.
 
 ## Framework usage

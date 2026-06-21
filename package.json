@@ -160,6 +160,10 @@
       "types": "./dist/components/slider/slider.d.ts",
       "default": "./dist/components/slider/slider.js"
     },
+    "./sonner": {
+      "types": "./dist/components/sonner/sonner.d.ts",
+      "default": "./dist/components/sonner/sonner.js"
+    },
     "./spinner": {
       "types": "./dist/components/spinner/spinner.d.ts",
       "default": "./dist/components/spinner/spinner.js"

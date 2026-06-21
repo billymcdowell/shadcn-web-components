@@ -46,6 +46,8 @@ export type { SheetSide } from './sheet/index.js';
 export { Sidebar } from './sidebar/index.js';
 export { Skeleton } from './skeleton/index.js';
 export { Slider } from './slider/index.js';
+export { Sonner, toast } from './sonner/index.js';
+export type { ToastAction, ToastData, ToastFunction, ToastId, ToastOptions, ToastPosition, ToastPromiseOptions, ToastType } from './sonner/index.js';
 export { Spinner } from './spinner/index.js';
 export type { SpinnerSize } from './spinner/index.js';
 export { Switch } from './switch/index.js';
