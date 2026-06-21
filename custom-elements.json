@@ -1217,6 +1217,62 @@
         },
         {
           "kind": "js",
+          "name": "Pagination",
+          "declaration": {
+            "name": "Pagination",
+            "module": "./pagination/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationContent",
+          "declaration": {
+            "name": "PaginationContent",
+            "module": "./pagination/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationItem",
+          "declaration": {
+            "name": "PaginationItem",
+            "module": "./pagination/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationLink",
+          "declaration": {
+            "name": "PaginationLink",
+            "module": "./pagination/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationPrevious",
+          "declaration": {
+            "name": "PaginationPrevious",
+            "module": "./pagination/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationNext",
+          "declaration": {
+            "name": "PaginationNext",
+            "module": "./pagination/index.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationEllipsis",
+          "declaration": {
+            "name": "PaginationEllipsis",
+            "module": "./pagination/index.js"
+          }
+        },
+        {
+          "kind": "js",
           "name": "Popover",
           "declaration": {
             "name": "Popover",
@@ -10887,6 +10943,1146 @@
           "declaration": {
             "name": "NativeSelect",
             "module": "src/components/native-select/native-select.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pagination/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Pagination",
+          "declaration": {
+            "name": "Pagination",
+            "module": "./pagination.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationContent",
+          "declaration": {
+            "name": "PaginationContent",
+            "module": "./pagination.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationItem",
+          "declaration": {
+            "name": "PaginationItem",
+            "module": "./pagination.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationLink",
+          "declaration": {
+            "name": "PaginationLink",
+            "module": "./pagination.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationPrevious",
+          "declaration": {
+            "name": "PaginationPrevious",
+            "module": "./pagination.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationNext",
+          "declaration": {
+            "name": "PaginationNext",
+            "module": "./pagination.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationEllipsis",
+          "declaration": {
+            "name": "PaginationEllipsis",
+            "module": "./pagination.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/pagination/pagination.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Centers page navigation within its available width.",
+          "name": "Pagination",
+          "cssParts": [
+            {
+              "description": "The navigation landmark.",
+              "name": "nav"
+            }
+          ],
+          "slots": [
+            {
+              "description": "A `shadcn-pagination-content` element.",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-pagination",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "List containing pagination items.",
+          "name": "PaginationContent",
+          "cssProperties": [
+            {
+              "description": "Space between pagination items.",
+              "name": "--pagination-gap"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The pagination list.",
+              "name": "list"
+            }
+          ],
+          "slots": [
+            {
+              "description": "`shadcn-pagination-item` elements.",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-pagination-content",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "A single item in a pagination list.",
+          "name": "PaginationItem",
+          "cssParts": [
+            {
+              "description": "The list item.",
+              "name": "item"
+            }
+          ],
+          "slots": [
+            {
+              "description": "A pagination link, direction link, or ellipsis.",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-pagination-item",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "A page link with active and disabled states.",
+          "name": "PaginationLink",
+          "cssProperties": [
+            {
+              "description": "Link corner radius.",
+              "name": "--pagination-border-radius"
+            },
+            {
+              "description": "Link text color.",
+              "name": "--pagination-color"
+            },
+            {
+              "description": "Link hover background.",
+              "name": "--pagination-hover-background"
+            },
+            {
+              "description": "Link hover text color.",
+              "name": "--pagination-hover-color"
+            },
+            {
+              "description": "Current-page background.",
+              "name": "--pagination-active-background"
+            },
+            {
+              "description": "Current-page border color.",
+              "name": "--pagination-active-border"
+            },
+            {
+              "description": "Current-page text color.",
+              "name": "--pagination-active-color"
+            }
+          ],
+          "cssParts": [
+            {
+              "description": "The native anchor.",
+              "name": "link"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The page label.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "default": "'#'",
+              "description": "Destination URL. Omitted from the anchor when disabled.",
+              "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Browsing context in which to open the link.",
+              "attribute": "target"
+            },
+            {
+              "kind": "field",
+              "name": "rel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Relationship between the current document and the destination.",
+              "attribute": "rel"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Accessible label when the visible page label is insufficient.",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "current",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether this link represents the current page.",
+              "attribute": "current",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether navigation is unavailable.",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "renderAnchor",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "content",
+                  "default": "html`<slot></slot>`"
+                },
+                {
+                  "name": "className",
+                  "default": "''"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "default": "'#'",
+              "description": "Destination URL. Omitted from the anchor when disabled.",
+              "fieldName": "href"
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Browsing context in which to open the link.",
+              "fieldName": "target"
+            },
+            {
+              "name": "rel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Relationship between the current document and the destination.",
+              "fieldName": "rel"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Accessible label when the visible page label is insufficient.",
+              "fieldName": "label"
+            },
+            {
+              "name": "current",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether this link represents the current page.",
+              "fieldName": "current"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether navigation is unavailable.",
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-pagination-link",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "Link to the previous page.",
+          "name": "PaginationPrevious",
+          "cssParts": [
+            {
+              "description": "The native anchor.",
+              "name": "link",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "description": "Custom visible text.",
+              "name": "",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Custom previous-page icon.",
+              "name": "icon"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Previous'",
+              "description": "Visible direction text.",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Go to previous page'",
+              "description": "Accessible label when the visible page label is insufficient.",
+              "attribute": "label",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "default": "'#'",
+              "description": "Destination URL. Omitted from the anchor when disabled.",
+              "attribute": "href",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Browsing context in which to open the link.",
+              "attribute": "target",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Relationship between the current document and the destination.",
+              "attribute": "rel",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "current",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether this link represents the current page.",
+              "attribute": "current",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether navigation is unavailable.",
+              "attribute": "disabled",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderAnchor",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "content",
+                  "default": "html`<slot></slot>`"
+                },
+                {
+                  "name": "className",
+                  "default": "''"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Previous'",
+              "description": "Visible direction text.",
+              "fieldName": "text"
+            },
+            {
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "default": "'#'",
+              "description": "Destination URL. Omitted from the anchor when disabled.",
+              "fieldName": "href",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Browsing context in which to open the link.",
+              "fieldName": "target",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "name": "rel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Relationship between the current document and the destination.",
+              "fieldName": "rel",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Accessible label when the visible page label is insufficient.",
+              "fieldName": "label",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "name": "current",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether this link represents the current page.",
+              "fieldName": "current",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether navigation is unavailable.",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "PaginationLink",
+            "module": "src/components/pagination/pagination.ts"
+          },
+          "tagName": "shadcn-pagination-previous",
+          "customElement": true,
+          "cssProperties": [
+            {
+              "description": "Link corner radius.",
+              "name": "--pagination-border-radius",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Link text color.",
+              "name": "--pagination-color",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Link hover background.",
+              "name": "--pagination-hover-background",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Link hover text color.",
+              "name": "--pagination-hover-color",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Current-page background.",
+              "name": "--pagination-active-background",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Current-page border color.",
+              "name": "--pagination-active-border",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Current-page text color.",
+              "name": "--pagination-active-color",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "Link to the next page.",
+          "name": "PaginationNext",
+          "cssParts": [
+            {
+              "description": "The native anchor.",
+              "name": "link",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            }
+          ],
+          "slots": [
+            {
+              "description": "Custom visible text.",
+              "name": "",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Custom next-page icon.",
+              "name": "icon"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Next'",
+              "description": "Visible direction text.",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Go to next page'",
+              "description": "Accessible label when the visible page label is insufficient.",
+              "attribute": "label",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "default": "'#'",
+              "description": "Destination URL. Omitted from the anchor when disabled.",
+              "attribute": "href",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Browsing context in which to open the link.",
+              "attribute": "target",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Relationship between the current document and the destination.",
+              "attribute": "rel",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "current",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether this link represents the current page.",
+              "attribute": "current",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether navigation is unavailable.",
+              "attribute": "disabled",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderAnchor",
+              "privacy": "protected",
+              "parameters": [
+                {
+                  "name": "content",
+                  "default": "html`<slot></slot>`"
+                },
+                {
+                  "name": "className",
+                  "default": "''"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ],
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Next'",
+              "description": "Visible direction text.",
+              "fieldName": "text"
+            },
+            {
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "default": "'#'",
+              "description": "Destination URL. Omitted from the anchor when disabled.",
+              "fieldName": "href",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Browsing context in which to open the link.",
+              "fieldName": "target",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "name": "rel",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Relationship between the current document and the destination.",
+              "fieldName": "rel",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Accessible label when the visible page label is insufficient.",
+              "fieldName": "label",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "name": "current",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether this link represents the current page.",
+              "fieldName": "current",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether navigation is unavailable.",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "PaginationLink",
+            "module": "src/components/pagination/pagination.ts"
+          },
+          "tagName": "shadcn-pagination-next",
+          "customElement": true,
+          "cssProperties": [
+            {
+              "description": "Link corner radius.",
+              "name": "--pagination-border-radius",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Link text color.",
+              "name": "--pagination-color",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Link hover background.",
+              "name": "--pagination-hover-background",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Link hover text color.",
+              "name": "--pagination-hover-color",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Current-page background.",
+              "name": "--pagination-active-background",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Current-page border color.",
+              "name": "--pagination-active-border",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            },
+            {
+              "description": "Current-page text color.",
+              "name": "--pagination-active-color",
+              "inheritedFrom": {
+                "name": "PaginationLink",
+                "module": "src/components/pagination/pagination.ts"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "Indicates omitted pages in a pagination list.",
+          "name": "PaginationEllipsis",
+          "cssParts": [
+            {
+              "description": "The ellipsis container.",
+              "name": "ellipsis"
+            }
+          ],
+          "slots": [
+            {
+              "description": "A custom ellipsis icon.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'More pages'",
+              "description": "Accessible text describing the omitted pages.",
+              "attribute": "label"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'More pages'",
+              "description": "Accessible text describing the omitted pages.",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-pagination-ellipsis",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Pagination",
+          "declaration": {
+            "name": "Pagination",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-pagination",
+          "declaration": {
+            "name": "Pagination",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationContent",
+          "declaration": {
+            "name": "PaginationContent",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-pagination-content",
+          "declaration": {
+            "name": "PaginationContent",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationItem",
+          "declaration": {
+            "name": "PaginationItem",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-pagination-item",
+          "declaration": {
+            "name": "PaginationItem",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationLink",
+          "declaration": {
+            "name": "PaginationLink",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-pagination-link",
+          "declaration": {
+            "name": "PaginationLink",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationPrevious",
+          "declaration": {
+            "name": "PaginationPrevious",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-pagination-previous",
+          "declaration": {
+            "name": "PaginationPrevious",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationNext",
+          "declaration": {
+            "name": "PaginationNext",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-pagination-next",
+          "declaration": {
+            "name": "PaginationNext",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PaginationEllipsis",
+          "declaration": {
+            "name": "PaginationEllipsis",
+            "module": "src/components/pagination/pagination.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-pagination-ellipsis",
+          "declaration": {
+            "name": "PaginationEllipsis",
+            "module": "src/components/pagination/pagination.ts"
           }
         }
       ]

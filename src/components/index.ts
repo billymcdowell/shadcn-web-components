@@ -43,6 +43,7 @@ export { Label } from './label/index.js';
 export { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem, MenubarSeparator, MenubarLabel, MenubarCheckboxItem } from './menubar/index.js';
 export { NativeSelect } from './native-select/index.js';
 export { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink } from './navigation-menu/index.js';
+export { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext, PaginationEllipsis } from './pagination/index.js';
 export { Popover, PopoverContent, PopoverTrigger, popoverContext } from './popover/index.js';
 export type { PopoverContextValue } from './popover/index.js';
 export { Progress } from './progress/index.js';

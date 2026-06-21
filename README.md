@@ -124,6 +124,7 @@ See [Component Status](./src/component-status.mdx) for the complete shadcn/ui ca
 - **Menubar**
 - **Native Select**
 - **Navigation Menu**
+- **Pagination**
 - **Popover**
 - **Progress**
 - **Radio Group**
