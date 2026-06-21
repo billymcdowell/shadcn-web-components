@@ -48,6 +48,8 @@ export { Popover, PopoverContent, PopoverTrigger, popoverContext } from './popov
 export type { PopoverContextValue } from './popover/index.js';
 export { Progress } from './progress/index.js';
 export { Radio, RadioGroup } from './radio-group/index.js';
+export { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './resizable/index.js';
+export type { ResizableOrientation, ResizableChangeDetail } from './resizable/index.js';
 export { Separator } from './separator/index.js';
 export { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from './select/index.js';
 export { Sheet, SheetTrigger, SheetClose, SheetContent, SheetTitle, SheetDescription, SheetHeader, SheetFooter } from './sheet/index.js';

@@ -144,6 +144,10 @@
       "types": "./dist/components/radio-group/radio-group.d.ts",
       "default": "./dist/components/radio-group/radio-group.js"
     },
+    "./resizable": {
+      "types": "./dist/components/resizable/resizable.d.ts",
+      "default": "./dist/components/resizable/resizable.js"
+    },
     "./separator": {
       "types": "./dist/components/separator/separator.d.ts",
       "default": "./dist/components/separator/separator.js"
