@@ -14,6 +14,8 @@ export type { ButtonGroupOrientation } from './button-group/index.js';
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './card/index.js';
 export { Checkbox } from './checkbox/index.js';
 export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './collapsible/index.js';
+export { Combobox, ComboboxInput, ComboboxContent, ComboboxEmpty, ComboboxGroup, ComboboxLabel, ComboboxItem, ComboboxSeparator } from './combobox/index.js';
+export type { ComboboxChangeDetail } from './combobox/index.js';
 export { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuSeparator, ContextMenuLabel, ContextMenuCheckboxItem } from './context-menu/index.js';
 export { Dialog, DialogTrigger, DialogOverlay, DialogPortal, DialogContent, DialogTitle, DialogDescription, DialogClose, DialogHeader, DialogFooter, dialogContext } from './dialog/index.js';
 export type { DialogContextValue } from './dialog/index.js';

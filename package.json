@@ -60,6 +60,10 @@
       "types": "./dist/components/collapsible/collapsible.d.ts",
       "default": "./dist/components/collapsible/collapsible.js"
     },
+    "./combobox": {
+      "types": "./dist/components/combobox/combobox.d.ts",
+      "default": "./dist/components/combobox/combobox.js"
+    },
     "./context-menu": {
       "types": "./dist/components/context-menu/context-menu.d.ts",
       "default": "./dist/components/context-menu/context-menu.js"

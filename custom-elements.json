@@ -4,6 +4,1151 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "src/components/combobox/combobox.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Filterable, form-associated single-select combobox.",
+          "name": "Combobox",
+          "slots": [
+            {
+              "description": "Combobox input and popup content.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "formAssociated",
+              "type": {
+                "text": "boolean"
+              },
+              "static": true,
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "_internals",
+              "type": {
+                "text": "ElementInternals"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_defaultValue",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "default": "''"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Selected item value.",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Form field name.",
+              "attribute": "name",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the popup is open.",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the combobox is disabled.",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the combobox is read-only.",
+              "attribute": "readonly",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether a non-empty selection is required.",
+              "attribute": "required",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Select an option'",
+              "description": "Placeholder shown when no item is selected.",
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "method",
+              "name": "formResetCallback",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "formDisabledCallback",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "disabled",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Opens the popup unless the combobox is disabled or read-only."
+            },
+            {
+              "kind": "method",
+              "name": "hide",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Closes the popup."
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "FocusOptions"
+                  }
+                }
+              ],
+              "description": "Focuses the editable input."
+            },
+            {
+              "kind": "method",
+              "name": "_items",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "ComboboxItem[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_visibleItems",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "ComboboxItem[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_input",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "ComboboxInput | null"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_content",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "ComboboxContent | null"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_handleInput",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleKeydown",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleSelect",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handlePointerMove",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleOutsidePointerDown",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_filter",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "query",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_setActive",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "item",
+                  "type": {
+                    "text": "ComboboxItem | null"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_setOpen",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "open",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_restoreInputLabel",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_sync",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "combobox-open-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the popup opens or closes."
+            },
+            {
+              "description": "Fired after an item is selected.",
+              "name": "combobox-change"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Selected item value.",
+              "fieldName": "value"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Form field name.",
+              "fieldName": "name"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the popup is open.",
+              "fieldName": "open"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the combobox is disabled.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the combobox is read-only.",
+              "fieldName": "readonly"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether a non-empty selection is required.",
+              "fieldName": "required"
+            },
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Select an option'",
+              "description": "Placeholder shown when no item is selected.",
+              "fieldName": "placeholder"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-combobox",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ComboboxInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "readonly"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "required"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "open"
+            },
+            {
+              "kind": "field",
+              "name": "displayValue",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "displayValue"
+            },
+            {
+              "kind": "field",
+              "name": "activeDescendant",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "activeDescendant"
+            },
+            {
+              "kind": "field",
+              "name": "controls",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "controls"
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "FocusOptions"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_focus",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_input",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_keydown",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "combobox-input",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "combobox-input-keydown",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "placeholder",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "readonly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "readonly"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "required"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "open"
+            },
+            {
+              "name": "displayValue",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "displayValue"
+            },
+            {
+              "name": "activeDescendant",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "activeDescendant"
+            },
+            {
+              "name": "controls",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "controls"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-combobox-input",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ComboboxContent",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_nextId",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "static": true,
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "listboxId",
+              "readonly": true,
+              "default": "`shadcn-combobox-listbox-${ComboboxContent._nextId++}`"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "open"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-combobox-content",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ComboboxEmpty",
+          "members": [
+            {
+              "kind": "field",
+              "name": "visible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "visible",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "visible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "visible"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-combobox-empty",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ComboboxGroup",
+          "members": [
+            {
+              "kind": "field",
+              "name": "syncVisibility"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-combobox-group",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ComboboxLabel",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-combobox-label",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ComboboxItem",
+          "members": [
+            {
+              "kind": "field",
+              "name": "_nextId",
+              "type": {
+                "text": "number"
+              },
+              "privacy": "private",
+              "static": true,
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Submitted item value.",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "keywords",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Optional search keywords in addition to the label.",
+              "attribute": "keywords"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the item cannot be selected.",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "selected"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "active"
+            },
+            {
+              "kind": "field",
+              "name": "filtered",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "filtered",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "optionId",
+              "readonly": true,
+              "default": "`shadcn-combobox-option-${ComboboxItem._nextId++}`"
+            },
+            {
+              "kind": "field",
+              "name": "displayLabel",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "searchText",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "select"
+            },
+            {
+              "kind": "method",
+              "name": "_pointerMove",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "combobox-item-pointermove",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Submitted item value.",
+              "fieldName": "value"
+            },
+            {
+              "name": "keywords",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Optional search keywords in addition to the label.",
+              "fieldName": "keywords"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the item cannot be selected.",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "selected"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "active"
+            },
+            {
+              "name": "filtered",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "filtered"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-combobox-item",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ComboboxSeparator",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-combobox-separator",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Combobox",
+          "declaration": {
+            "name": "Combobox",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-combobox",
+          "declaration": {
+            "name": "Combobox",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxInput",
+          "declaration": {
+            "name": "ComboboxInput",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-combobox-input",
+          "declaration": {
+            "name": "ComboboxInput",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxContent",
+          "declaration": {
+            "name": "ComboboxContent",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-combobox-content",
+          "declaration": {
+            "name": "ComboboxContent",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxEmpty",
+          "declaration": {
+            "name": "ComboboxEmpty",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-combobox-empty",
+          "declaration": {
+            "name": "ComboboxEmpty",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxGroup",
+          "declaration": {
+            "name": "ComboboxGroup",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-combobox-group",
+          "declaration": {
+            "name": "ComboboxGroup",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxLabel",
+          "declaration": {
+            "name": "ComboboxLabel",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-combobox-label",
+          "declaration": {
+            "name": "ComboboxLabel",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxItem",
+          "declaration": {
+            "name": "ComboboxItem",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-combobox-item",
+          "declaration": {
+            "name": "ComboboxItem",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxSeparator",
+          "declaration": {
+            "name": "ComboboxSeparator",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-combobox-separator",
+          "declaration": {
+            "name": "ComboboxSeparator",
+            "module": "src/components/combobox/combobox.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/combobox/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Combobox",
+          "declaration": {
+            "name": "Combobox",
+            "module": "./combobox.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxInput",
+          "declaration": {
+            "name": "ComboboxInput",
+            "module": "./combobox.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxContent",
+          "declaration": {
+            "name": "ComboboxContent",
+            "module": "./combobox.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxEmpty",
+          "declaration": {
+            "name": "ComboboxEmpty",
+            "module": "./combobox.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxGroup",
+          "declaration": {
+            "name": "ComboboxGroup",
+            "module": "./combobox.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxLabel",
+          "declaration": {
+            "name": "ComboboxLabel",
+            "module": "./combobox.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxItem",
+          "declaration": {
+            "name": "ComboboxItem",
+            "module": "./combobox.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxSeparator",
+          "declaration": {
+            "name": "ComboboxSeparator",
+            "module": "./combobox.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ComboboxChangeDetail",
+          "declaration": {
+            "name": "ComboboxChangeDetail",
+            "module": "./combobox.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/index.ts",
       "declarations": [],
       "exports": [
