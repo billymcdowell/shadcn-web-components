@@ -14,7 +14,7 @@ export default defineConfig({
             fileName: 'index',
         },
         rollupOptions: {
-            external: ['lit', /^lit\//],
+            external: ['lit', /^lit\//, 'chart.js', /^chart\.js\//],
             output: {
                 preserveModules: true,
                 preserveModulesRoot: 'src',

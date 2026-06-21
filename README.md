@@ -104,6 +104,7 @@ See [Component Status](./src/component-status.mdx) for the complete shadcn/ui ca
 - **Button Group**
 - **Card**
 - **Carousel**
+- **Chart**
 - **Checkbox**
 - **Collapsible**
 - **Command**

@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Components/Chart/Guide" />
+
+# Chart
+
+`shadcn-chart` renders Chart.js data in a responsive canvas and supplies the
+shadcn chart palette when datasets do not specify colors.
+
+## Usage
+
+```ts
+import '@billy_mcdowell/shadcn-web-components/chart';
+
+const chart = document.querySelector('shadcn-chart');
+chart.data = {
+  labels: ['Jan', 'Feb', 'Mar'],
+  datasets: [{ label: 'Visitors', data: [120, 190, 150] }],
+};
+```
+
+```html
+<shadcn-chart type="bar" aria-label="Monthly visitors"></shadcn-chart>
+```
+
+Set `data` and `options` as JavaScript properties, not HTML attributes. Replace
+either object to trigger a Chart.js update. The `chart` getter exposes the
+underlying Chart.js instance for advanced integrations.
+
+## Accessibility
+
+Give every chart a concise `aria-label`. A canvas does not communicate the
+relationships in complex data, so provide an adjacent table or text summary
+when users need exact values or trends to understand the page.
+
+## Theming
+
+The component uses `--chart-1` through `--chart-5` when a dataset omits its
+`backgroundColor` or `borderColor`. Set `--chart-height` to change the default
+20rem chart height.

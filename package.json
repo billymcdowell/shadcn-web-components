@@ -55,6 +55,9 @@
     "./carousel": {
       "types": "./dist/components/carousel/carousel.d.ts",
       "default": "./dist/components/carousel/carousel.js"
+    "./chart": {
+      "types": "./dist/components/chart/chart.d.ts",
+      "default": "./dist/components/chart/chart.js"
     },
     "./checkbox": {
       "types": "./dist/components/checkbox/checkbox.d.ts",
@@ -262,6 +265,7 @@
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
     "@lit/context": "^1.1.6",
+    "chart.js": "^4.5.1",
     "focus-trap": "^7.8.0",
     "lit": "^3.2.1"
   },
@@ -272,10 +276,10 @@
     "@storybook/addon-docs": "^10.4.6",
     "@storybook/web-components": "^10.4.6",
     "@storybook/web-components-vite": "^10.4.6",
+    "remark-gfm": "^4.0.1",
     "storybook": "^10.4.6",
     "typescript": "^5.6.3",
-    "vite": "^6.0.1",
-    "remark-gfm": "^4.0.1"
+    "vite": "^6.0.1"
   },
   "publishConfig": {
     "access": "public",

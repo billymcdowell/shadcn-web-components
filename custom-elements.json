@@ -336,58 +336,34 @@
         },
         {
           "kind": "js",
-          "name": "Carousel",
+          "name": "Chart",
           "declaration": {
-            "name": "Carousel",
-            "module": "./carousel/index.js"
+            "name": "Chart",
+            "module": "./chart/index.js"
           }
         },
         {
           "kind": "js",
-          "name": "CarouselContent",
+          "name": "ChartData",
           "declaration": {
-            "name": "CarouselContent",
-            "module": "./carousel/index.js"
+            "name": "ChartData",
+            "module": "./chart/index.js"
           }
         },
         {
           "kind": "js",
-          "name": "CarouselItem",
+          "name": "ChartOptions",
           "declaration": {
-            "name": "CarouselItem",
-            "module": "./carousel/index.js"
+            "name": "ChartOptions",
+            "module": "./chart/index.js"
           }
         },
         {
           "kind": "js",
-          "name": "CarouselPrevious",
+          "name": "ChartType",
           "declaration": {
-            "name": "CarouselPrevious",
-            "module": "./carousel/index.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "CarouselNext",
-          "declaration": {
-            "name": "CarouselNext",
-            "module": "./carousel/index.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "CarouselOrientation",
-          "declaration": {
-            "name": "CarouselOrientation",
-            "module": "./carousel/index.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "CarouselChangeDetail",
-          "declaration": {
-            "name": "CarouselChangeDetail",
-            "module": "./carousel/index.js"
+            "name": "ChartType",
+            "module": "./chart/index.js"
           }
         },
         {
@@ -2105,6 +2081,250 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/accordion/accordion.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "An accordion item component.",
+          "name": "AccordionItem",
+          "slots": [
+            {
+              "description": "Accordion content",
+              "name": ""
+            },
+            {
+              "description": "Trigger button content",
+              "name": "trigger"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "open"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "accordion-item-toggle",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "open"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-accordion-item",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "Container for accordion items.",
+          "name": "Accordion",
+          "slots": [
+            {
+              "description": "Accordion items",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "'single' | 'multiple'"
+              },
+              "default": "'single'",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "collapsible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "collapsible"
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemToggle",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_updateItems",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_getItems",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "AccordionItem[]"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "accordion-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when accordion selection changes"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "'single' | 'multiple'"
+              },
+              "default": "'single'",
+              "fieldName": "type"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "collapsible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "collapsible"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-accordion",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AccordionItem",
+          "declaration": {
+            "name": "AccordionItem",
+            "module": "src/components/accordion/accordion.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-accordion-item",
+          "declaration": {
+            "name": "AccordionItem",
+            "module": "src/components/accordion/accordion.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Accordion",
+          "declaration": {
+            "name": "Accordion",
+            "module": "src/components/accordion/accordion.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-accordion",
+          "declaration": {
+            "name": "Accordion",
+            "module": "src/components/accordion/accordion.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/accordion/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Accordion",
+          "declaration": {
+            "name": "Accordion",
+            "module": "./accordion.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AccordionItem",
+          "declaration": {
+            "name": "AccordionItem",
+            "module": "./accordion.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/alert-dialog/alert-dialog.ts",
       "declarations": [
         {
@@ -2830,250 +3050,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/accordion/accordion.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "An accordion item component.",
-          "name": "AccordionItem",
-          "slots": [
-            {
-              "description": "Accordion content",
-              "name": ""
-            },
-            {
-              "description": "Trigger button content",
-              "name": "trigger"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "open"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "method",
-              "name": "_handleClick",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "name": "accordion-item-toggle",
-              "type": {
-                "text": "CustomEvent"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "open"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-accordion-item",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "Container for accordion items.",
-          "name": "Accordion",
-          "slots": [
-            {
-              "description": "Accordion items",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "type",
-              "type": {
-                "text": "'single' | 'multiple'"
-              },
-              "default": "'single'",
-              "attribute": "type"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "collapsible",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "collapsible"
-            },
-            {
-              "kind": "method",
-              "name": "_handleItemToggle",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_updateItems",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_getItems",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "AccordionItem[]"
-                }
-              }
-            }
-          ],
-          "events": [
-            {
-              "name": "accordion-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when accordion selection changes"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "type",
-              "type": {
-                "text": "'single' | 'multiple'"
-              },
-              "default": "'single'",
-              "fieldName": "type"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "collapsible",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "collapsible"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-accordion",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "AccordionItem",
-          "declaration": {
-            "name": "AccordionItem",
-            "module": "src/components/accordion/accordion.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-accordion-item",
-          "declaration": {
-            "name": "AccordionItem",
-            "module": "src/components/accordion/accordion.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Accordion",
-          "declaration": {
-            "name": "Accordion",
-            "module": "src/components/accordion/accordion.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-accordion",
-          "declaration": {
-            "name": "Accordion",
-            "module": "src/components/accordion/accordion.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/accordion/index.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Accordion",
-          "declaration": {
-            "name": "Accordion",
-            "module": "./accordion.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "AccordionItem",
-          "declaration": {
-            "name": "AccordionItem",
-            "module": "./accordion.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/alert/alert.ts",
       "declarations": [
         {
@@ -3220,6 +3196,79 @@
           "declaration": {
             "name": "AlertVariant",
             "module": "./alert.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/aspect-ratio/aspect-ratio.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "AspectRatio",
+          "members": [
+            {
+              "kind": "field",
+              "name": "ratio",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Width-to-height ratio.",
+              "attribute": "ratio"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "ratio",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "description": "Width-to-height ratio.",
+              "fieldName": "ratio"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-aspect-ratio",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AspectRatio",
+          "declaration": {
+            "name": "AspectRatio",
+            "module": "src/components/aspect-ratio/aspect-ratio.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-aspect-ratio",
+          "declaration": {
+            "name": "AspectRatio",
+            "module": "src/components/aspect-ratio/aspect-ratio.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/aspect-ratio/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AspectRatio",
+          "declaration": {
+            "name": "AspectRatio",
+            "module": "./aspect-ratio.js"
           }
         }
       ]
@@ -3432,79 +3481,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/aspect-ratio/aspect-ratio.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "AspectRatio",
-          "members": [
-            {
-              "kind": "field",
-              "name": "ratio",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Width-to-height ratio.",
-              "attribute": "ratio"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "ratio",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Width-to-height ratio.",
-              "fieldName": "ratio"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-aspect-ratio",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "AspectRatio",
-          "declaration": {
-            "name": "AspectRatio",
-            "module": "src/components/aspect-ratio/aspect-ratio.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-aspect-ratio",
-          "declaration": {
-            "name": "AspectRatio",
-            "module": "src/components/aspect-ratio/aspect-ratio.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/aspect-ratio/index.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "AspectRatio",
-          "declaration": {
-            "name": "AspectRatio",
-            "module": "./aspect-ratio.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/badge/badge.ts",
       "declarations": [
         {
@@ -3579,6 +3555,99 @@
           "declaration": {
             "name": "BadgeVariant",
             "module": "./badge.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/button-group/button-group.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A container for grouping related buttons together.",
+          "name": "ButtonGroup",
+          "cssProperties": [
+            {
+              "description": "Gap between buttons",
+              "name": "--button-group-gap"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Button elements",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "ButtonGroupOrientation"
+              },
+              "default": "'horizontal'",
+              "description": "Orientation of the button group",
+              "attribute": "orientation"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "orientation",
+              "type": {
+                "text": "ButtonGroupOrientation"
+              },
+              "default": "'horizontal'",
+              "description": "Orientation of the button group",
+              "fieldName": "orientation"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-button-group",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ButtonGroup",
+          "declaration": {
+            "name": "ButtonGroup",
+            "module": "src/components/button-group/button-group.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-button-group",
+          "declaration": {
+            "name": "ButtonGroup",
+            "module": "src/components/button-group/button-group.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/button-group/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ButtonGroup",
+          "declaration": {
+            "name": "ButtonGroup",
+            "module": "./button-group.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ButtonGroupOrientation",
+          "declaration": {
+            "name": "ButtonGroupOrientation",
+            "module": "./button-group.js"
           }
         }
       ]
@@ -4071,99 +4140,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/button-group/button-group.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A container for grouping related buttons together.",
-          "name": "ButtonGroup",
-          "cssProperties": [
-            {
-              "description": "Gap between buttons",
-              "name": "--button-group-gap"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Button elements",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "ButtonGroupOrientation"
-              },
-              "default": "'horizontal'",
-              "description": "Orientation of the button group",
-              "attribute": "orientation"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "orientation",
-              "type": {
-                "text": "ButtonGroupOrientation"
-              },
-              "default": "'horizontal'",
-              "description": "Orientation of the button group",
-              "fieldName": "orientation"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-button-group",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ButtonGroup",
-          "declaration": {
-            "name": "ButtonGroup",
-            "module": "src/components/button-group/button-group.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-button-group",
-          "declaration": {
-            "name": "ButtonGroup",
-            "module": "src/components/button-group/button-group.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/button-group/index.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "ButtonGroup",
-          "declaration": {
-            "name": "ButtonGroup",
-            "module": "./button-group.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "ButtonGroupOrientation",
-          "declaration": {
-            "name": "ButtonGroupOrientation",
-            "module": "./button-group.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/card/card.ts",
       "declarations": [
         {
@@ -4449,771 +4425,289 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/carousel/carousel.ts",
+      "path": "src/components/chart/chart.ts",
       "declarations": [
         {
           "kind": "class",
-          "description": "Coordinates an accessible, scroll-snapping carousel.",
-          "name": "Carousel",
-          "cssParts": [
-            {
-              "description": "Carousel container.",
-              "name": "carousel"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Carousel content and navigation controls.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "index",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Active slide index.",
-              "attribute": "index",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "CarouselOrientation"
-              },
-              "default": "'horizontal'",
-              "description": "Scrolling axis.",
-              "attribute": "orientation",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "loop",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether navigation wraps between the first and last slides.",
-              "attribute": "loop",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Carousel'",
-              "description": "Accessible name for the carousel region.",
-              "attribute": "label"
-            },
-            {
-              "kind": "field",
-              "name": "_count",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "method",
-              "name": "scrollPrevious",
-              "description": "Move to the previous slide."
-            },
-            {
-              "kind": "method",
-              "name": "scrollNext",
-              "description": "Move to the next slide."
-            },
-            {
-              "kind": "method",
-              "name": "scrollToSlide",
-              "parameters": [
-                {
-                  "name": "index",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ],
-              "description": "Move to a slide by its zero-based index."
-            },
-            {
-              "kind": "method",
-              "name": "_content",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_clampIndex",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "index",
-                  "type": {
-                    "text": "number"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "_handleSelect",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_handleKeyDown",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_sync",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_syncControls",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fired when the active slide changes.",
-              "name": "carousel-change"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "index",
-              "type": {
-                "text": "number"
-              },
-              "default": "0",
-              "description": "Active slide index.",
-              "fieldName": "index"
-            },
-            {
-              "name": "orientation",
-              "type": {
-                "text": "CarouselOrientation"
-              },
-              "default": "'horizontal'",
-              "description": "Scrolling axis.",
-              "fieldName": "orientation"
-            },
-            {
-              "name": "loop",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether navigation wraps between the first and last slides.",
-              "fieldName": "loop"
-            },
-            {
-              "name": "label",
-              "type": {
-                "text": "string"
-              },
-              "default": "'Carousel'",
-              "description": "Accessible name for the carousel region.",
-              "fieldName": "label"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-carousel",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "Provides the scrollable carousel viewport.",
-          "name": "CarouselContent",
+          "description": "A responsive Chart.js visualization styled with the shadcn chart palette.\n\nSet `data` and `options` as JavaScript properties because they contain\nstructured Chart.js configuration objects.",
+          "name": "Chart",
           "cssProperties": [
             {
-              "description": "Space between slides.",
-              "name": "--carousel-gap"
+              "description": "Height of the chart container.",
+              "name": "--chart-height"
             },
             {
-              "description": "Viewport height in vertical orientation.",
-              "name": "--carousel-height"
+              "description": "First fallback dataset color.",
+              "name": "--chart-1"
             },
             {
-              "description": "Width or height of each slide.",
-              "name": "--carousel-item-size"
+              "description": "Second fallback dataset color.",
+              "name": "--chart-2"
+            },
+            {
+              "description": "Third fallback dataset color.",
+              "name": "--chart-3"
+            },
+            {
+              "description": "Fourth fallback dataset color.",
+              "name": "--chart-4"
+            },
+            {
+              "description": "Fifth fallback dataset color.",
+              "name": "--chart-5"
             }
           ],
           "cssParts": [
             {
-              "description": "Scrollable viewport.",
-              "name": "viewport"
+              "description": "The element that controls the chart dimensions.",
+              "name": "container"
             },
             {
-              "description": "Slide track.",
-              "name": "content"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Carousel item elements.",
-              "name": ""
+              "description": "The canvas rendered by Chart.js.",
+              "name": "canvas"
             }
           ],
           "members": [
             {
               "kind": "field",
-              "name": "orientation",
+              "name": "type",
               "type": {
-                "text": "CarouselOrientation"
+                "text": "ChartType"
               },
-              "default": "'horizontal'",
-              "description": "Scrolling axis, synchronized by the parent carousel.",
-              "attribute": "orientation",
+              "default": "'bar'",
+              "description": "Chart.js chart type. Changing the type recreates the chart instance.",
+              "attribute": "type",
               "reflects": true
             },
             {
               "kind": "field",
-              "name": "loop",
+              "name": "data",
               "type": {
-                "text": "boolean"
+                "text": "ChartData"
               },
-              "default": "false",
-              "description": "Whether parent navigation wraps, synchronized by the parent carousel.",
-              "attribute": "loop"
+              "default": "{ datasets: [] }",
+              "description": "Chart.js data configuration. Set this value as a JavaScript property."
             },
             {
               "kind": "field",
-              "name": "_viewport",
+              "name": "options",
               "type": {
-                "text": "HTMLDivElement"
+                "text": "ChartOptions"
+              },
+              "default": "{}",
+              "description": "Chart.js options. Responsive sizing is enabled by default."
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "'Chart'",
+              "description": "Accessible name for the canvas visualization.",
+              "attribute": "aria-label"
+            },
+            {
+              "kind": "field",
+              "name": "emptyMessage",
+              "type": {
+                "text": "string"
+              },
+              "default": "'No chart data available'",
+              "description": "Message displayed when no datasets have been supplied.",
+              "attribute": "empty-message"
+            },
+            {
+              "kind": "field",
+              "name": "canvas",
+              "type": {
+                "text": "HTMLCanvasElement | undefined"
               },
               "privacy": "private"
             },
             {
               "kind": "field",
-              "name": "_index",
+              "name": "chartInstance",
               "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "_scrollFrame",
-              "type": {
-                "text": "number"
-              },
-              "privacy": "private",
-              "default": "0"
-            },
-            {
-              "kind": "field",
-              "name": "_resizeObserver",
-              "type": {
-                "text": "ResizeObserver | undefined"
+                "text": "ChartJS | undefined"
               },
               "privacy": "private"
             },
             {
               "kind": "field",
-              "name": "itemCount",
+              "name": "chart",
+              "type": {
+                "text": "ChartJS | undefined"
+              },
+              "description": "The underlying Chart.js instance, available after the first render.",
               "readonly": true
             },
             {
               "kind": "method",
-              "name": "scrollToSlide",
-              "parameters": [
-                {
-                  "name": "index",
-                  "type": {
-                    "text": "number"
-                  }
-                },
-                {
-                  "name": "behavior",
-                  "default": "'smooth'",
-                  "type": {
-                    "text": "ScrollBehavior"
-                  }
+              "name": "createChart",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
                 }
-              ],
-              "description": "Scroll to a slide by its zero-based index."
+              }
             },
             {
               "kind": "method",
-              "name": "_items",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_handleSlotChange",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_handleScroll",
-              "privacy": "private"
+              "name": "updateChart",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
             },
             {
               "kind": "method",
-              "name": "_syncItems",
-              "privacy": "private"
-            }
-          ],
-          "events": [
+              "name": "getOptions",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "ChartOptions"
+                }
+              }
+            },
             {
-              "name": "carousel-select",
-              "type": {
-                "text": "CustomEvent"
+              "kind": "method",
+              "name": "getThemedData",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "ChartData"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "destroyChart",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
               }
             }
           ],
           "attributes": [
             {
-              "name": "orientation",
+              "name": "type",
               "type": {
-                "text": "CarouselOrientation"
+                "text": "ChartType"
               },
-              "default": "'horizontal'",
-              "description": "Scrolling axis, synchronized by the parent carousel.",
-              "fieldName": "orientation"
+              "default": "'bar'",
+              "description": "Chart.js chart type. Changing the type recreates the chart instance.",
+              "fieldName": "type"
             },
             {
-              "name": "loop",
+              "name": "aria-label",
               "type": {
-                "text": "boolean"
+                "text": "string"
               },
-              "default": "false",
-              "description": "Whether parent navigation wraps, synchronized by the parent carousel.",
-              "fieldName": "loop"
+              "default": "'Chart'",
+              "description": "Accessible name for the canvas visualization.",
+              "fieldName": "label"
+            },
+            {
+              "name": "empty-message",
+              "type": {
+                "text": "string"
+              },
+              "default": "'No chart data available'",
+              "description": "Message displayed when no datasets have been supplied.",
+              "fieldName": "emptyMessage"
             }
           ],
           "superclass": {
             "name": "LitElement",
             "package": "lit"
           },
-          "tagName": "shadcn-carousel-content",
+          "tagName": "shadcn-chart",
           "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "A slide within carousel content.",
-          "name": "CarouselItem",
-          "cssParts": [
-            {
-              "description": "Slide container.",
-              "name": "item"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Slide content.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "position",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "One-based slide position, synchronized by carousel content.",
-              "attribute": "position"
-            },
-            {
-              "kind": "field",
-              "name": "count",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Total number of slides, synchronized by carousel content.",
-              "attribute": "count"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "position",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "One-based slide position, synchronized by carousel content.",
-              "fieldName": "position"
-            },
-            {
-              "name": "count",
-              "type": {
-                "text": "number"
-              },
-              "default": "1",
-              "description": "Total number of slides, synchronized by carousel content.",
-              "fieldName": "count"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-carousel-item",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "Moves the carousel to the previous slide.",
-          "name": "CarouselPrevious",
-          "cssProperties": [
-            {
-              "description": "Distance from the carousel edge.",
-              "name": "--carousel-control-offset"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Native navigation button.",
-              "name": "button"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "direction",
-              "type": {
-                "text": "'previous' | 'next'"
-              },
-              "privacy": "protected",
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "disabled",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "CarouselOrientation"
-              },
-              "default": "'horizontal'",
-              "attribute": "orientation",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "_activate",
-              "privacy": "private",
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "CarouselControl",
-            "module": "src/components/carousel/carousel.ts"
-          },
-          "tagName": "shadcn-carousel-previous",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "disabled",
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            },
-            {
-              "name": "orientation",
-              "type": {
-                "text": "CarouselOrientation"
-              },
-              "default": "'horizontal'",
-              "fieldName": "orientation",
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            }
-          ]
-        },
-        {
-          "kind": "class",
-          "description": "Moves the carousel to the next slide.",
-          "name": "CarouselNext",
-          "cssProperties": [
-            {
-              "description": "Distance from the carousel edge.",
-              "name": "--carousel-control-offset"
-            }
-          ],
-          "cssParts": [
-            {
-              "description": "Native navigation button.",
-              "name": "button"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "direction",
-              "type": {
-                "text": "'previous' | 'next'"
-              },
-              "privacy": "protected",
-              "readonly": true,
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "disabled",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "CarouselOrientation"
-              },
-              "default": "'horizontal'",
-              "attribute": "orientation",
-              "reflects": true,
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "_activate",
-              "privacy": "private",
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            }
-          ],
-          "superclass": {
-            "name": "CarouselControl",
-            "module": "src/components/carousel/carousel.ts"
-          },
-          "tagName": "shadcn-carousel-next",
-          "customElement": true,
-          "attributes": [
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "disabled",
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            },
-            {
-              "name": "orientation",
-              "type": {
-                "text": "CarouselOrientation"
-              },
-              "default": "'horizontal'",
-              "fieldName": "orientation",
-              "inheritedFrom": {
-                "name": "CarouselControl",
-                "module": "src/components/carousel/carousel.ts"
-              }
-            }
-          ]
         }
       ],
       "exports": [
         {
           "kind": "js",
-          "name": "Carousel",
+          "name": "ChartData",
           "declaration": {
-            "name": "Carousel",
-            "module": "src/components/carousel/carousel.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-carousel",
-          "declaration": {
-            "name": "Carousel",
-            "module": "src/components/carousel/carousel.ts"
+            "name": "ChartData",
+            "package": "chart.js"
           }
         },
         {
           "kind": "js",
-          "name": "CarouselContent",
+          "name": "ChartOptions",
           "declaration": {
-            "name": "CarouselContent",
-            "module": "src/components/carousel/carousel.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-carousel-content",
-          "declaration": {
-            "name": "CarouselContent",
-            "module": "src/components/carousel/carousel.ts"
+            "name": "ChartOptions",
+            "package": "chart.js"
           }
         },
         {
           "kind": "js",
-          "name": "CarouselItem",
+          "name": "ChartType",
           "declaration": {
-            "name": "CarouselItem",
-            "module": "src/components/carousel/carousel.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-carousel-item",
-          "declaration": {
-            "name": "CarouselItem",
-            "module": "src/components/carousel/carousel.ts"
+            "name": "ChartType",
+            "package": "chart.js"
           }
         },
         {
           "kind": "js",
-          "name": "CarouselPrevious",
+          "name": "Chart",
           "declaration": {
-            "name": "CarouselPrevious",
-            "module": "src/components/carousel/carousel.ts"
+            "name": "Chart",
+            "module": "src/components/chart/chart.ts"
           }
         },
         {
           "kind": "custom-element-definition",
-          "name": "shadcn-carousel-previous",
+          "name": "shadcn-chart",
           "declaration": {
-            "name": "CarouselPrevious",
-            "module": "src/components/carousel/carousel.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "CarouselNext",
-          "declaration": {
-            "name": "CarouselNext",
-            "module": "src/components/carousel/carousel.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-carousel-next",
-          "declaration": {
-            "name": "CarouselNext",
-            "module": "src/components/carousel/carousel.ts"
+            "name": "Chart",
+            "module": "src/components/chart/chart.ts"
           }
         }
       ]
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/carousel/index.ts",
+      "path": "src/components/chart/index.ts",
       "declarations": [],
       "exports": [
         {
           "kind": "js",
-          "name": "Carousel",
+          "name": "Chart",
           "declaration": {
-            "name": "Carousel",
-            "module": "./carousel.js"
+            "name": "Chart",
+            "module": "./chart.js"
           }
         },
         {
           "kind": "js",
-          "name": "CarouselContent",
+          "name": "ChartData",
           "declaration": {
-            "name": "CarouselContent",
-            "module": "./carousel.js"
+            "name": "ChartData",
+            "module": "./chart.js"
           }
         },
         {
           "kind": "js",
-          "name": "CarouselItem",
+          "name": "ChartOptions",
           "declaration": {
-            "name": "CarouselItem",
-            "module": "./carousel.js"
+            "name": "ChartOptions",
+            "module": "./chart.js"
           }
         },
         {
           "kind": "js",
-          "name": "CarouselPrevious",
+          "name": "ChartType",
           "declaration": {
-            "name": "CarouselPrevious",
-            "module": "./carousel.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "CarouselNext",
-          "declaration": {
-            "name": "CarouselNext",
-            "module": "./carousel.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "CarouselOrientation",
-          "declaration": {
-            "name": "CarouselOrientation",
-            "module": "./carousel.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "CarouselChangeDetail",
-          "declaration": {
-            "name": "CarouselChangeDetail",
-            "module": "./carousel.js"
+            "name": "ChartType",
+            "module": "./chart.js"
           }
         }
       ]
@@ -6041,6 +5535,681 @@
           "declaration": {
             "name": "ContextMenuCheckboxItem",
             "module": "./context-menu.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dialog/dialog.ts",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "dialogContext",
+          "description": "The dialog context key.\nUsed to provide and consume dialog state across the component tree."
+        },
+        {
+          "kind": "class",
+          "description": "The root dialog component that manages the dialog's open state.\nActs as a context provider for child components.",
+          "name": "Dialog",
+          "members": [
+            {
+              "kind": "field",
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the dialog is open.\nThis property is reflected to the attribute.",
+              "attribute": "open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "contextProvider",
+              "type": {
+                "text": "ContextProviderController<DialogContextValue>"
+              },
+              "privacy": "private",
+              "default": "new ContextProviderController( this, dialogContext, { open: this.open, setOpen: (open: boolean) => this.setDialogOpen(open), } )"
+            },
+            {
+              "kind": "field",
+              "name": "escapeKeyHandler",
+              "type": {
+                "text": "((event: KeyboardEvent) => void) | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "previouslyFocusedElement",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "setDialogOpen",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "open",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "handleEscapeKey",
+              "privacy": "private",
+              "description": "Handles the Escape key press to close the dialog."
+            }
+          ],
+          "events": [
+            {
+              "name": "open",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "close",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the dialog is open.\nThis property is reflected to the attribute.",
+              "fieldName": "open"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-dialog",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "The dialog trigger component that opens the dialog when clicked.\nWraps its slotted content and adds click handling to open the dialog.",
+          "name": "DialogTrigger",
+          "members": [
+            {
+              "kind": "field",
+              "name": "contextConsumer",
+              "type": {
+                "text": "ContextConsumerController<DialogContextValue>"
+              },
+              "privacy": "private",
+              "default": "new ContextConsumerController(this, dialogContext)"
+            },
+            {
+              "kind": "field",
+              "name": "handleClick",
+              "privacy": "private"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-dialog-trigger",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "The dialog title component.\nA shell component that renders its slotted content.\nFuture implementations may handle accessibility attributes and ARIA labeling.",
+          "name": "DialogTitle",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-dialog-title",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "The dialog portal component.\nA shell component that renders its slotted content.\nFuture implementations may handle portal rendering to a different DOM location.",
+          "name": "DialogPortal",
+          "members": [
+            {
+              "kind": "field",
+              "name": "contextConsumer",
+              "type": {
+                "text": "ContextConsumerController<DialogContextValue>"
+              },
+              "privacy": "private",
+              "default": "new ContextConsumerController(this, dialogContext)"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-dialog-portal",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "The dialog overlay component.\nA shell component that renders its slotted content.\nFuture implementations may handle overlay styling and click-to-close behavior.",
+          "name": "DialogOverlay",
+          "members": [
+            {
+              "kind": "field",
+              "name": "contextConsumer",
+              "type": {
+                "text": "ContextConsumerController<DialogContextValue>"
+              },
+              "privacy": "private",
+              "default": "new ContextConsumerController(this, dialogContext)"
+            },
+            {
+              "kind": "field",
+              "name": "_stateSync",
+              "type": {
+                "text": "StateSyncController<DialogContextValue>"
+              },
+              "privacy": "private",
+              "default": "new StateSyncController(this, () => this.contextConsumer.value)"
+            },
+            {
+              "kind": "field",
+              "name": "handleOverlayClick",
+              "privacy": "private"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-dialog-overlay",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "The dialog description component.\nA shell component that renders its slotted content.\nUsed for providing additional context about the dialog's purpose.\nAutomatically linked to the dialog via aria-describedby.",
+          "name": "DialogDescription",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-dialog-description",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "The dialog content component that conditionally renders its slotted content\nbased on the dialog's open state.",
+          "name": "DialogContent",
+          "members": [
+            {
+              "kind": "field",
+              "name": "contextConsumer",
+              "type": {
+                "text": "ContextConsumerController<DialogContextValue>"
+              },
+              "privacy": "private",
+              "default": "new ContextConsumerController(this, dialogContext)"
+            },
+            {
+              "kind": "field",
+              "name": "_stateSync",
+              "type": {
+                "text": "StateSyncController<DialogContextValue>"
+              },
+              "privacy": "private",
+              "default": "new StateSyncController(this, () => this.contextConsumer.value)"
+            },
+            {
+              "kind": "field",
+              "name": "focusTrap",
+              "type": {
+                "text": "FocusTrapController"
+              },
+              "privacy": "private",
+              "default": "new FocusTrapController(this)"
+            },
+            {
+              "kind": "field",
+              "name": "dialogContainer",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "originalBodyOverflow",
+              "type": {
+                "text": "string | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "backdropElement",
+              "type": {
+                "text": "HTMLElement | null"
+              },
+              "privacy": "private",
+              "default": "null"
+            },
+            {
+              "kind": "method",
+              "name": "ensureElementId",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "parameters": [
+                {
+                  "name": "element",
+                  "type": {
+                    "text": "HTMLElement"
+                  }
+                },
+                {
+                  "name": "prefix",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Generates a unique ID for an element if it doesn't already have one."
+            },
+            {
+              "kind": "method",
+              "name": "linkAriaAttributes",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Links the dialog title and description to the dialog container via ARIA attributes."
+            },
+            {
+              "kind": "method",
+              "name": "lockBodyScroll",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Locks body scroll when dialog is open"
+            },
+            {
+              "kind": "method",
+              "name": "unlockBodyScroll",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "description": "Unlocks body scroll when dialog is closed"
+            },
+            {
+              "kind": "field",
+              "name": "handleBackdropClick",
+              "privacy": "private",
+              "description": "Handles backdrop click to close dialog"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-dialog-content",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "The dialog close component that closes the dialog when clicked.\nWraps its slotted content and adds click handling to close the dialog.",
+          "name": "DialogClose",
+          "members": [
+            {
+              "kind": "field",
+              "name": "contextConsumer",
+              "type": {
+                "text": "ContextConsumerController<DialogContextValue>"
+              },
+              "privacy": "private",
+              "default": "new ContextConsumerController(this, dialogContext)"
+            },
+            {
+              "kind": "field",
+              "name": "handleClick",
+              "privacy": "private"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-dialog-close",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "The dialog header component.\nUsed to group the dialog title and description together.",
+          "name": "DialogHeader",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-dialog-header",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "The dialog footer component.\nUsed to group action buttons at the bottom of the dialog.",
+          "name": "DialogFooter",
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-dialog-footer",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "dialogContext",
+          "declaration": {
+            "name": "dialogContext",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Dialog",
+          "declaration": {
+            "name": "Dialog",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-dialog",
+          "declaration": {
+            "name": "Dialog",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogTrigger",
+          "declaration": {
+            "name": "DialogTrigger",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-dialog-trigger",
+          "declaration": {
+            "name": "DialogTrigger",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogTitle",
+          "declaration": {
+            "name": "DialogTitle",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-dialog-title",
+          "declaration": {
+            "name": "DialogTitle",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogPortal",
+          "declaration": {
+            "name": "DialogPortal",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-dialog-portal",
+          "declaration": {
+            "name": "DialogPortal",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogOverlay",
+          "declaration": {
+            "name": "DialogOverlay",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-dialog-overlay",
+          "declaration": {
+            "name": "DialogOverlay",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogDescription",
+          "declaration": {
+            "name": "DialogDescription",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-dialog-description",
+          "declaration": {
+            "name": "DialogDescription",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogContent",
+          "declaration": {
+            "name": "DialogContent",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-dialog-content",
+          "declaration": {
+            "name": "DialogContent",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogClose",
+          "declaration": {
+            "name": "DialogClose",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-dialog-close",
+          "declaration": {
+            "name": "DialogClose",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogHeader",
+          "declaration": {
+            "name": "DialogHeader",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-dialog-header",
+          "declaration": {
+            "name": "DialogHeader",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogFooter",
+          "declaration": {
+            "name": "DialogFooter",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-dialog-footer",
+          "declaration": {
+            "name": "DialogFooter",
+            "module": "src/components/dialog/dialog.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/dialog/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Dialog",
+          "declaration": {
+            "name": "Dialog",
+            "module": "./dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "dialogContext",
+          "declaration": {
+            "name": "dialogContext",
+            "module": "./dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogContextValue",
+          "declaration": {
+            "name": "DialogContextValue",
+            "module": "./dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogContent",
+          "declaration": {
+            "name": "DialogContent",
+            "module": "./dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogTrigger",
+          "declaration": {
+            "name": "DialogTrigger",
+            "module": "./dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogClose",
+          "declaration": {
+            "name": "DialogClose",
+            "module": "./dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogPortal",
+          "declaration": {
+            "name": "DialogPortal",
+            "module": "./dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogOverlay",
+          "declaration": {
+            "name": "DialogOverlay",
+            "module": "./dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogTitle",
+          "declaration": {
+            "name": "DialogTitle",
+            "module": "./dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogDescription",
+          "declaration": {
+            "name": "DialogDescription",
+            "module": "./dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogHeader",
+          "declaration": {
+            "name": "DialogHeader",
+            "module": "./dialog.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DialogFooter",
+          "declaration": {
+            "name": "DialogFooter",
+            "module": "./dialog.js"
           }
         }
       ]
@@ -6981,681 +7150,6 @@
           "declaration": {
             "name": "DropdownMenuCheckboxItem",
             "module": "./dropdown-menu.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/dialog/dialog.ts",
-      "declarations": [
-        {
-          "kind": "variable",
-          "name": "dialogContext",
-          "description": "The dialog context key.\nUsed to provide and consume dialog state across the component tree."
-        },
-        {
-          "kind": "class",
-          "description": "The root dialog component that manages the dialog's open state.\nActs as a context provider for child components.",
-          "name": "Dialog",
-          "members": [
-            {
-              "kind": "field",
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the dialog is open.\nThis property is reflected to the attribute.",
-              "attribute": "open",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "contextProvider",
-              "type": {
-                "text": "ContextProviderController<DialogContextValue>"
-              },
-              "privacy": "private",
-              "default": "new ContextProviderController( this, dialogContext, { open: this.open, setOpen: (open: boolean) => this.setDialogOpen(open), } )"
-            },
-            {
-              "kind": "field",
-              "name": "escapeKeyHandler",
-              "type": {
-                "text": "((event: KeyboardEvent) => void) | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "previouslyFocusedElement",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "method",
-              "name": "setDialogOpen",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "open",
-                  "type": {
-                    "text": "boolean"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "field",
-              "name": "handleEscapeKey",
-              "privacy": "private",
-              "description": "Handles the Escape key press to close the dialog."
-            }
-          ],
-          "events": [
-            {
-              "name": "open",
-              "type": {
-                "text": "CustomEvent"
-              }
-            },
-            {
-              "name": "close",
-              "type": {
-                "text": "CustomEvent"
-              }
-            }
-          ],
-          "attributes": [
-            {
-              "name": "open",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the dialog is open.\nThis property is reflected to the attribute.",
-              "fieldName": "open"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-dialog",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "The dialog trigger component that opens the dialog when clicked.\nWraps its slotted content and adds click handling to open the dialog.",
-          "name": "DialogTrigger",
-          "members": [
-            {
-              "kind": "field",
-              "name": "contextConsumer",
-              "type": {
-                "text": "ContextConsumerController<DialogContextValue>"
-              },
-              "privacy": "private",
-              "default": "new ContextConsumerController(this, dialogContext)"
-            },
-            {
-              "kind": "field",
-              "name": "handleClick",
-              "privacy": "private"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-dialog-trigger",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "The dialog title component.\nA shell component that renders its slotted content.\nFuture implementations may handle accessibility attributes and ARIA labeling.",
-          "name": "DialogTitle",
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-dialog-title",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "The dialog portal component.\nA shell component that renders its slotted content.\nFuture implementations may handle portal rendering to a different DOM location.",
-          "name": "DialogPortal",
-          "members": [
-            {
-              "kind": "field",
-              "name": "contextConsumer",
-              "type": {
-                "text": "ContextConsumerController<DialogContextValue>"
-              },
-              "privacy": "private",
-              "default": "new ContextConsumerController(this, dialogContext)"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-dialog-portal",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "The dialog overlay component.\nA shell component that renders its slotted content.\nFuture implementations may handle overlay styling and click-to-close behavior.",
-          "name": "DialogOverlay",
-          "members": [
-            {
-              "kind": "field",
-              "name": "contextConsumer",
-              "type": {
-                "text": "ContextConsumerController<DialogContextValue>"
-              },
-              "privacy": "private",
-              "default": "new ContextConsumerController(this, dialogContext)"
-            },
-            {
-              "kind": "field",
-              "name": "_stateSync",
-              "type": {
-                "text": "StateSyncController<DialogContextValue>"
-              },
-              "privacy": "private",
-              "default": "new StateSyncController(this, () => this.contextConsumer.value)"
-            },
-            {
-              "kind": "field",
-              "name": "handleOverlayClick",
-              "privacy": "private"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-dialog-overlay",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "The dialog description component.\nA shell component that renders its slotted content.\nUsed for providing additional context about the dialog's purpose.\nAutomatically linked to the dialog via aria-describedby.",
-          "name": "DialogDescription",
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-dialog-description",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "The dialog content component that conditionally renders its slotted content\nbased on the dialog's open state.",
-          "name": "DialogContent",
-          "members": [
-            {
-              "kind": "field",
-              "name": "contextConsumer",
-              "type": {
-                "text": "ContextConsumerController<DialogContextValue>"
-              },
-              "privacy": "private",
-              "default": "new ContextConsumerController(this, dialogContext)"
-            },
-            {
-              "kind": "field",
-              "name": "_stateSync",
-              "type": {
-                "text": "StateSyncController<DialogContextValue>"
-              },
-              "privacy": "private",
-              "default": "new StateSyncController(this, () => this.contextConsumer.value)"
-            },
-            {
-              "kind": "field",
-              "name": "focusTrap",
-              "type": {
-                "text": "FocusTrapController"
-              },
-              "privacy": "private",
-              "default": "new FocusTrapController(this)"
-            },
-            {
-              "kind": "field",
-              "name": "dialogContainer",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "originalBodyOverflow",
-              "type": {
-                "text": "string | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "field",
-              "name": "backdropElement",
-              "type": {
-                "text": "HTMLElement | null"
-              },
-              "privacy": "private",
-              "default": "null"
-            },
-            {
-              "kind": "method",
-              "name": "ensureElementId",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              },
-              "parameters": [
-                {
-                  "name": "element",
-                  "type": {
-                    "text": "HTMLElement"
-                  }
-                },
-                {
-                  "name": "prefix",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ],
-              "description": "Generates a unique ID for an element if it doesn't already have one."
-            },
-            {
-              "kind": "method",
-              "name": "linkAriaAttributes",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Links the dialog title and description to the dialog container via ARIA attributes."
-            },
-            {
-              "kind": "method",
-              "name": "lockBodyScroll",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Locks body scroll when dialog is open"
-            },
-            {
-              "kind": "method",
-              "name": "unlockBodyScroll",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "void"
-                }
-              },
-              "description": "Unlocks body scroll when dialog is closed"
-            },
-            {
-              "kind": "field",
-              "name": "handleBackdropClick",
-              "privacy": "private",
-              "description": "Handles backdrop click to close dialog"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-dialog-content",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "The dialog close component that closes the dialog when clicked.\nWraps its slotted content and adds click handling to close the dialog.",
-          "name": "DialogClose",
-          "members": [
-            {
-              "kind": "field",
-              "name": "contextConsumer",
-              "type": {
-                "text": "ContextConsumerController<DialogContextValue>"
-              },
-              "privacy": "private",
-              "default": "new ContextConsumerController(this, dialogContext)"
-            },
-            {
-              "kind": "field",
-              "name": "handleClick",
-              "privacy": "private"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-dialog-close",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "The dialog header component.\nUsed to group the dialog title and description together.",
-          "name": "DialogHeader",
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-dialog-header",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "The dialog footer component.\nUsed to group action buttons at the bottom of the dialog.",
-          "name": "DialogFooter",
-          "members": [],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-dialog-footer",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "dialogContext",
-          "declaration": {
-            "name": "dialogContext",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "Dialog",
-          "declaration": {
-            "name": "Dialog",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-dialog",
-          "declaration": {
-            "name": "Dialog",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogTrigger",
-          "declaration": {
-            "name": "DialogTrigger",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-dialog-trigger",
-          "declaration": {
-            "name": "DialogTrigger",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogTitle",
-          "declaration": {
-            "name": "DialogTitle",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-dialog-title",
-          "declaration": {
-            "name": "DialogTitle",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogPortal",
-          "declaration": {
-            "name": "DialogPortal",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-dialog-portal",
-          "declaration": {
-            "name": "DialogPortal",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogOverlay",
-          "declaration": {
-            "name": "DialogOverlay",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-dialog-overlay",
-          "declaration": {
-            "name": "DialogOverlay",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogDescription",
-          "declaration": {
-            "name": "DialogDescription",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-dialog-description",
-          "declaration": {
-            "name": "DialogDescription",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogContent",
-          "declaration": {
-            "name": "DialogContent",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-dialog-content",
-          "declaration": {
-            "name": "DialogContent",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogClose",
-          "declaration": {
-            "name": "DialogClose",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-dialog-close",
-          "declaration": {
-            "name": "DialogClose",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogHeader",
-          "declaration": {
-            "name": "DialogHeader",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-dialog-header",
-          "declaration": {
-            "name": "DialogHeader",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogFooter",
-          "declaration": {
-            "name": "DialogFooter",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-dialog-footer",
-          "declaration": {
-            "name": "DialogFooter",
-            "module": "src/components/dialog/dialog.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/dialog/index.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Dialog",
-          "declaration": {
-            "name": "Dialog",
-            "module": "./dialog.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "dialogContext",
-          "declaration": {
-            "name": "dialogContext",
-            "module": "./dialog.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogContextValue",
-          "declaration": {
-            "name": "DialogContextValue",
-            "module": "./dialog.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogContent",
-          "declaration": {
-            "name": "DialogContent",
-            "module": "./dialog.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogTrigger",
-          "declaration": {
-            "name": "DialogTrigger",
-            "module": "./dialog.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogClose",
-          "declaration": {
-            "name": "DialogClose",
-            "module": "./dialog.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogPortal",
-          "declaration": {
-            "name": "DialogPortal",
-            "module": "./dialog.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogOverlay",
-          "declaration": {
-            "name": "DialogOverlay",
-            "module": "./dialog.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogTitle",
-          "declaration": {
-            "name": "DialogTitle",
-            "module": "./dialog.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogDescription",
-          "declaration": {
-            "name": "DialogDescription",
-            "module": "./dialog.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogHeader",
-          "declaration": {
-            "name": "DialogHeader",
-            "module": "./dialog.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "DialogFooter",
-          "declaration": {
-            "name": "DialogFooter",
-            "module": "./dialog.js"
           }
         }
       ]
@@ -9415,144 +8909,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/item/index.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Item",
-          "declaration": {
-            "name": "Item",
-            "module": "./item.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/item/item.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A generic list item component for use in menus, selects, and command palettes.",
-          "name": "Item",
-          "cssProperties": [
-            {
-              "description": "Background color override",
-              "name": "--item-bg"
-            },
-            {
-              "description": "Text color override",
-              "name": "--item-color"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Item content",
-              "name": ""
-            },
-            {
-              "description": "Optional icon slot (start)",
-              "name": "icon"
-            },
-            {
-              "description": "Optional suffix content (end)",
-              "name": "suffix"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the item is disabled",
-              "attribute": "disabled"
-            },
-            {
-              "kind": "field",
-              "name": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the item is selected",
-              "attribute": "selected"
-            },
-            {
-              "kind": "method",
-              "name": "_handleClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "MouseEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "item-click",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the item is clicked"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the item is disabled",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "selected",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the item is selected",
-              "fieldName": "selected"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-item",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Item",
-          "declaration": {
-            "name": "Item",
-            "module": "src/components/item/item.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-item",
-          "declaration": {
-            "name": "Item",
-            "module": "src/components/item/item.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/input-group/index.ts",
       "declarations": [],
       "exports": [
@@ -9960,6 +9316,144 @@
           "declaration": {
             "name": "InputOTP",
             "module": "src/components/input-otp/input-otp.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/item/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Item",
+          "declaration": {
+            "name": "Item",
+            "module": "./item.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/item/item.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A generic list item component for use in menus, selects, and command palettes.",
+          "name": "Item",
+          "cssProperties": [
+            {
+              "description": "Background color override",
+              "name": "--item-bg"
+            },
+            {
+              "description": "Text color override",
+              "name": "--item-color"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Item content",
+              "name": ""
+            },
+            {
+              "description": "Optional icon slot (start)",
+              "name": "icon"
+            },
+            {
+              "description": "Optional suffix content (end)",
+              "name": "suffix"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the item is disabled",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the item is selected",
+              "attribute": "selected"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "item-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the item is clicked"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the item is disabled",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "selected",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the item is selected",
+              "fieldName": "selected"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-item",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Item",
+          "declaration": {
+            "name": "Item",
+            "module": "src/components/item/item.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-item",
+          "declaration": {
+            "name": "Item",
+            "module": "src/components/item/item.ts"
           }
         }
       ]
@@ -10835,6 +10329,203 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/native-select/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NativeSelect",
+          "declaration": {
+            "name": "NativeSelect",
+            "module": "./native-select.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/native-select/native-select.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A styled native select element.",
+          "name": "NativeSelect",
+          "cssProperties": [
+            {
+              "description": "Background color override",
+              "name": "--select-bg"
+            },
+            {
+              "description": "Text color override",
+              "name": "--select-color"
+            },
+            {
+              "description": "Border color override",
+              "name": "--select-border"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Option elements",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "selectElement",
+              "type": {
+                "text": "HTMLSelectElement"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Select value",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the select is disabled",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the select is required",
+              "attribute": "required"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Name attribute",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "_slot",
+              "type": {
+                "text": "HTMLSlotElement"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_updateOptions",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_handleChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "Focus the select"
+            }
+          ],
+          "events": [
+            {
+              "name": "select-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the selection changes"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Select value",
+              "fieldName": "value"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the select is disabled",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the select is required",
+              "fieldName": "required"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Name attribute",
+              "fieldName": "name"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-native-select",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "NativeSelect",
+          "declaration": {
+            "name": "NativeSelect",
+            "module": "src/components/native-select/native-select.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-native-select",
+          "declaration": {
+            "name": "NativeSelect",
+            "module": "src/components/native-select/native-select.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/navigation-menu/index.ts",
       "declarations": [],
       "exports": [
@@ -11204,203 +10895,6 @@
           "declaration": {
             "name": "NavigationMenuLink",
             "module": "src/components/navigation-menu/navigation-menu.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/native-select/index.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NativeSelect",
-          "declaration": {
-            "name": "NativeSelect",
-            "module": "./native-select.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/native-select/native-select.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A styled native select element.",
-          "name": "NativeSelect",
-          "cssProperties": [
-            {
-              "description": "Background color override",
-              "name": "--select-bg"
-            },
-            {
-              "description": "Text color override",
-              "name": "--select-color"
-            },
-            {
-              "description": "Border color override",
-              "name": "--select-border"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Option elements",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "selectElement",
-              "type": {
-                "text": "HTMLSelectElement"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Select value",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the select is disabled",
-              "attribute": "disabled"
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the select is required",
-              "attribute": "required"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Name attribute",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "_slot",
-              "type": {
-                "text": "HTMLSlotElement"
-              },
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_updateOptions",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_handleChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "focus",
-              "description": "Focus the select"
-            }
-          ],
-          "events": [
-            {
-              "name": "select-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the selection changes"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Select value",
-              "fieldName": "value"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the select is disabled",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the select is required",
-              "fieldName": "required"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Name attribute",
-              "fieldName": "name"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-native-select",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "NativeSelect",
-          "declaration": {
-            "name": "NativeSelect",
-            "module": "src/components/native-select/native-select.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-native-select",
-          "declaration": {
-            "name": "NativeSelect",
-            "module": "src/components/native-select/native-select.ts"
           }
         }
       ]
@@ -11889,6 +11383,481 @@
           "declaration": {
             "name": "Progress",
             "module": "src/components/progress/progress.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/radio-group/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Radio",
+          "declaration": {
+            "name": "Radio",
+            "module": "./radio-group.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "RadioGroup",
+          "declaration": {
+            "name": "RadioGroup",
+            "module": "./radio-group.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/radio-group/radio-group.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A radio button component for use within a radio group.",
+          "name": "Radio",
+          "slots": [
+            {
+              "description": "Radio label content",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the radio is checked",
+              "attribute": "checked"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the radio is disabled",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the radio is required",
+              "attribute": "required"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Name attribute (should match other radios in group)",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Value attribute",
+              "attribute": "value"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeyDown",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_select",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "Focus the radio"
+            }
+          ],
+          "events": [
+            {
+              "name": "radio-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when this radio is selected"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "checked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the radio is checked",
+              "fieldName": "checked"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the radio is disabled",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the radio is required",
+              "fieldName": "required"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Name attribute (should match other radios in group)",
+              "fieldName": "name"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Value attribute",
+              "fieldName": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-radio",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "A radio group component for managing a set of radio buttons.",
+          "name": "RadioGroup",
+          "slots": [
+            {
+              "description": "Radio buttons",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current selected value",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Name for all radios in this group",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "'vertical' | 'horizontal'"
+              },
+              "default": "'vertical'",
+              "description": "Orientation of the radio group",
+              "attribute": "orientation"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the radio group is disabled",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether selection is required",
+              "attribute": "required"
+            },
+            {
+              "kind": "method",
+              "name": "_handleRadioChange",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_updateRadios",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_getRadios",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "Radio[]"
+                }
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "radio-group-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the selected radio changes"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Current selected value",
+              "fieldName": "value"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Name for all radios in this group",
+              "fieldName": "name"
+            },
+            {
+              "name": "orientation",
+              "type": {
+                "text": "'vertical' | 'horizontal'"
+              },
+              "default": "'vertical'",
+              "description": "Orientation of the radio group",
+              "fieldName": "orientation"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the radio group is disabled",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "required",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether selection is required",
+              "fieldName": "required"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-radio-group",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Radio",
+          "declaration": {
+            "name": "Radio",
+            "module": "src/components/radio-group/radio-group.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-radio",
+          "declaration": {
+            "name": "Radio",
+            "module": "src/components/radio-group/radio-group.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "RadioGroup",
+          "declaration": {
+            "name": "RadioGroup",
+            "module": "src/components/radio-group/radio-group.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-radio-group",
+          "declaration": {
+            "name": "RadioGroup",
+            "module": "src/components/radio-group/radio-group.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/separator/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Separator",
+          "declaration": {
+            "name": "Separator",
+            "module": "./separator.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/separator/separator.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A separator component for visually dividing content.",
+          "name": "Separator",
+          "cssProperties": [
+            {
+              "description": "Separator color override",
+              "name": "--separator-color"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "'horizontal' | 'vertical'"
+              },
+              "default": "'horizontal'",
+              "description": "Orientation of the separator",
+              "attribute": "orientation"
+            },
+            {
+              "kind": "field",
+              "name": "decorative",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the separator is decorative (no semantic meaning)",
+              "attribute": "decorative"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "orientation",
+              "type": {
+                "text": "'horizontal' | 'vertical'"
+              },
+              "default": "'horizontal'",
+              "description": "Orientation of the separator",
+              "fieldName": "orientation"
+            },
+            {
+              "name": "decorative",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the separator is decorative (no semantic meaning)",
+              "fieldName": "decorative"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-separator",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Separator",
+          "declaration": {
+            "name": "Separator",
+            "module": "src/components/separator/separator.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-separator",
+          "declaration": {
+            "name": "Separator",
+            "module": "src/components/separator/separator.ts"
           }
         }
       ]
@@ -12523,383 +12492,6 @@
           "declaration": {
             "name": "SelectItem",
             "module": "src/components/select/select.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/radio-group/index.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Radio",
-          "declaration": {
-            "name": "Radio",
-            "module": "./radio-group.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "RadioGroup",
-          "declaration": {
-            "name": "RadioGroup",
-            "module": "./radio-group.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/radio-group/radio-group.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A radio button component for use within a radio group.",
-          "name": "Radio",
-          "slots": [
-            {
-              "description": "Radio label content",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the radio is checked",
-              "attribute": "checked"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the radio is disabled",
-              "attribute": "disabled"
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the radio is required",
-              "attribute": "required"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Name attribute (should match other radios in group)",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Value attribute",
-              "attribute": "value"
-            },
-            {
-              "kind": "method",
-              "name": "_handleClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "MouseEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_handleKeyDown",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_select",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "focus",
-              "description": "Focus the radio"
-            }
-          ],
-          "events": [
-            {
-              "name": "radio-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when this radio is selected"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "checked",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the radio is checked",
-              "fieldName": "checked"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the radio is disabled",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the radio is required",
-              "fieldName": "required"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Name attribute (should match other radios in group)",
-              "fieldName": "name"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Value attribute",
-              "fieldName": "value"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-radio",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "A radio group component for managing a set of radio buttons.",
-          "name": "RadioGroup",
-          "slots": [
-            {
-              "description": "Radio buttons",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Current selected value",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Name for all radios in this group",
-              "attribute": "name"
-            },
-            {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "'vertical' | 'horizontal'"
-              },
-              "default": "'vertical'",
-              "description": "Orientation of the radio group",
-              "attribute": "orientation"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the radio group is disabled",
-              "attribute": "disabled"
-            },
-            {
-              "kind": "field",
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether selection is required",
-              "attribute": "required"
-            },
-            {
-              "kind": "method",
-              "name": "_handleRadioChange",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "Event"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_updateRadios",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_getRadios",
-              "privacy": "private",
-              "return": {
-                "type": {
-                  "text": "Radio[]"
-                }
-              }
-            }
-          ],
-          "events": [
-            {
-              "name": "radio-group-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the selected radio changes"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Current selected value",
-              "fieldName": "value"
-            },
-            {
-              "name": "name",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Name for all radios in this group",
-              "fieldName": "name"
-            },
-            {
-              "name": "orientation",
-              "type": {
-                "text": "'vertical' | 'horizontal'"
-              },
-              "default": "'vertical'",
-              "description": "Orientation of the radio group",
-              "fieldName": "orientation"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the radio group is disabled",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "required",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether selection is required",
-              "fieldName": "required"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-radio-group",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Radio",
-          "declaration": {
-            "name": "Radio",
-            "module": "src/components/radio-group/radio-group.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-radio",
-          "declaration": {
-            "name": "Radio",
-            "module": "src/components/radio-group/radio-group.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "RadioGroup",
-          "declaration": {
-            "name": "RadioGroup",
-            "module": "src/components/radio-group/radio-group.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-radio-group",
-          "declaration": {
-            "name": "RadioGroup",
-            "module": "src/components/radio-group/radio-group.ts"
           }
         }
       ]
@@ -13677,104 +13269,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/separator/index.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Separator",
-          "declaration": {
-            "name": "Separator",
-            "module": "./separator.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/separator/separator.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A separator component for visually dividing content.",
-          "name": "Separator",
-          "cssProperties": [
-            {
-              "description": "Separator color override",
-              "name": "--separator-color"
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "'horizontal' | 'vertical'"
-              },
-              "default": "'horizontal'",
-              "description": "Orientation of the separator",
-              "attribute": "orientation"
-            },
-            {
-              "kind": "field",
-              "name": "decorative",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the separator is decorative (no semantic meaning)",
-              "attribute": "decorative"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "orientation",
-              "type": {
-                "text": "'horizontal' | 'vertical'"
-              },
-              "default": "'horizontal'",
-              "description": "Orientation of the separator",
-              "fieldName": "orientation"
-            },
-            {
-              "name": "decorative",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the separator is decorative (no semantic meaning)",
-              "fieldName": "decorative"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-separator",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Separator",
-          "declaration": {
-            "name": "Separator",
-            "module": "src/components/separator/separator.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-separator",
-          "declaration": {
-            "name": "Separator",
-            "module": "src/components/separator/separator.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "src/components/skeleton/index.ts",
       "declarations": [],
       "exports": [
@@ -14236,446 +13730,6 @@
           "declaration": {
             "name": "Spinner",
             "module": "src/components/spinner/spinner.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tabs/index.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Tabs",
-          "declaration": {
-            "name": "Tabs",
-            "module": "./tabs.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "TabsList",
-          "declaration": {
-            "name": "TabsList",
-            "module": "./tabs.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "TabsTrigger",
-          "declaration": {
-            "name": "TabsTrigger",
-            "module": "./tabs.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "TabsContent",
-          "declaration": {
-            "name": "TabsContent",
-            "module": "./tabs.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "TabsOrientation",
-          "declaration": {
-            "name": "TabsOrientation",
-            "module": "./tabs.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "TabsActivationMode",
-          "declaration": {
-            "name": "TabsActivationMode",
-            "module": "./tabs.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/tabs/tabs.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "Coordinates an accessible tablist and its tab panels.",
-          "name": "Tabs",
-          "slots": [
-            {
-              "description": "Tab list and content elements.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Selected tab value.",
-              "attribute": "value",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "TabsOrientation"
-              },
-              "default": "'horizontal'",
-              "description": "Tablist orientation.",
-              "attribute": "orientation",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "activationMode",
-              "type": {
-                "text": "TabsActivationMode"
-              },
-              "default": "'automatic'",
-              "description": "Whether focus automatically activates a tab.",
-              "attribute": "activation-mode"
-            },
-            {
-              "kind": "method",
-              "name": "_triggers",
-              "privacy": "private"
-            },
-            {
-              "kind": "method",
-              "name": "_ensureValue",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_handleSelect",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_handleNavigate",
-              "privacy": "private"
-            },
-            {
-              "kind": "field",
-              "name": "_sync",
-              "privacy": "private"
-            }
-          ],
-          "events": [
-            {
-              "description": "Fired when the selected tab changes.",
-              "name": "tabs-change"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Selected tab value.",
-              "fieldName": "value"
-            },
-            {
-              "name": "orientation",
-              "type": {
-                "text": "TabsOrientation"
-              },
-              "default": "'horizontal'",
-              "description": "Tablist orientation.",
-              "fieldName": "orientation"
-            },
-            {
-              "name": "activation-mode",
-              "type": {
-                "text": "TabsActivationMode"
-              },
-              "default": "'automatic'",
-              "description": "Whether focus automatically activates a tab.",
-              "fieldName": "activationMode"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-tabs",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TabsList",
-          "members": [
-            {
-              "kind": "field",
-              "name": "orientation",
-              "type": {
-                "text": "TabsOrientation"
-              },
-              "default": "'horizontal'",
-              "attribute": "orientation"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "orientation",
-              "type": {
-                "text": "TabsOrientation"
-              },
-              "default": "'horizontal'",
-              "fieldName": "orientation"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-tabs-list",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "Selects a tab panel.",
-          "name": "TabsTrigger",
-          "cssParts": [
-            {
-              "description": "Native tab button.",
-              "name": "trigger"
-            }
-          ],
-          "slots": [
-            {
-              "description": "Trigger label.",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "disabled"
-            },
-            {
-              "kind": "field",
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "active"
-            },
-            {
-              "kind": "field",
-              "name": "select"
-            },
-            {
-              "kind": "method",
-              "name": "focus",
-              "parameters": [
-                {
-                  "name": "options",
-                  "optional": true,
-                  "type": {
-                    "text": "FocusOptions"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "_keydown",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "event",
-                  "type": {
-                    "text": "KeyboardEvent"
-                  }
-                }
-              ]
-            }
-          ],
-          "events": [
-            {
-              "name": "tab-navigate",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Requests keyboard focus navigation."
-            },
-            {
-              "description": "Requests tab selection.",
-              "name": "tab-select"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "active"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-tabs-trigger",
-          "customElement": true
-        },
-        {
-          "kind": "class",
-          "description": "",
-          "name": "TabsContent",
-          "members": [
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "attribute": "value"
-            },
-            {
-              "kind": "field",
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "active"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "fieldName": "value"
-            },
-            {
-              "name": "active",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "active"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-tabs-content",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Tabs",
-          "declaration": {
-            "name": "Tabs",
-            "module": "src/components/tabs/tabs.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-tabs",
-          "declaration": {
-            "name": "Tabs",
-            "module": "src/components/tabs/tabs.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "TabsList",
-          "declaration": {
-            "name": "TabsList",
-            "module": "src/components/tabs/tabs.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-tabs-list",
-          "declaration": {
-            "name": "TabsList",
-            "module": "src/components/tabs/tabs.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "TabsTrigger",
-          "declaration": {
-            "name": "TabsTrigger",
-            "module": "src/components/tabs/tabs.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-tabs-trigger",
-          "declaration": {
-            "name": "TabsTrigger",
-            "module": "src/components/tabs/tabs.ts"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "TabsContent",
-          "declaration": {
-            "name": "TabsContent",
-            "module": "src/components/tabs/tabs.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-tabs-content",
-          "declaration": {
-            "name": "TabsContent",
-            "module": "src/components/tabs/tabs.ts"
           }
         }
       ]
@@ -15185,6 +14239,446 @@
     },
     {
       "kind": "javascript-module",
+      "path": "src/components/tabs/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Tabs",
+          "declaration": {
+            "name": "Tabs",
+            "module": "./tabs.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TabsList",
+          "declaration": {
+            "name": "TabsList",
+            "module": "./tabs.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TabsTrigger",
+          "declaration": {
+            "name": "TabsTrigger",
+            "module": "./tabs.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TabsContent",
+          "declaration": {
+            "name": "TabsContent",
+            "module": "./tabs.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TabsOrientation",
+          "declaration": {
+            "name": "TabsOrientation",
+            "module": "./tabs.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TabsActivationMode",
+          "declaration": {
+            "name": "TabsActivationMode",
+            "module": "./tabs.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/tabs/tabs.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Coordinates an accessible tablist and its tab panels.",
+          "name": "Tabs",
+          "slots": [
+            {
+              "description": "Tab list and content elements.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Selected tab value.",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "TabsOrientation"
+              },
+              "default": "'horizontal'",
+              "description": "Tablist orientation.",
+              "attribute": "orientation",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "activationMode",
+              "type": {
+                "text": "TabsActivationMode"
+              },
+              "default": "'automatic'",
+              "description": "Whether focus automatically activates a tab.",
+              "attribute": "activation-mode"
+            },
+            {
+              "kind": "method",
+              "name": "_triggers",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "_ensureValue",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleSelect",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_handleNavigate",
+              "privacy": "private"
+            },
+            {
+              "kind": "field",
+              "name": "_sync",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "description": "Fired when the selected tab changes.",
+              "name": "tabs-change"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Selected tab value.",
+              "fieldName": "value"
+            },
+            {
+              "name": "orientation",
+              "type": {
+                "text": "TabsOrientation"
+              },
+              "default": "'horizontal'",
+              "description": "Tablist orientation.",
+              "fieldName": "orientation"
+            },
+            {
+              "name": "activation-mode",
+              "type": {
+                "text": "TabsActivationMode"
+              },
+              "default": "'automatic'",
+              "description": "Whether focus automatically activates a tab.",
+              "fieldName": "activationMode"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-tabs",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TabsList",
+          "members": [
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "TabsOrientation"
+              },
+              "default": "'horizontal'",
+              "attribute": "orientation"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "orientation",
+              "type": {
+                "text": "TabsOrientation"
+              },
+              "default": "'horizontal'",
+              "fieldName": "orientation"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-tabs-list",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "Selects a tab panel.",
+          "name": "TabsTrigger",
+          "cssParts": [
+            {
+              "description": "Native tab button.",
+              "name": "trigger"
+            }
+          ],
+          "slots": [
+            {
+              "description": "Trigger label.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "active"
+            },
+            {
+              "kind": "field",
+              "name": "select"
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "parameters": [
+                {
+                  "name": "options",
+                  "optional": true,
+                  "type": {
+                    "text": "FocusOptions"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_keydown",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "KeyboardEvent"
+                  }
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "tab-navigate",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Requests keyboard focus navigation."
+            },
+            {
+              "description": "Requests tab selection.",
+              "name": "tab-select"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "active"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-tabs-trigger",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "TabsContent",
+          "members": [
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "active"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "fieldName": "value"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "active"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-tabs-content",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Tabs",
+          "declaration": {
+            "name": "Tabs",
+            "module": "src/components/tabs/tabs.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-tabs",
+          "declaration": {
+            "name": "Tabs",
+            "module": "src/components/tabs/tabs.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TabsList",
+          "declaration": {
+            "name": "TabsList",
+            "module": "src/components/tabs/tabs.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-tabs-list",
+          "declaration": {
+            "name": "TabsList",
+            "module": "src/components/tabs/tabs.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TabsTrigger",
+          "declaration": {
+            "name": "TabsTrigger",
+            "module": "src/components/tabs/tabs.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-tabs-trigger",
+          "declaration": {
+            "name": "TabsTrigger",
+            "module": "src/components/tabs/tabs.ts"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TabsContent",
+          "declaration": {
+            "name": "TabsContent",
+            "module": "src/components/tabs/tabs.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-tabs-content",
+          "declaration": {
+            "name": "TabsContent",
+            "module": "src/components/tabs/tabs.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "src/components/textarea/index.ts",
       "declarations": [],
       "exports": [
@@ -15529,150 +15023,6 @@
           "declaration": {
             "name": "Textarea",
             "module": "src/components/textarea/textarea.ts"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/toggle/index.ts",
-      "declarations": [],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Toggle",
-          "declaration": {
-            "name": "Toggle",
-            "module": "./toggle.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "src/components/toggle/toggle.ts",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "A two-state toggle button component.",
-          "name": "Toggle",
-          "slots": [
-            {
-              "description": "Toggle content",
-              "name": ""
-            }
-          ],
-          "members": [
-            {
-              "kind": "field",
-              "name": "pressed",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the toggle is pressed",
-              "attribute": "pressed"
-            },
-            {
-              "kind": "field",
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the toggle is disabled",
-              "attribute": "disabled"
-            },
-            {
-              "kind": "field",
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Value attribute",
-              "attribute": "value"
-            },
-            {
-              "kind": "method",
-              "name": "_handleClick",
-              "privacy": "private",
-              "parameters": [
-                {
-                  "name": "e",
-                  "type": {
-                    "text": "MouseEvent"
-                  }
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "focus",
-              "description": "Focus the toggle"
-            }
-          ],
-          "events": [
-            {
-              "name": "toggle-change",
-              "type": {
-                "text": "CustomEvent"
-              },
-              "description": "Fired when the toggle state changes"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "pressed",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the toggle is pressed",
-              "fieldName": "pressed"
-            },
-            {
-              "name": "disabled",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "description": "Whether the toggle is disabled",
-              "fieldName": "disabled"
-            },
-            {
-              "name": "value",
-              "type": {
-                "text": "string"
-              },
-              "default": "''",
-              "description": "Value attribute",
-              "fieldName": "value"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "tagName": "shadcn-toggle",
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "Toggle",
-          "declaration": {
-            "name": "Toggle",
-            "module": "src/components/toggle/toggle.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "shadcn-toggle",
-          "declaration": {
-            "name": "Toggle",
-            "module": "src/components/toggle/toggle.ts"
           }
         }
       ]
@@ -16240,6 +15590,150 @@
           "declaration": {
             "name": "Typography",
             "module": "src/components/typography/typography.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/toggle/index.ts",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Toggle",
+          "declaration": {
+            "name": "Toggle",
+            "module": "./toggle.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/toggle/toggle.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "A two-state toggle button component.",
+          "name": "Toggle",
+          "slots": [
+            {
+              "description": "Toggle content",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "pressed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the toggle is pressed",
+              "attribute": "pressed"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the toggle is disabled",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Value attribute",
+              "attribute": "value"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "privacy": "private",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "MouseEvent"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "Focus the toggle"
+            }
+          ],
+          "events": [
+            {
+              "name": "toggle-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when the toggle state changes"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "pressed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the toggle is pressed",
+              "fieldName": "pressed"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "description": "Whether the toggle is disabled",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "''",
+              "description": "Value attribute",
+              "fieldName": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "shadcn-toggle",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Toggle",
+          "declaration": {
+            "name": "Toggle",
+            "module": "src/components/toggle/toggle.ts"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "shadcn-toggle",
+          "declaration": {
+            "name": "Toggle",
+            "module": "src/components/toggle/toggle.ts"
           }
         }
       ]
