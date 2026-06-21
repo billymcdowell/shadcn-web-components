@@ -41,7 +41,12 @@
     .ratio-art { display: grid; height: 100%; place-items: center; border-radius: var(--radius-md); background: var(--muted); }
     .sidebar-shell { display: flex; min-height: 260px; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius-lg); }
     shadcn-sidebar { min-height: 260px; }
-    shadcn-card, shadcn-input-group, shadcn-select, shadcn-slider { width: 100%; }
+    shadcn-card, shadcn-input-group, shadcn-select, shadcn-slider, shadcn-combobox, shadcn-date-picker, shadcn-command { width: 100%; }
+    shadcn-chart { --chart-height: 16rem; }
+    shadcn-carousel { width: 100%; max-width: 20rem; }
+    .carousel-slide { display: flex; aspect-ratio: 1; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--muted); font-size: 1.5rem; font-weight: 600; }
+    .resizable-panel { display: flex; height: 100%; align-items: center; justify-content: center; padding: 1rem; }
+    shadcn-resizable-panel-group { height: 200px; border: 1px solid var(--border); border-radius: var(--radius-lg); }
     shadcn-navigation-menu-content { z-index: 20; }
     shadcn-popover-content {
       z-index: 50;
@@ -53,7 +58,8 @@
       box-shadow: var(--shadow-md);
     }
     shadcn-select:not([open]) > shadcn-select-content,
-    shadcn-popover:not([open]) > shadcn-popover-content { display: none; }
+    shadcn-popover:not([open]) > shadcn-popover-content,
+    shadcn-combobox:not([open]) > shadcn-combobox-content { display: none; }
     shadcn-alert-dialog-content:not(:defined),
     shadcn-collapsible-content:not(:defined),
     shadcn-context-menu-content:not(:defined),
@@ -87,6 +93,7 @@
       <section class="demo"><h3>Avatar</h3><div class="row"><shadcn-avatar><shadcn-avatar-image src="https://github.com/shadcn.png" alt="shadcn avatar"></shadcn-avatar-image><shadcn-avatar-fallback>SC</shadcn-avatar-fallback></shadcn-avatar><shadcn-avatar><shadcn-avatar-fallback>WM</shadcn-avatar-fallback></shadcn-avatar></div></section>
       <section class="demo"><h3>Badge</h3><div class="row"><shadcn-badge>Default</shadcn-badge><shadcn-badge variant="secondary">Secondary</shadcn-badge><shadcn-badge variant="destructive">Destructive</shadcn-badge><shadcn-badge variant="outline">Outline</shadcn-badge></div></section>
       <section class="demo"><h3>Empty</h3><shadcn-empty heading="No projects" description="Create your first project to get started."><shadcn-button slot="action">Create project</shadcn-button></shadcn-empty></section>
+      <section class="demo stack"><h3>Sonner</h3><div class="row"><button type="button" id="toast-default">Default toast</button><button type="button" id="toast-success">Success</button><button type="button" id="toast-error">Error</button></div><p class="muted">Click a button to show a notification.</p></section>
       <section class="demo"><h3>Progress</h3><shadcn-progress value="64" aria-label="64 percent complete"></shadcn-progress></section>
       <section class="demo"><h3>Skeleton</h3><div class="stack"><shadcn-skeleton style="height: 1rem; width: 65%"></shadcn-skeleton><shadcn-skeleton style="height: 5rem"></shadcn-skeleton></div></section>
       <section class="demo"><h3>Spinner</h3><div class="row"><shadcn-spinner size="sm" aria-label="Loading"></shadcn-spinner><shadcn-spinner aria-label="Loading"></shadcn-spinner><shadcn-spinner size="lg" aria-label="Loading"></shadcn-spinner></div></section>
@@ -95,9 +102,12 @@
 
     <h2>Actions and forms</h2>
     <div class="grid">
-      <section class="demo"><h3>Button</h3><div class="row"><shadcn-button>Default</shadcn-button><shadcn-button variant="secondary">Secondary</shadcn-button><shadcn-button variant="outline">Outline</shadcn-button><shadcn-button variant="destructive">Delete</shadcn-button></div></section>
+      <section class="demo"><h3>Button</h3><div class="row"><shadcn-button>Default</shadcn-button><shadcn-button variant="secondary">Secondary</shadcn-button><shadcn-button variant="outline">Outline</shadcn-button><shadcn-button variant="ghost">Ghost</shadcn-button><shadcn-button variant="link">Link</shadcn-button><shadcn-button variant="destructive">Delete</shadcn-button><shadcn-button disabled>Disabled</shadcn-button></div></section>
       <section class="demo"><h3>Button Group</h3><shadcn-button-group><shadcn-button variant="outline">Left</shadcn-button><shadcn-button variant="outline">Center</shadcn-button><shadcn-button variant="outline">Right</shadcn-button></shadcn-button-group></section>
-      <section class="demo"><h3>Checkbox</h3><div class="row"><shadcn-checkbox id="terms" checked></shadcn-checkbox><shadcn-label for="terms">Accept the terms</shadcn-label></div></section>
+      <section class="demo stack"><h3>Combobox</h3><shadcn-combobox placeholder="Select a framework"><shadcn-combobox-input></shadcn-combobox-input><shadcn-combobox-content><shadcn-combobox-empty>No framework found.</shadcn-combobox-empty><shadcn-combobox-item value="next.js" keywords="react">Next.js</shadcn-combobox-item><shadcn-combobox-item value="sveltekit">SvelteKit</shadcn-combobox-item><shadcn-combobox-item value="nuxt.js" keywords="vue">Nuxt.js</shadcn-combobox-item><shadcn-combobox-item value="remix" disabled>Remix (unavailable)</shadcn-combobox-item><shadcn-combobox-item value="astro">Astro</shadcn-combobox-item></shadcn-combobox-content></shadcn-combobox><shadcn-combobox value="sveltekit" readonly><shadcn-combobox-input></shadcn-combobox-input><shadcn-combobox-content><shadcn-combobox-item value="next.js">Next.js</shadcn-combobox-item><shadcn-combobox-item value="sveltekit">SvelteKit</shadcn-combobox-item><shadcn-combobox-item value="astro">Astro</shadcn-combobox-item></shadcn-combobox-content></shadcn-combobox></section>
+      <section class="demo"><h3>Command</h3><shadcn-command style="border: 1px solid var(--border); box-shadow: var(--shadow-md);"><shadcn-command-input></shadcn-command-input><shadcn-command-list><shadcn-command-empty>No results found.</shadcn-command-empty><shadcn-command-group heading="Suggestions"><shadcn-command-item value="calendar">Calendar</shadcn-command-item><shadcn-command-item value="search emoji" keywords="smile face">Search Emoji</shadcn-command-item><shadcn-command-item value="calculator">Calculator</shadcn-command-item></shadcn-command-group><shadcn-command-separator></shadcn-command-separator><shadcn-command-group heading="Settings"><shadcn-command-item value="profile">Profile <shadcn-command-shortcut>⌘P</shadcn-command-shortcut></shadcn-command-item><shadcn-command-item value="billing">Billing <shadcn-command-shortcut>⌘B</shadcn-command-shortcut></shadcn-command-item><shadcn-command-item value="settings" disabled>Settings</shadcn-command-item></shadcn-command-group></shadcn-command-list></shadcn-command></section>
+      <section class="demo stack"><h3>Date Picker</h3><shadcn-date-picker placeholder="Pick a date"></shadcn-date-picker><shadcn-date-picker value="2026-06-21"></shadcn-date-picker><shadcn-date-picker value="2026-06-21" disabled></shadcn-date-picker></section>
+      <section class="demo"><h3>Checkbox</h3><div class="row"><shadcn-checkbox id="terms" checked></shadcn-checkbox><shadcn-label for="terms">Accept the terms</shadcn-label><shadcn-checkbox disabled></shadcn-checkbox><shadcn-label>Disabled</shadcn-label></div></section>
       <section class="demo stack"><h3>Field, Label and Input</h3><shadcn-field><shadcn-label for="email">Email</shadcn-label><shadcn-input id="email" type="email" placeholder="you@example.com"></shadcn-input></shadcn-field></section>
       <section class="demo"><h3>Input Group</h3><shadcn-input-group><span slot="prefix">https://</span><shadcn-input placeholder="example.com"></shadcn-input><span slot="suffix">.com</span></shadcn-input-group></section>
       <section class="demo"><h3>Input OTP</h3><shadcn-input-otp length="6" mode="numeric" value="123"></shadcn-input-otp></section>
@@ -113,10 +123,15 @@
 
     <h2>Layout and data</h2>
     <div class="grid">
+      <section class="demo stack"><h3>Calendar</h3><shadcn-calendar month="2026-06" show-outside-days></shadcn-calendar><shadcn-calendar value="2026-06-21" month="2026-06" show-outside-days></shadcn-calendar></section>
+      <section class="demo"><h3>Carousel</h3><shadcn-carousel label="Featured items"><shadcn-carousel-content><shadcn-carousel-item><div class="carousel-slide">1</div></shadcn-carousel-item><shadcn-carousel-item><div class="carousel-slide">2</div></shadcn-carousel-item><shadcn-carousel-item><div class="carousel-slide">3</div></shadcn-carousel-item><shadcn-carousel-item><div class="carousel-slide">4</div></shadcn-carousel-item><shadcn-carousel-item><div class="carousel-slide">5</div></shadcn-carousel-item></shadcn-carousel-content><shadcn-carousel-previous></shadcn-carousel-previous><shadcn-carousel-next></shadcn-carousel-next></shadcn-carousel></section>
+      <section class="demo wide"><h3>Chart</h3><shadcn-chart id="gallery-chart" aria-label="Monthly visitors by device"></shadcn-chart></section>
       <section class="demo"><h3>Card</h3><shadcn-card><shadcn-card-header><shadcn-card-title>Deploy project</shadcn-card-title><shadcn-card-description>Ship the production build.</shadcn-card-description></shadcn-card-header><shadcn-card-content><p class="muted">The package is pinned to an exact npm version.</p></shadcn-card-content><shadcn-card-footer><shadcn-button>Deploy</shadcn-button></shadcn-card-footer></shadcn-card></section>
       <section class="demo"><h3>Collapsible</h3><shadcn-collapsible><shadcn-collapsible-trigger><shadcn-button variant="outline">Toggle details</shadcn-button></shadcn-collapsible-trigger><shadcn-collapsible-content><p>This content can be expanded and collapsed.</p></shadcn-collapsible-content></shadcn-collapsible></section>
       <section class="demo"><h3>Item and Kbd</h3><div class="stack"><shadcn-item selected>Command palette <shadcn-kbd slot="suffix">Cmd</shadcn-kbd><shadcn-kbd slot="suffix">K</shadcn-kbd></shadcn-item><shadcn-item disabled>Unavailable item</shadcn-item></div></section>
       <section class="demo"><h3>Separator</h3><p>Above</p><shadcn-separator></shadcn-separator><p>Below</p></section>
+      <section class="demo wide"><h3>Data Table</h3><shadcn-data-table id="gallery-data-table"></shadcn-data-table></section>
+      <section class="demo wide"><h3>Resizable</h3><shadcn-resizable-panel-group><shadcn-resizable-panel default-size="30" min-size="20"><div class="resizable-panel">Sidebar</div></shadcn-resizable-panel><shadcn-resizable-handle with-handle></shadcn-resizable-handle><shadcn-resizable-panel default-size="70" min-size="30"><div class="resizable-panel">Content</div></shadcn-resizable-panel></shadcn-resizable-panel-group></section>
       <section class="demo wide"><h3>Table</h3><shadcn-table><shadcn-table-caption>Recent invoices</shadcn-table-caption><shadcn-table-header><shadcn-table-row><shadcn-table-head>Invoice</shadcn-table-head><shadcn-table-head>Status</shadcn-table-head><shadcn-table-head>Amount</shadcn-table-head></shadcn-table-row></shadcn-table-header><shadcn-table-body><shadcn-table-row><shadcn-table-cell>INV001</shadcn-table-cell><shadcn-table-cell>Paid</shadcn-table-cell><shadcn-table-cell>$250.00</shadcn-table-cell></shadcn-table-row><shadcn-table-row><shadcn-table-cell>INV002</shadcn-table-cell><shadcn-table-cell>Pending</shadcn-table-cell><shadcn-table-cell>$150.00</shadcn-table-cell></shadcn-table-row></shadcn-table-body><shadcn-table-footer><shadcn-table-row><shadcn-table-cell>Total</shadcn-table-cell><shadcn-table-cell></shadcn-table-cell><shadcn-table-cell>$400.00</shadcn-table-cell></shadcn-table-row></shadcn-table-footer></shadcn-table></section>
       <section class="demo wide"><h3>Tabs</h3><shadcn-tabs value="account"><shadcn-tabs-list><shadcn-tabs-trigger value="account">Account</shadcn-tabs-trigger><shadcn-tabs-trigger value="password">Password</shadcn-tabs-trigger></shadcn-tabs-list><shadcn-tabs-content value="account"><p>Manage your account details.</p></shadcn-tabs-content><shadcn-tabs-content value="password"><p>Update your password.</p></shadcn-tabs-content></shadcn-tabs></section>
       <section class="demo wide"><h3>Sidebar</h3><div class="sidebar-shell"><shadcn-sidebar><div class="stack" style="padding: 1rem"><strong>Workspace</strong><shadcn-separator></shadcn-separator><shadcn-button variant="ghost">Dashboard</shadcn-button><shadcn-button variant="ghost">Settings</shadcn-button></div></shadcn-sidebar><div style="padding: 1.5rem"><strong>Main content</strong><p class="muted">A flexible shell beside the sidebar.</p></div></div></section>
@@ -124,6 +139,7 @@
 
     <h2>Navigation</h2>
     <div class="grid">
+      <section class="demo wide"><h3>Pagination</h3><shadcn-pagination><shadcn-pagination-content><shadcn-pagination-item><shadcn-pagination-previous href="?page=1"></shadcn-pagination-previous></shadcn-pagination-item><shadcn-pagination-item><shadcn-pagination-link href="?page=1">1</shadcn-pagination-link></shadcn-pagination-item><shadcn-pagination-item><shadcn-pagination-link href="?page=2" current>2</shadcn-pagination-link></shadcn-pagination-item><shadcn-pagination-item><shadcn-pagination-link href="?page=3">3</shadcn-pagination-link></shadcn-pagination-item><shadcn-pagination-item><shadcn-pagination-ellipsis></shadcn-pagination-ellipsis></shadcn-pagination-item><shadcn-pagination-item><shadcn-pagination-next href="?page=3"></shadcn-pagination-next></shadcn-pagination-item></shadcn-pagination-content></shadcn-pagination></section>
       <section class="demo wide"><h3>Breadcrumb</h3><shadcn-breadcrumb><shadcn-breadcrumb-item><shadcn-breadcrumb-link href="#">Home</shadcn-breadcrumb-link></shadcn-breadcrumb-item><shadcn-breadcrumb-separator></shadcn-breadcrumb-separator><shadcn-breadcrumb-item><shadcn-breadcrumb-ellipsis></shadcn-breadcrumb-ellipsis></shadcn-breadcrumb-item><shadcn-breadcrumb-separator></shadcn-breadcrumb-separator><shadcn-breadcrumb-item><shadcn-breadcrumb-page>Components</shadcn-breadcrumb-page></shadcn-breadcrumb-item></shadcn-breadcrumb></section>
       <section class="demo wide"><h3>Menubar</h3><shadcn-menubar><shadcn-menubar-menu><shadcn-menubar-trigger>File</shadcn-menubar-trigger><shadcn-menubar-content><shadcn-menubar-label>Actions</shadcn-menubar-label><shadcn-menubar-item>New tab</shadcn-menubar-item><shadcn-menubar-separator></shadcn-menubar-separator><shadcn-menubar-checkbox-item checked>Autosave</shadcn-menubar-checkbox-item></shadcn-menubar-content></shadcn-menubar-menu><shadcn-menubar-menu><shadcn-menubar-trigger>Edit</shadcn-menubar-trigger><shadcn-menubar-content><shadcn-menubar-item>Undo</shadcn-menubar-item><shadcn-menubar-item>Redo</shadcn-menubar-item></shadcn-menubar-content></shadcn-menubar-menu></shadcn-menubar></section>
       <section class="demo wide"><h3>Navigation Menu</h3><shadcn-navigation-menu><shadcn-navigation-menu-list><shadcn-navigation-menu-item><shadcn-navigation-menu-trigger>Getting started</shadcn-navigation-menu-trigger><shadcn-navigation-menu-content><div class="menu-panel"><shadcn-navigation-menu-link href="#installation"><strong>Installation</strong><br><span class="muted">Add the package to your project.</span></shadcn-navigation-menu-link><shadcn-navigation-menu-link href="#components"><strong>Components</strong><br><span class="muted">Browse the complete library.</span></shadcn-navigation-menu-link></div></shadcn-navigation-menu-content></shadcn-navigation-menu-item><shadcn-navigation-menu-item><shadcn-navigation-menu-link href="#docs">Documentation</shadcn-navigation-menu-link></shadcn-navigation-menu-item></shadcn-navigation-menu-list></shadcn-navigation-menu></section>
@@ -142,6 +158,7 @@
       <section class="demo"><h3>Tooltip</h3><shadcn-tooltip><shadcn-tooltip-trigger><shadcn-button size="icon" aria-label="Add item">+</shadcn-button></shadcn-tooltip-trigger><shadcn-tooltip-content>Add item</shadcn-tooltip-content></shadcn-tooltip></section>
     </div>
   </main>
+  <shadcn-sonner rich-colors close-button></shadcn-sonner>
   <footer id="source-footer">Loaded directly from the hosted npm release through jsDelivr.</footer>
   <script type="module">
     const status = document.querySelector('#load-status');
@@ -157,7 +174,61 @@
     }
 
     try {
-      await import(/* @vite-ignore */ moduleUrl);
+      const library = await import(/* @vite-ignore */ moduleUrl);
+      const { toast } = library;
+
+      const chart = document.querySelector('#gallery-chart');
+      if (chart) {
+        chart.data = {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          datasets: [
+            { label: 'Desktop', data: [186, 305, 237, 73, 209, 214], borderRadius: 6 },
+            { label: 'Mobile', data: [80, 200, 120, 190, 130, 140], borderRadius: 6 },
+          ],
+        };
+        chart.options = {
+          plugins: { legend: { position: 'bottom' } },
+          scales: { y: { beginAtZero: true } },
+        };
+      }
+
+      const dataTable = document.querySelector('#gallery-data-table');
+      if (dataTable) {
+        dataTable.columns = [
+          { accessorKey: 'status', header: 'Status', sortable: true, hideable: true },
+          { accessorKey: 'email', header: 'Email', sortable: true, filterable: true, hideable: false },
+          {
+            accessorKey: 'amount',
+            header: 'Amount',
+            sortable: true,
+            hideable: true,
+            align: 'right',
+            cell: (value) => `$${Number(value).toFixed(2)}`,
+          },
+        ];
+        dataTable.data = [
+          { id: 'm5gr84i9', status: 'success', email: 'ken99@example.com', amount: 316 },
+          { id: '3u1reuv4', status: 'success', email: 'abe45@example.com', amount: 242 },
+          { id: 'derv1ws0', status: 'processing', email: 'monserrat44@example.com', amount: 837 },
+          { id: '5kma53ae', status: 'success', email: 'silas22@example.com', amount: 874 },
+          { id: 'bhqecj4p', status: 'failed', email: 'carmella@example.com', amount: 721 },
+          { id: '2h13fe8r', status: 'processing', email: 'marc@example.com', amount: 428 },
+        ];
+        dataTable.pageSize = 5;
+        dataTable.selectable = true;
+        dataTable.filterPlaceholder = 'Filter emails...';
+      }
+
+      document.querySelector('#toast-default')?.addEventListener('click', () => {
+        toast('Event has been created', { description: 'Sunday, December 3 at 9:00 AM' });
+      });
+      document.querySelector('#toast-success')?.addEventListener('click', () => {
+        toast.success('Changes saved');
+      });
+      document.querySelector('#toast-error')?.addEventListener('click', () => {
+        toast.error('Something went wrong');
+      });
+
       await customElements.whenDefined('shadcn-tooltip-content');
       status.hidden = true;
     } catch (error) {

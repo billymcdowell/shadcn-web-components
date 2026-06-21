@@ -9,7 +9,7 @@ const meta = {
         layout: 'fullscreen',
         docs: {
             description: {
-                component: 'The complete component gallery, loaded from the published npm package.',
+                component: 'The complete component gallery, loaded from examples/example.html. Every integrated component is shown with its relevant variants and states.',
             },
         },
     },

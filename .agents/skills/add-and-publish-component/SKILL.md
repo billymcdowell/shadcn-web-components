@@ -40,7 +40,17 @@ Follow every gate in order. Keep a checklist in the working response and record 
 - Exercise keyboard and focus behavior manually in Storybook for interactive components.
 - Run the Storybook accessibility panel on representative stories and resolve serious or critical violations. Do not treat the panel as a replacement for keyboard testing.
 
-## 4. Register Every Public Entry Point
+## 4. Update the Production Gallery
+
+- Add the component to `examples/example.html` with representative markup for every variant, size, and state that materially changes behavior.
+- Place the demo in the same category used elsewhere in the gallery (`Content and feedback`, `Actions and forms`, `Layout and data`, `Navigation`, or `Menus and overlays`).
+- Include compound markup for multi-element components. Mirror the structure used in the component's Storybook stories.
+- When a component requires JavaScript property configuration (for example `shadcn-chart` data/options or `shadcn-data-table` columns/data), wire it in the gallery script after the library import.
+- For imperative APIs such as `toast`, add trigger controls plus the required host element (for example `<shadcn-sonner>`).
+- The `Examples/Production Gallery` Storybook story embeds `examples/example.html` in an iframe, so updating the HTML file keeps both gallery entry points aligned.
+- After adding or changing gallery content, open the standalone gallery locally and confirm the new component renders with its relevant states.
+
+## 5. Register Every Public Entry Point
 
 - Add the component's values and types to `src/components/index.ts`.
 - Rely on `src/index.ts` to re-export the component barrel; change it only if the repository structure requires it.
@@ -56,7 +66,7 @@ Follow every gate in order. Keep a checklist in the working response and record 
 - Add the component to the README's available-component list and update status or usage sections when relevant.
 - Check that direct and root imports both register the intended elements and expose the intended types.
 
-## 5. Add Release Metadata
+## 6. Add Release Metadata
 
 - Add one Changeset under `.changeset/<descriptive-name>.md`; do not edit the package version or changelog by hand.
 - Use this exact frontmatter shape, replacing the summary:
@@ -72,7 +82,7 @@ Add the <Component> component.
 - Treat a new public component as `minor`. Use `patch` only for a non-breaking correction to an already-published component; use `major` for a breaking public API change unless the maintainer explicitly chooses a different prerelease policy.
 - Make the summary consumer-facing and mention all related public additions.
 
-## 6. Run All Quality Gates
+## 7. Run All Quality Gates
 
 Run each command separately and fix failures before continuing:
 
@@ -95,23 +105,24 @@ Then verify the resulting artifacts:
 - Regenerate AI docs with `npm run docs:llms` so `llms.txt`, each `src/components/<component>/llms.md`, and the matching Storybook `guide.mdx` stay aligned with the manifest.
 - Inspect the dry-run pack result. Confirm the implementation, declarations, source, and manifest are included; reject unexpected secrets, logs, or unrelated artifacts.
 - Confirm `verify:exports` checks the new package subpath and succeeds.
+- Confirm `examples/example.html` includes the new component with its relevant variants and states.
 - Review the complete diff for accidental generated churn and unrelated user changes.
 - If behavior is interactive and no automated browser test covers it, explicitly report the manual Storybook checks performed. Do not claim automated behavioral coverage when this repository has no matching test command.
 
-## 7. Component-Ready Gate
+## 8. Component-Ready Gate
 
 Declare the component ready for review only when all of these are true:
 
 - Public contract is implemented and documented.
 - Accessibility, keyboard, focus, state, and cleanup behavior has been checked where applicable.
-- Component implementation, local barrel, root barrel, package subpath, Storybook stories, README, and Changeset are present.
+- Component implementation, local barrel, root barrel, package subpath, Storybook stories, production gallery entry in `examples/example.html`, README, and Changeset are present.
 - Type check, build, manifest generation, export verification, Storybook build, package dry run, and whitespace check all pass.
 - Generated `custom-elements.json` and build output agree with the source.
 - The final diff contains no accidental or unrelated edits.
 
 Report the checklist with command results and any residual manual-test risk. Stop if any item is incomplete.
 
-## 8. Publish Gate
+## 9. Publish Gate
 
 - Never publish merely because the component is ready. Publishing changes remote package state and requires an explicit user request.
 - Before publishing, confirm a clean intended release diff, the Changeset, npm authentication/provenance readiness, and that CI on the release commit is green.
