@@ -1,6 +1,6 @@
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 const linkStyles = css`
   :host {
@@ -92,7 +92,7 @@ const linkStyles = css`
 @customElement('shadcn-pagination')
 export class Pagination extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     css`
       :host {
         display: flex;
@@ -122,7 +122,7 @@ export class Pagination extends LitElement {
 @customElement('shadcn-pagination-content')
 export class PaginationContent extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     css`
       :host {
         display: block;
@@ -181,7 +181,7 @@ export class PaginationItem extends LitElement {
  */
 @customElement('shadcn-pagination-link')
 export class PaginationLink extends LitElement {
-  static styles = [tokens, linkStyles];
+  static styles = [tokensBase, linkStyles];
 
   /** Destination URL. Omitted from the anchor when disabled. */
   @property({ type: String }) href = '#';
@@ -306,7 +306,7 @@ export class PaginationNext extends PaginationLink {
 @customElement('shadcn-pagination-ellipsis')
 export class PaginationEllipsis extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     css`
       :host {
         display: inline-flex;

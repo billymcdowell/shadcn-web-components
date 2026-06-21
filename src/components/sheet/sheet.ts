@@ -1,8 +1,9 @@
 import { css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { Dialog, DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../dialog/dialog.js';
+import { Dialog } from '../dialog/dialog-core.js';
+import { DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../dialog/dialog-parts.js';
 import { ModalSurface } from '../_internal/modal-surface.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 export type SheetSide = 'top' | 'right' | 'bottom' | 'left';
 
@@ -30,7 +31,7 @@ export class Sheet extends Dialog {
  */
 @customElement('shadcn-sheet-content')
 export class SheetContent extends ModalSurface {
-  static styles = [...ModalSurface.styles, tokens, css`
+  static styles = [...ModalSurface.styles, tokensBase, tokensMotion, css`
     .surface { position: absolute; gap: var(--spacing-4); padding: var(--spacing-6); transition: transform var(--transition-base); }
     :host([side='right']) .surface { inset: 0 0 0 auto; width: min(var(--sheet-size, 24rem), 85vw); border-width: 0 0 0 1px; }
     :host([side='left']) .surface { inset: 0 auto 0 0; width: min(var(--sheet-size, 24rem), 85vw); border-width: 0 1px 0 0; }

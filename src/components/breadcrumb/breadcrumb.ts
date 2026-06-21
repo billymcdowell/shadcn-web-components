@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * Breadcrumb container component.
@@ -12,7 +12,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-breadcrumb')
 export class Breadcrumb extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: block;
@@ -62,7 +62,7 @@ export class Breadcrumb extends LitElement {
 @customElement('shadcn-breadcrumb-item')
 export class BreadcrumbItem extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: inline-flex;
@@ -91,7 +91,7 @@ export class BreadcrumbItem extends LitElement {
 @customElement('shadcn-breadcrumb-link')
 export class BreadcrumbLink extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: inline-block;
@@ -131,7 +131,7 @@ export class BreadcrumbLink extends LitElement {
 @customElement('shadcn-breadcrumb-page')
 export class BreadcrumbPage extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: inline-block;
@@ -160,7 +160,7 @@ export class BreadcrumbPage extends LitElement {
 @customElement('shadcn-breadcrumb-separator')
 export class BreadcrumbSeparator extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: inline-flex;
@@ -197,7 +197,7 @@ export class BreadcrumbSeparator extends LitElement {
 @customElement('shadcn-breadcrumb-ellipsis')
 export class BreadcrumbEllipsis extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: inline-flex;

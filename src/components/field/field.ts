@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * A form field wrapper that combines label, input, helper text, and error message.
@@ -15,7 +15,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-field')
 export class Field extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: block;

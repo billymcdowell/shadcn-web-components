@@ -1,7 +1,7 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
 import type { PropertyValues } from 'lit';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 export type CarouselOrientation = 'horizontal' | 'vertical';
 
@@ -20,7 +20,7 @@ export interface CarouselChangeDetail {
  */
 @customElement('shadcn-carousel')
 export class Carousel extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { display: block; position: relative; }
     .carousel { position: relative; }
   `];
@@ -178,7 +178,7 @@ export class Carousel extends LitElement {
  */
 @customElement('shadcn-carousel-content')
 export class CarouselContent extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { display: block; overflow: hidden; }
     .viewport {
       overflow: auto;
@@ -344,7 +344,7 @@ export class CarouselContent extends LitElement {
  */
 @customElement('shadcn-carousel-item')
 export class CarouselItem extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { display: block; }
     .item { box-sizing: border-box; height: 100%; }
   `];
@@ -370,7 +370,7 @@ export class CarouselItem extends LitElement {
 }
 
 abstract class CarouselControl extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host {
       display: inline-flex;
       position: absolute;

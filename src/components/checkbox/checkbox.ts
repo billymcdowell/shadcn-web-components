@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * A checkbox input component.
@@ -15,7 +15,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-checkbox')
 export class Checkbox extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: inline-block;

@@ -1,8 +1,9 @@
 import { css } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { Dialog, DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../dialog/dialog.js';
+import { Dialog } from '../dialog/dialog-core.js';
+import { DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../dialog/dialog-parts.js';
 import { ModalSurface } from '../_internal/modal-surface.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * Modal confirmation dialog requiring an explicit action or cancellation.
@@ -30,7 +31,7 @@ export class AlertDialog extends Dialog {
  */
 @customElement('shadcn-alert-dialog-content')
 export class AlertDialogContent extends ModalSurface {
-  static styles = [...ModalSurface.styles, tokens, css`
+  static styles = [...ModalSurface.styles, tokensBase, css`
     :host { align-items: center; justify-content: center; }
     .surface { width: min(32rem, calc(100% - 2rem)); gap: var(--spacing-4); padding: var(--spacing-6); border-radius: var(--radius-lg); }
   `];

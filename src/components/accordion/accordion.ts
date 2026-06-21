@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * An accordion item component.
@@ -13,7 +13,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-accordion-item')
 export class AccordionItem extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     css`
       :host {
         display: block;
@@ -126,7 +126,7 @@ export class AccordionItem extends LitElement {
 @customElement('shadcn-accordion')
 export class Accordion extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     css`
       :host {
         display: block;

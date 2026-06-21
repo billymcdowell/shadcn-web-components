@@ -239,18 +239,21 @@
     "./styles": {
       "types": "./dist/styles/index.d.ts",
       "default": "./dist/styles/index.js"
-    }
+    },
+    "./styles/tokens.css": "./dist/styles/tokens.css",
+    "./styles/reset.css": "./dist/styles/reset.css"
   },
   "files": [
     "dist",
-    "src",
     "custom-elements.json",
     "llms.txt"
   ],
   "customElements": "custom-elements.json",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node scripts/copy-styles.mjs",
+    "build:analyze": "ANALYZE=true npm run build",
+    "size-limit": "npx size-limit",
     "verify:exports": "node scripts/verify-exports.mjs",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
@@ -282,22 +285,61 @@
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
     "@lit/context": "^1.1.6",
-    "chart.js": "^4.5.1",
     "focus-trap": "^7.8.0",
     "lit": "^3.2.1"
+  },
+  "peerDependencies": {
+    "chart.js": "^4.5.0"
+  },
+  "peerDependenciesMeta": {
+    "chart.js": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
     "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@size-limit/esbuild": "^12.1.0",
+    "@size-limit/file": "^12.1.0",
     "@storybook/addon-a11y": "^10.4.6",
     "@storybook/addon-docs": "^10.4.6",
     "@storybook/web-components": "^10.4.6",
     "@storybook/web-components-vite": "^10.4.6",
+    "chart.js": "^4.5.1",
     "remark-gfm": "^4.0.1",
+    "rollup-plugin-visualizer": "^7.0.1",
+    "size-limit": "^12.1.0",
     "storybook": "^10.4.6",
     "typescript": "^5.6.3",
     "vite": "^6.0.1"
   },
+  "size-limit": [
+    {
+      "name": "button",
+      "path": "scripts/size-limit/button.mjs",
+      "limit": "20 KB"
+    },
+    {
+      "name": "dialog",
+      "path": "scripts/size-limit/dialog.mjs",
+      "limit": "80 KB"
+    },
+    {
+      "name": "popover",
+      "path": "scripts/size-limit/popover.mjs",
+      "limit": "80 KB"
+    },
+    {
+      "name": "chart",
+      "path": "scripts/size-limit/chart.mjs",
+      "limit": "120 KB"
+    },
+    {
+      "name": "root",
+      "path": "scripts/size-limit/root.mjs",
+      "limit": "500 KB"
+    }
+  ],
   "publishConfig": {
     "access": "public",
     "provenance": true

@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 /**
  * Form-associated custom select coordinating its compound children.
@@ -13,7 +13,8 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-select')
 export class Select extends LitElement {
   static formAssociated = true;
-  static styles = [tokens, css`:host { display: inline-block; position: relative; min-width: 12rem; }`];
+  static styles = [tokensBase,
+    tokensMotion, css`:host { display: inline-block; position: relative; min-width: 12rem; }`];
   private _internals: ElementInternals;
 
   /** Selected item value. */
@@ -115,7 +116,8 @@ export class Select extends LitElement {
 /** @element shadcn-select-trigger @slot - Optional custom trigger content. @fires select-toggle - Requests popup toggle. @csspart trigger - Native trigger button. */
 @customElement('shadcn-select-trigger')
 export class SelectTrigger extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: block; }
     button { display: flex; width: 100%; min-height: 2.5rem; align-items: center; justify-content: space-between; gap: var(--spacing-2); padding: 0 var(--spacing-3); border: 1px solid var(--input); border-radius: var(--radius-md); background: var(--background); color: var(--foreground); font: inherit; font-size: var(--font-size-sm); cursor: pointer; }
     button:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
@@ -142,7 +144,8 @@ export class SelectValue extends LitElement {
 /** @element shadcn-select-content @slot - Select items. @csspart content - Listbox popup. */
 @customElement('shadcn-select-content')
 export class SelectContent extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: block; position: absolute; z-index: 50; top: calc(100% + var(--spacing-1)); left: 0; width: 100%; }
     [hidden] { display: none !important; }
     .content { max-height: 15rem; overflow: auto; padding: var(--spacing-1); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--popover); color: var(--popover-foreground); box-shadow: 0 10px 20px rgb(0 0 0 / .15); transform-origin: top; }
@@ -156,7 +159,8 @@ export class SelectContent extends LitElement {
 /** @element shadcn-select-item @slot - Item label. @fires select-item-select - Requests selection. @fires select-navigate - Requests keyboard navigation. @csspart item - Option element. */
 @customElement('shadcn-select-item')
 export class SelectItem extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: block; }
     .item { position: relative; display: flex; align-items: center; min-height: 2rem; padding: var(--spacing-1) var(--spacing-8) var(--spacing-1) var(--spacing-2); border-radius: var(--radius-sm); color: var(--foreground); font-size: var(--font-size-sm); cursor: default; outline: none; }
     .item:hover, .item:focus-visible { background: var(--accent); color: var(--accent-foreground); }

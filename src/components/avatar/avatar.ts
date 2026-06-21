@@ -1,11 +1,11 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /** @element shadcn-avatar @slot - Avatar image and fallback */
 @customElement('shadcn-avatar')
 export class Avatar extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { position: relative; display: inline-flex; width: var(--avatar-size, 2rem); height: var(--avatar-size, 2rem); flex: 0 0 auto; }
     .avatar { position: relative; display: flex; width: 100%; height: 100%; overflow: hidden; border-radius: var(--radius-full); }
     ::slotted(shadcn-avatar-image), ::slotted(shadcn-avatar-fallback) { position: absolute; inset: 0; width: 100%; height: 100%; }
@@ -50,7 +50,7 @@ export class AvatarImage extends LitElement {
 /** @element shadcn-avatar-fallback @slot - Fallback initials or icon */
 @customElement('shadcn-avatar-fallback')
 export class AvatarFallback extends LitElement {
-  static styles = [tokens, css`:host { display: flex; align-items: center; justify-content: center; color: var(--muted-foreground); background: var(--muted); border-radius: var(--radius-full); font-family: var(--font-sans); font-size: var(--font-size-sm); font-weight: var(--font-medium); }`];
+  static styles = [tokensBase, css`:host { display: flex; align-items: center; justify-content: center; color: var(--muted-foreground); background: var(--muted); border-radius: var(--radius-full); font-family: var(--font-sans); font-size: var(--font-size-sm); font-weight: var(--font-medium); }`];
   render() { return html`<slot></slot>`; }
 }
 

@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { handleMenuKeyDown } from '../_internal/menu-keyboard.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 /**
  * Dropdown Menu container.
@@ -12,7 +13,8 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-dropdown-menu')
 export class DropdownMenu extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: inline-block;
@@ -75,34 +77,7 @@ export class DropdownMenu extends LitElement {
     }
 
     const content = this.querySelector('shadcn-dropdown-menu-content') as DropdownMenuContent | null;
-
-    switch (event.key) {
-      case 'Escape':
-        event.preventDefault();
-        this._close();
-        break;
-      case 'ArrowDown':
-        event.preventDefault();
-        content?.focusNext();
-        break;
-      case 'ArrowUp':
-        event.preventDefault();
-        content?.focusPrevious();
-        break;
-      case 'Home':
-        event.preventDefault();
-        content?.focusFirst();
-        break;
-      case 'End':
-        event.preventDefault();
-        content?.focusLast();
-        break;
-      case 'Enter':
-      case ' ':
-        event.preventDefault();
-        content?.activateFocused();
-        break;
-    }
+    handleMenuKeyDown(event, content, () => this._close());
   };
 
   private _toggle() {
@@ -167,7 +142,8 @@ export class DropdownMenu extends LitElement {
 @customElement('shadcn-dropdown-menu-trigger')
 export class DropdownMenuTrigger extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: inline-block;
@@ -198,7 +174,8 @@ export class DropdownMenuTrigger extends LitElement {
 @customElement('shadcn-dropdown-menu-content')
 export class DropdownMenuContent extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: none;
@@ -303,7 +280,8 @@ export class DropdownMenuContent extends LitElement {
 @customElement('shadcn-dropdown-menu-item')
 export class DropdownMenuItem extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: block;
@@ -375,7 +353,8 @@ export class DropdownMenuItem extends LitElement {
 @customElement('shadcn-dropdown-menu-separator')
 export class DropdownMenuSeparator extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: block;
@@ -401,7 +380,8 @@ export class DropdownMenuSeparator extends LitElement {
 @customElement('shadcn-dropdown-menu-label')
 export class DropdownMenuLabel extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: block;
@@ -434,7 +414,8 @@ export class DropdownMenuLabel extends LitElement {
 @customElement('shadcn-dropdown-menu-checkbox-item')
 export class DropdownMenuCheckboxItem extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: block;

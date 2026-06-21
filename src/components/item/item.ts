@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * A generic list item component for use in menus, selects, and command palettes.
@@ -19,7 +19,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-item')
 export class Item extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: block;

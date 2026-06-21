@@ -1,6 +1,6 @@
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 export type DataTableSortDirection = 'asc' | 'desc' | 'none';
 export type DataTableColumnAlign = 'left' | 'center' | 'right';
@@ -50,7 +50,7 @@ export interface DataTableSelectionChangeDetail<TData extends object = Record<st
 @customElement('shadcn-data-table')
 export class DataTable<TData extends object = Record<string, unknown>> extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     css`
       :host {
         display: block;

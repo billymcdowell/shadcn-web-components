@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { tokens, focusRing } from '../../styles/index.js';
+import { tokensBase, focusRing } from '../../styles/index.js';
 
 /**
  * A styled native select element.
@@ -18,7 +18,7 @@ import { tokens, focusRing } from '../../styles/index.js';
 @customElement('shadcn-native-select')
 export class NativeSelect extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     focusRing,
     css`
       :host {

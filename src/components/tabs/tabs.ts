@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 export type TabsOrientation = 'horizontal' | 'vertical';
 export type TabsActivationMode = 'automatic' | 'manual';
@@ -14,7 +14,7 @@ export type TabsActivationMode = 'automatic' | 'manual';
  */
 @customElement('shadcn-tabs')
 export class Tabs extends LitElement {
-  static styles = [tokens, css`:host { display: block; }`];
+  static styles = [tokensBase, css`:host { display: block; }`];
 
   /** Selected tab value. */
   @property({ type: String, reflect: true }) value = '';
@@ -80,7 +80,7 @@ export class Tabs extends LitElement {
 /** @element shadcn-tabs-list @slot - Tab triggers. @csspart list - Tablist container. */
 @customElement('shadcn-tabs-list')
 export class TabsList extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { display: inline-flex; }
     .list { display: inline-flex; align-items: center; min-height: 2.25rem; padding: var(--spacing-1); border-radius: var(--radius-lg); background: var(--muted); color: var(--muted-foreground); }
     .vertical { flex-direction: column; align-items: stretch; }
@@ -99,7 +99,7 @@ export class TabsList extends LitElement {
  */
 @customElement('shadcn-tabs-trigger')
 export class TabsTrigger extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { display: inline-flex; }
     button { display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; border: 0; border-radius: var(--radius-md); padding: var(--spacing-1) var(--spacing-3); min-height: 1.75rem; background: transparent; color: inherit; font: inherit; font-size: var(--font-size-sm); font-weight: var(--font-medium); cursor: pointer; }
     button[data-active] { background: var(--background); color: var(--foreground); box-shadow: 0 1px 2px rgb(0 0 0 / .08); }
@@ -125,7 +125,7 @@ export class TabsTrigger extends LitElement {
 /** @element shadcn-tabs-content @slot - Tab panel content. @csspart content - Tab panel. */
 @customElement('shadcn-tabs-content')
 export class TabsContent extends LitElement {
-  static styles = [tokens, css`:host { display: block; } [hidden] { display: none !important; } .content { margin-top: var(--spacing-2); } .content:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }`];
+  static styles = [tokensBase, css`:host { display: block; } [hidden] { display: none !important; } .content { margin-top: var(--spacing-2); } .content:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }`];
   @property({ type: String }) value = '';
   @property({ type: Boolean }) active = false;
   protected render() { return html`<div part="content" class="content" role="tabpanel" tabindex="0" ?hidden=${!this.active}><slot></slot></div>`; }

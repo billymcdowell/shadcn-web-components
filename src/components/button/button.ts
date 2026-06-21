@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens, focusRing } from '../../styles/index.js';
+import { tokensBase, focusRing } from '../../styles/index.js';
 
 export type ButtonVariant = 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
 export type ButtonSize = 'default' | 'sm' | 'lg' | 'icon';
@@ -21,7 +21,7 @@ export type ButtonSize = 'default' | 'sm' | 'lg' | 'icon';
 @customElement('shadcn-button')
 export class Button extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     focusRing,
     css`
       :host {

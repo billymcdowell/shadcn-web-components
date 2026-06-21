@@ -1,6 +1,6 @@
 # Vue
 
-For npm delivery, import registration once from the application entry or the consuming SFC. For CDN delivery, load the import map and direct module from the application HTML shell and omit the npm registration import. Never combine both. Configure Vue's template compiler to treat `shadcn-*` tags as custom elements. With Vite:
+For npm delivery, import registration once from the application entry or the consuming SFC. For CDN delivery, load the import map and direct module from the application HTML shell and omit the npm registration import. Never combine both. See [HTML and CDN](html-cdn.md) for the full import map and dependency matrix. Configure Vue's template compiler to treat `shadcn-*` tags as custom elements. With Vite:
 
 ```ts
 import vue from '@vitejs/plugin-vue';

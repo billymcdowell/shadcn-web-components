@@ -26,17 +26,23 @@ Install the package:
 npm install @billy_mcdowell/shadcn-web-components
 ```
 
+If you use Chart, also install its peer dependency:
+
+```bash
+npm install chart.js
+```
+
 Load the default global styles in your document head. Version the URLs alongside
 the installed package version, or host copies of these files with your app:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/tokens.css"
+  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/styles/tokens.css"
 >
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/reset.css"
+  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/styles/reset.css"
 >
 ```
 
@@ -60,14 +66,49 @@ Then use the registered elements in your templates:
 <shadcn-button variant="outline">Cancel</shadcn-button>
 ```
 
-You do not need an import map in this setup. The bundler resolves `lit` and the
-package's other JavaScript dependencies.
+You do not need an import map in this setup. The bundler resolves `lit`,
+`@floating-ui/dom`, `focus-trap`, and `@lit/context` from the package
+dependencies automatically.
+
+## Dependencies
+
+Runtime JavaScript dependencies are resolved differently depending on how you
+deliver the library.
+
+### npm and a bundler
+
+`npm install @billy_mcdowell/shadcn-web-components` installs `lit`,
+`@floating-ui/dom`, `focus-trap`, and `@lit/context`. Your bundler resolves them
+alongside component modules — no import map or extra install step is required for
+typical apps.
+
+Chart is optional: install `chart.js` when importing
+`@billy_mcdowell/shadcn-web-components/chart`.
+
+| Components / subpaths | Required bare imports |
+|-----------------------|----------------------|
+| Most primitives (`button`, `input`, `badge`, etc.) | `lit` |
+| `dialog`, `sheet`, `drawer`, `alert-dialog` | `lit`, `focus-trap`, `@lit/context` |
+| `popover` | `lit`, `@floating-ui/dom`, `@lit/context` |
+| `chart` | `lit`, `chart.js` |
+| Root `dist/index.js` (all components) | all of the above |
+
+### CDN and plain HTML
+
+Distributed modules keep bare imports for the dependencies above. Add matching
+entries to an import map before any module scripts. See [HTML and CDN](./?path=/docs/getting-started--docs#cdn-and-plain-html)
+for the full map used by the production gallery.
+
+**Troubleshooting:** if the browser console shows
+`Failed to resolve module specifier "@floating-ui/dom"`, you are missing an import
+map entry (CDN) or have not installed the package with npm (bundler apps).
 
 ## CDN and plain HTML
 
 For a page without a build step, use the exact published files shown below. The
 import map is required because the distributed modules intentionally retain bare
-imports for `lit` and `lit/decorators.js`. It must appear before the module script.
+imports for `lit`, `@floating-ui/dom`, `focus-trap`, `@lit/context`, and
+optionally `chart.js`. It must appear before the module script.
 
 ```html
 <!doctype html>
@@ -79,18 +120,23 @@ imports for `lit` and `lit/decorators.js`. It must appear before the module scri
 
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/tokens.css"
+      href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/styles/tokens.css"
     >
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/reset.css"
+      href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/styles/reset.css"
     >
 
     <script type="importmap">
       {
         "imports": {
           "lit": "https://esm.sh/lit@3.2.1",
-          "lit/decorators.js": "https://esm.sh/lit@3.2.1/decorators.js"
+          "lit/decorators.js": "https://esm.sh/lit@3.2.1/decorators.js",
+          "@floating-ui/dom": "https://esm.sh/@floating-ui/dom@1.7.4",
+          "focus-trap": "https://esm.sh/focus-trap@7.8.0",
+          "@lit/context": "https://esm.sh/@lit/context@1.1.6",
+          "chart.js": "https://esm.sh/chart.js@4.5.1",
+          "chart.js/": "https://esm.sh/chart.js@4.5.1/"
         }
       }
     </script>
@@ -105,8 +151,9 @@ imports for `lit` and `lit/decorators.js`. It must appear before the module scri
 </html>
 ```
 
-The root `dist/index.js` registers every component. To register only a button,
-keep the same styles and import map but replace the module script with:
+The root `dist/index.js` registers every component and needs every import map
+entry above. To register only a button, keep the `lit` entries and replace the
+module script with:
 
 ```html
 <script

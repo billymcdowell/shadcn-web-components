@@ -21,3 +21,6 @@ jobs:
 
       - name: Run Prepublish Only
         run: npm run prepublishOnly
+
+      - name: Check bundle sizes
+        run: npm run size-limit

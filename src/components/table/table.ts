@@ -1,13 +1,13 @@
 import { LitElement, css, html } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
-const base = [tokens, css`:host { display: block; box-sizing: border-box; font-family: var(--font-sans); font-size: var(--font-size-sm); color: var(--foreground); }`];
+const base = [tokensBase, css`:host { display: block; box-sizing: border-box; font-family: var(--font-sans); font-size: var(--font-size-sm); color: var(--foreground); }`];
 
 /** @element shadcn-table @slot - Table sections */
 @customElement('shadcn-table')
 export class Table extends LitElement {
-  static styles = [tokens, css`:host { display: block; position: relative; width: 100%; overflow-x: auto; color: var(--foreground); font-family: var(--font-sans); font-size: var(--font-size-sm); } .table { display: table; width: 100%; border-collapse: collapse; }`];
+  static styles = [tokensBase, css`:host { display: block; position: relative; width: 100%; overflow-x: auto; color: var(--foreground); font-family: var(--font-sans); font-size: var(--font-size-sm); } .table { display: table; width: 100%; border-collapse: collapse; }`];
   render() { return html`<div part="container"><div part="table" class="table" role="table"><slot></slot></div></div>`; }
 }
 

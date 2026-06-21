@@ -1,13 +1,13 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 export type TypographyVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'blockquote' | 'list' | 'lead' | 'large' | 'small' | 'muted' | 'inline-code';
 
 /** @element shadcn-typography @slot - Text content */
 @customElement('shadcn-typography')
 export class Typography extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { display: block; color: var(--foreground); font-family: var(--font-sans); }
     :host([variant='large']), :host([variant='small']), :host([variant='muted']), :host([variant='inline-code']) { display: inline; }
     .text { margin: 0; }

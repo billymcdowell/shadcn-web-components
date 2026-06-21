@@ -1,6 +1,6 @@
 # Angular
 
-Import package registration once, normally from `src/main.ts`, or load CDN scripts from `src/index.html`. Do not combine both for the same family.
+Import package registration once, normally from `src/main.ts`, or load CDN scripts from `src/index.html`. Do not combine both for the same family. For CDN import maps and runtime dependencies, see [HTML and CDN](html-cdn.md).
 
 Add `CUSTOM_ELEMENTS_SCHEMA` to every standalone component using the elements:
 

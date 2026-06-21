@@ -1,6 +1,6 @@
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 export interface CommandSelectDetail {
   value: string;
@@ -17,7 +17,8 @@ export interface CommandSelectDetail {
  */
 @customElement('shadcn-command')
 export class Command extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: flex; width: 100%; height: 100%; min-height: 0; }
     .root { display: flex; width: 100%; height: 100%; min-height: 0; flex-direction: column; overflow: hidden; border-radius: var(--radius-md); background: var(--popover, var(--background)); color: var(--popover-foreground, var(--foreground)); }
   `];
@@ -135,7 +136,8 @@ export class Command extends LitElement {
  */
 @customElement('shadcn-command-input')
 export class CommandInput extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: block; }
     .wrapper { display: flex; height: 2.875rem; align-items: center; gap: var(--spacing-2); border-bottom: 1px solid var(--border); padding: 0 var(--spacing-3); }
     svg { width: 1rem; height: 1rem; flex: none; opacity: .5; }
@@ -180,7 +182,8 @@ export class CommandInput extends LitElement {
 /** @element shadcn-command-list @slot - Command groups, items, separators, and empty state. @csspart list - Scrollable listbox. */
 @customElement('shadcn-command-list')
 export class CommandList extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: block; min-height: 0; }
     .list { max-height: var(--command-list-max-height, 18.75rem); overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scroll-padding-block: var(--spacing-1); }
   `];
@@ -190,14 +193,16 @@ export class CommandList extends LitElement {
 /** @element shadcn-command-empty @slot - Empty-state message. @csspart empty - Empty-state container. */
 @customElement('shadcn-command-empty')
 export class CommandEmpty extends LitElement {
-  static styles = [tokens, css`:host { display: block; } :host([hidden]) { display: none; } .empty { padding: var(--spacing-6); text-align: center; font-size: var(--font-size-sm); }`];
+  static styles = [tokensBase,
+    tokensMotion, css`:host { display: block; } :host([hidden]) { display: none; } .empty { padding: var(--spacing-6); text-align: center; font-size: var(--font-size-sm); }`];
   protected render() { return html`<div part="empty" class="empty" role="status"><slot></slot></div>`; }
 }
 
 /** @element shadcn-command-group @slot - Command items. @csspart group - Group container. @csspart heading - Group heading. */
 @customElement('shadcn-command-group')
 export class CommandGroup extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: block; overflow: hidden; padding: var(--spacing-1); color: var(--foreground); }
     :host([hidden]) { display: none; }
     .heading { padding: var(--spacing-1-5) var(--spacing-2); color: var(--muted-foreground); font-size: var(--font-size-xs); font-weight: var(--font-medium); }
@@ -217,7 +222,8 @@ export class CommandGroup extends LitElement {
  */
 @customElement('shadcn-command-item')
 export class CommandItem extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: block; }
     :host([hidden]) { display: none; }
     .item { position: relative; display: flex; min-height: 2rem; cursor: default; user-select: none; align-items: center; gap: var(--spacing-2); border-radius: var(--radius-sm); padding: var(--spacing-1-5) var(--spacing-2); color: var(--foreground); font-size: var(--font-size-sm); outline: none; }
@@ -264,14 +270,16 @@ export class CommandItem extends LitElement {
 /** @element shadcn-command-separator @csspart separator - Visual separator. */
 @customElement('shadcn-command-separator')
 export class CommandSeparator extends LitElement {
-  static styles = [tokens, css`:host { display: block; height: 1px; margin: 0 calc(var(--spacing-1) * -1); background: var(--border); }`];
+  static styles = [tokensBase,
+    tokensMotion, css`:host { display: block; height: 1px; margin: 0 calc(var(--spacing-1) * -1); background: var(--border); }`];
   protected render() { return html`<div part="separator" role="separator"></div>`; }
 }
 
 /** @element shadcn-command-shortcut @slot - Keyboard shortcut text. @csspart shortcut - Shortcut label. */
 @customElement('shadcn-command-shortcut')
 export class CommandShortcut extends LitElement {
-  static styles = [tokens, css`:host { display: inline-block; margin-left: auto; color: var(--muted-foreground); font-size: var(--font-size-xs); letter-spacing: var(--tracking-widest); }`];
+  static styles = [tokensBase,
+    tokensMotion, css`:host { display: inline-block; margin-left: auto; color: var(--muted-foreground); font-size: var(--font-size-xs); letter-spacing: var(--tracking-widest); }`];
   protected render() { return html`<span part="shortcut"><slot></slot></span>`; }
 }
 
@@ -285,7 +293,8 @@ export class CommandShortcut extends LitElement {
  */
 @customElement('shadcn-command-dialog')
 export class CommandDialog extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { position: fixed; inset: 0; z-index: 50; display: flex; align-items: flex-start; justify-content: center; padding: 20vh var(--spacing-4) var(--spacing-4); }
     :host(:not([open])) { display: none; }
     .overlay { position: fixed; inset: 0; background: oklch(0 0 0 / 80%); animation: shadcn-fade-in var(--transition-base); }

@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * An empty state component for displaying when no content is available.
@@ -15,7 +15,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-empty')
 export class Empty extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     css`
       :host {
         display: block;

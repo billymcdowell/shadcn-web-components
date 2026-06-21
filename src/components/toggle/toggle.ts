@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * A two-state toggle button component.
@@ -14,7 +14,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-toggle')
 export class Toggle extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     css`
       :host {
         display: inline-block;

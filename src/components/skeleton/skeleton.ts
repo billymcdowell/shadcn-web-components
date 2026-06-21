@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * A skeleton loading component for placeholder content.
@@ -12,7 +12,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-skeleton')
 export class Skeleton extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: block;

@@ -21,6 +21,10 @@ Importing the component subpath registers every custom element in this component
 import '@billy_mcdowell/shadcn-web-components/popover';
 ```
 
+**Dependencies:** Popover uses `@floating-ui/dom` and `@lit/context`. npm installs
+resolve these automatically. On CDN, add both to your import map (see
+[Getting Started — Dependencies](../getting-started.mdx#dependencies)).
+
 The package root also registers all components, but the subpath is preferable when the application only needs this family. Load the library design tokens once at application level; see [the root agent index](../../../llms.txt).
 
 ## Example

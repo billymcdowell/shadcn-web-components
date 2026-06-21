@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 /**
  * Navigation menu container.
@@ -12,7 +12,8 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-navigation-menu')
 export class NavigationMenu extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: block;
@@ -49,7 +50,8 @@ export class NavigationMenu extends LitElement {
 @customElement('shadcn-navigation-menu-list')
 export class NavigationMenuList extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: block;
@@ -86,7 +88,8 @@ export class NavigationMenuList extends LitElement {
 @customElement('shadcn-navigation-menu-item')
 export class NavigationMenuItem extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: block;
@@ -156,7 +159,8 @@ export class NavigationMenuItem extends LitElement {
 @customElement('shadcn-navigation-menu-trigger')
 export class NavigationMenuTrigger extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: inline-block;
@@ -229,7 +233,8 @@ export class NavigationMenuTrigger extends LitElement {
 @customElement('shadcn-navigation-menu-content')
 export class NavigationMenuContent extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: block;
@@ -288,7 +293,8 @@ export class NavigationMenuContent extends LitElement {
 @customElement('shadcn-navigation-menu-link')
 export class NavigationMenuLink extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: block;

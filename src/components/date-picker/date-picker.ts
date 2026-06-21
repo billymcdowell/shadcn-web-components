@@ -1,17 +1,11 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { parseISO } from '../../utils/date.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 import '../calendar/calendar.js';
 import type { Calendar, CalendarChangeDetail } from '../calendar/calendar.js';
 
 export interface DatePickerChangeDetail { value: string; date: Date; }
-
-const parseISO = (value: string): Date | null => {
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
-  if (!match) return null;
-  const date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
-  return date.getFullYear() === Number(match[1]) && date.getMonth() === Number(match[2]) - 1 && date.getDate() === Number(match[3]) ? date : null;
-};
 
 /**
  * A form-associated date picker composed from a shadcn-style trigger and calendar.
@@ -24,7 +18,8 @@ const parseISO = (value: string): Date | null => {
 @customElement('shadcn-date-picker')
 export class DatePicker extends LitElement {
   static formAssociated = true;
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { position: relative; display: inline-block; width: 17.5rem; font-family: var(--font-sans); }
     .trigger { display: flex; width: 100%; height: 2.5rem; align-items: center; justify-content: flex-start; gap: var(--spacing-2); padding: 0 var(--spacing-3); border: 1px solid var(--input); border-radius: var(--radius-md); background: var(--background); color: var(--foreground); font: inherit; font-size: var(--font-size-sm); font-weight: var(--font-normal); text-align: left; cursor: pointer; }
     .trigger.empty { color: var(--muted-foreground); }

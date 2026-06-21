@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { handleMenuKeyDown } from '../_internal/menu-keyboard.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 /**
  * Menubar container.
@@ -12,7 +13,8 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-menubar')
 export class Menubar extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: inline-block;
@@ -111,7 +113,8 @@ export class Menubar extends LitElement {
 @customElement('shadcn-menubar-menu')
 export class MenubarMenu extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: block;
@@ -175,34 +178,7 @@ export class MenubarMenu extends LitElement {
         }
 
         const content = this.querySelector('shadcn-menubar-content') as MenubarContent | null;
-
-        switch (event.key) {
-            case 'Escape':
-                event.preventDefault();
-                this.closeMenu();
-                break;
-            case 'ArrowDown':
-                event.preventDefault();
-                content?.focusNext();
-                break;
-            case 'ArrowUp':
-                event.preventDefault();
-                content?.focusPrevious();
-                break;
-            case 'Home':
-                event.preventDefault();
-                content?.focusFirst();
-                break;
-            case 'End':
-                event.preventDefault();
-                content?.focusLast();
-                break;
-            case 'Enter':
-            case ' ':
-                event.preventDefault();
-                content?.activateFocused();
-                break;
-        }
+        handleMenuKeyDown(event, content, () => this.closeMenu());
     };
 
     openMenu(): void {
@@ -260,7 +236,8 @@ export class MenubarMenu extends LitElement {
 @customElement('shadcn-menubar-trigger')
 export class MenubarTrigger extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: inline-block;
@@ -316,7 +293,8 @@ export class MenubarTrigger extends LitElement {
 @customElement('shadcn-menubar-content')
 export class MenubarContent extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: none;
@@ -414,7 +392,8 @@ export class MenubarContent extends LitElement {
 @customElement('shadcn-menubar-item')
 export class MenubarItem extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: block;
@@ -486,7 +465,8 @@ export class MenubarItem extends LitElement {
 @customElement('shadcn-menubar-separator')
 export class MenubarSeparator extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: block;
@@ -512,7 +492,8 @@ export class MenubarSeparator extends LitElement {
 @customElement('shadcn-menubar-label')
 export class MenubarLabel extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: block;
@@ -545,7 +526,8 @@ export class MenubarLabel extends LitElement {
 @customElement('shadcn-menubar-checkbox-item')
 export class MenubarCheckboxItem extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: block;

@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 export type HoverCardSide = 'top' | 'right' | 'bottom' | 'left';
 export type HoverCardAlign = 'start' | 'center' | 'end';
@@ -13,7 +13,8 @@ export type HoverCardAlign = 'start' | 'center' | 'end';
  */
 @customElement('shadcn-hover-card')
 export class HoverCard extends LitElement {
-  static styles = [tokens, css`:host { position: relative; display: inline-block; }`];
+  static styles = [tokensBase,
+    tokensMotion, css`:host { position: relative; display: inline-block; }`];
   /** Whether the card is open. */
   @property({ type: Boolean, reflect: true }) open = false;
   /** Delay before opening, in milliseconds. */
@@ -90,7 +91,8 @@ export class HoverCardTrigger extends LitElement {
  */
 @customElement('shadcn-hover-card-content')
 export class HoverCardContent extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { position: absolute; z-index: 50; display: block; }
     :host([side='top']) { bottom: calc(100% + .5rem); }
     :host([side='bottom']) { top: calc(100% + .5rem); }

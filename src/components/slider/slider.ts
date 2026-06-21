@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, query, state } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 /**
  * A slider input for selecting a value from a range.
@@ -16,7 +16,8 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-slider')
 export class Slider extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
+    tokensMotion,
         css`
       :host {
         display: block;

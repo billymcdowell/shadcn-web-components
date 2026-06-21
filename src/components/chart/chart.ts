@@ -1,8 +1,41 @@
-import { Chart as ChartJS } from 'chart.js/auto';
+import {
+    ArcElement,
+    BarController,
+    BarElement,
+    CategoryScale,
+    Chart as ChartJS,
+    DoughnutController,
+    Legend,
+    LineController,
+    LineElement,
+    LinearScale,
+    PieController,
+    PointElement,
+    PolarAreaController,
+    RadialLinearScale,
+    Tooltip,
+} from 'chart.js';
 import type { ChartData, ChartDataset, ChartOptions, ChartType } from 'chart.js';
 import { LitElement, css, html, type PropertyValues } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
+
+ChartJS.register(
+    ArcElement,
+    BarController,
+    BarElement,
+    CategoryScale,
+    DoughnutController,
+    Legend,
+    LineController,
+    LineElement,
+    LinearScale,
+    PieController,
+    PointElement,
+    PolarAreaController,
+    RadialLinearScale,
+    Tooltip,
+);
 
 export type { ChartData, ChartOptions, ChartType } from 'chart.js';
 
@@ -25,7 +58,7 @@ export type { ChartData, ChartOptions, ChartType } from 'chart.js';
 @customElement('shadcn-chart')
 export class Chart extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
             :host {
                 display: block;

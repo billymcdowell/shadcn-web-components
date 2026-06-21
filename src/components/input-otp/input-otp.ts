@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 export type InputOTPMode = 'numeric' | 'text';
 
@@ -18,7 +18,7 @@ export type InputOTPMode = 'numeric' | 'text';
 @customElement('shadcn-input-otp')
 export class InputOTP extends LitElement {
   static formAssociated = true;
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { display: inline-block; }
     .root { position: relative; display: inline-flex; }
     .group { display: flex; align-items: center; }

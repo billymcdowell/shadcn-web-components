@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { tokens, focusRing } from '../../styles/index.js';
+import { tokensBase, focusRing } from '../../styles/index.js';
 
 /**
  * A multi-line text input component.
@@ -17,7 +17,7 @@ import { tokens, focusRing } from '../../styles/index.js';
 @customElement('shadcn-textarea')
 export class Textarea extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         focusRing,
         css`
       :host {

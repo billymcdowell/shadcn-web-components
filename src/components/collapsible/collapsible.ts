@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * Coordinates a collapsible trigger and content region.
@@ -11,7 +11,7 @@ import { tokens } from '../../styles/index.js';
  */
 @customElement('shadcn-collapsible')
 export class Collapsible extends LitElement {
-  static styles = [tokens, css`:host { display: block; }`];
+  static styles = [tokensBase, css`:host { display: block; }`];
 
   /** Whether the content is visible. */
   @property({ type: Boolean, reflect: true }) open = false;
@@ -68,7 +68,7 @@ export class Collapsible extends LitElement {
  */
 @customElement('shadcn-collapsible-trigger')
 export class CollapsibleTrigger extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { display: inline-block; }
     button { appearance: none; border: 0; background: transparent; color: inherit; font: inherit; padding: 0; cursor: pointer; }
     button:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; border-radius: var(--radius-sm); }
@@ -100,7 +100,7 @@ export class CollapsibleTrigger extends LitElement {
  */
 @customElement('shadcn-collapsible-content')
 export class CollapsibleContent extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { display: block; }
     :host { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--transition-normal); }
     :host([open]) { grid-template-rows: 1fr; }

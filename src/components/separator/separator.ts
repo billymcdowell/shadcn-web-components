@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * A separator component for visually dividing content.
@@ -12,7 +12,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-separator')
 export class Separator extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: block;

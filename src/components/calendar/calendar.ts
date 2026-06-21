@@ -1,18 +1,10 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { addDays, iso, parseISO } from '../../utils/date.js';
+import { tokensBase } from '../../styles/index.js';
 
 export interface CalendarChangeDetail { value: string; date: Date; }
 export interface CalendarMonthChangeDetail { month: string; date: Date; }
-
-const parseISO = (value: string): Date | null => {
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
-  if (!match) return null;
-  const date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
-  return date.getFullYear() === Number(match[1]) && date.getMonth() === Number(match[2]) - 1 && date.getDate() === Number(match[3]) ? date : null;
-};
-const iso = (date: Date) => `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-const addDays = (date: Date, days: number) => new Date(date.getFullYear(), date.getMonth(), date.getDate() + days);
 
 /**
  * An accessible single-date calendar with month navigation.
@@ -24,7 +16,7 @@ const addDays = (date: Date, days: number) => new Date(date.getFullYear(), date.
  */
 @customElement('shadcn-calendar')
 export class Calendar extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { --calendar-cell-size: 2.25rem; display: inline-block; color: var(--foreground); font-family: var(--font-sans); }
     .calendar { width: fit-content; padding: var(--spacing-3); border-radius: var(--radius-md); background: var(--background); }
     .header { position: relative; display: flex; height: var(--calendar-cell-size); align-items: center; justify-content: center; margin-bottom: var(--spacing-2); }

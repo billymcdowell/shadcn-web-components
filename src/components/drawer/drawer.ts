@@ -1,8 +1,9 @@
 import { css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { Dialog, DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../dialog/dialog.js';
+import { Dialog } from '../dialog/dialog-core.js';
+import { DialogClose, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../dialog/dialog-parts.js';
 import { ModalSurface } from '../_internal/modal-surface.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 export type DrawerDirection = 'top' | 'right' | 'bottom' | 'left';
 
@@ -56,7 +57,7 @@ export class Drawer extends Dialog {
  */
 @customElement('shadcn-drawer-content')
 export class DrawerContent extends ModalSurface {
-  static styles = [...ModalSurface.styles, tokens, css`
+  static styles = [...ModalSurface.styles, tokensBase, tokensMotion, css`
     .surface { position: absolute; gap: var(--spacing-4); padding: var(--spacing-4); transition: transform var(--transition-base); }
     :host([direction='bottom']) .surface { inset: auto 0 0; max-height: var(--drawer-size, 85vh); border-radius: var(--radius-xl) var(--radius-xl) 0 0; border-width: 1px 0 0; }
     :host([direction='top']) .surface { inset: 0 0 auto; max-height: var(--drawer-size, 85vh); border-radius: 0 0 var(--radius-xl) var(--radius-xl); border-width: 0 0 1px; }

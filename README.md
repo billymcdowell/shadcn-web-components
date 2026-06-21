@@ -22,22 +22,54 @@ A professional, enterprise-grade web component library built with [Lit](https://
 npm install @billy_mcdowell/shadcn-web-components
 ```
 
+If you use the Chart component, also install its peer dependency:
+
+```bash
+npm install chart.js
+```
+
 Load the default design tokens and optional reset in your document `<head>`:
 
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/tokens.css"
+  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/styles/tokens.css"
 >
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/src/styles/reset.css"
+  href="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/styles/reset.css"
 >
 ```
 
-Then register all components or selected component subpaths from your application
-entry point. Bundlers resolve Lit automatically, so npm applications do not need
-an import map.
+Then register components from your application entry point. With npm and a bundler,
+`lit`, `@floating-ui/dom`, `focus-trap`, and `@lit/context` are installed
+automatically and resolved for you — no import map is required.
+
+Prefer **subpath imports** for the smallest bundle:
+
+```typescript
+import '@billy_mcdowell/shadcn-web-components/button';
+```
+
+Importing the package root registers every component and is best reserved for demos
+or the production gallery.
+
+### Dependencies
+
+| Components / subpaths | Required bare imports |
+|-----------------------|----------------------|
+| Most primitives (`button`, `input`, `badge`, etc.) | `lit` |
+| `dialog`, `sheet`, `drawer`, `alert-dialog` | `lit`, `focus-trap`, `@lit/context` |
+| `popover` | `lit`, `@floating-ui/dom`, `@lit/context` |
+| `chart` | `lit`, `chart.js` |
+| Root `dist/index.js` (all components) | all of the above |
+
+**npm / bundler:** `npm install @billy_mcdowell/shadcn-web-components` pulls in
+`lit`, `@floating-ui/dom`, `focus-trap`, and `@lit/context`. Install `chart.js`
+separately when using `./chart`.
+
+**CDN / plain HTML:** add the matching entries to an import map before any module
+scripts (see CDN Usage below).
 
 ### CDN Usage
 
@@ -49,19 +81,27 @@ map and the exact published module:
   {
     "imports": {
       "lit": "https://esm.sh/lit@3.2.1",
-      "lit/decorators.js": "https://esm.sh/lit@3.2.1/decorators.js"
+      "lit/decorators.js": "https://esm.sh/lit@3.2.1/decorators.js",
+      "@floating-ui/dom": "https://esm.sh/@floating-ui/dom@1.7.4",
+      "focus-trap": "https://esm.sh/focus-trap@7.8.0",
+      "@lit/context": "https://esm.sh/@lit/context@1.1.6",
+      "chart.js": "https://esm.sh/chart.js@4.5.1",
+      "chart.js/": "https://esm.sh/chart.js@4.5.1/"
     }
   }
 </script>
 <script
   type="module"
-  src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/index.js"
+  src="https://cdn.jsdelivr.net/npm/@billy_mcdowell/shadcn-web-components@latest/dist/components/button/button.js"
 ></script>
 ```
 
-The import map must appear before the module script. Use the direct `dist` entry
-rather than a transformed `+esm` endpoint so importing the root reliably
-registers every component.
+For the full component gallery, include every import map entry above and load
+`dist/index.js` instead. For a single primitive such as `button`, only the `lit`
+entries are required.
+
+The import map must appear before the module script. Use the direct `dist` files
+rather than a transformed `+esm` endpoint so registration side effects are preserved.
 
 See every component running from this published package in the [production component gallery](https://billymcdowell.github.io/shadcn-web-components/examples/example.html).
 
@@ -73,7 +113,7 @@ Import individual components:
 import '@billy_mcdowell/shadcn-web-components/button';
 ```
 
-Or import all components:
+Or import all components (larger bundle — prefer subpaths in production apps):
 
 ```typescript
 import '@billy_mcdowell/shadcn-web-components';

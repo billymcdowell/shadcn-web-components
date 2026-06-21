@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, query } from 'lit/decorators.js';
-import { tokens, focusRing } from '../../styles/index.js';
+import { tokensBase, focusRing } from '../../styles/index.js';
 
 export type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'number';
 
@@ -20,7 +20,7 @@ export type InputType = 'text' | 'email' | 'password' | 'search' | 'tel' | 'url'
 @customElement('shadcn-input')
 export class Input extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     focusRing,
     css`
       :host {

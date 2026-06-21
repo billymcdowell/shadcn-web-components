@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 export type ButtonGroupOrientation = 'horizontal' | 'vertical';
 
@@ -16,7 +16,7 @@ export type ButtonGroupOrientation = 'horizontal' | 'vertical';
 @customElement('shadcn-button-group')
 export class ButtonGroup extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     css`
       :host {
         display: inline-flex;

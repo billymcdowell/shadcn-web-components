@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * A container for grouping inputs with addons (prefixes/suffixes).
@@ -14,7 +14,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-input-group')
 export class InputGroup extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
     css`
       :host {
         display: block;

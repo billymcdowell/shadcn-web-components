@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { handleMenuKeyDown } from '../_internal/menu-keyboard.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 /**
  * Context Menu container (trigger area).
@@ -13,7 +14,8 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-context-menu')
 export class ContextMenu extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: block;
@@ -76,34 +78,7 @@ export class ContextMenu extends LitElement {
     }
 
     const menu = this.querySelector('shadcn-context-menu-content') as ContextMenuContent | null;
-
-    switch (event.key) {
-      case 'Escape':
-        event.preventDefault();
-        this._close();
-        break;
-      case 'ArrowDown':
-        event.preventDefault();
-        menu?.focusNext();
-        break;
-      case 'ArrowUp':
-        event.preventDefault();
-        menu?.focusPrevious();
-        break;
-      case 'Home':
-        event.preventDefault();
-        menu?.focusFirst();
-        break;
-      case 'End':
-        event.preventDefault();
-        menu?.focusLast();
-        break;
-      case 'Enter':
-      case ' ':
-        event.preventDefault();
-        menu?.activateFocused();
-        break;
-    }
+    handleMenuKeyDown(event, menu, () => this._close());
   };
 
   private _close() {
@@ -141,7 +116,8 @@ export class ContextMenu extends LitElement {
 @customElement('shadcn-context-menu-content')
 export class ContextMenuContent extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: none;
@@ -241,7 +217,8 @@ export class ContextMenuContent extends LitElement {
 @customElement('shadcn-context-menu-item')
 export class ContextMenuItem extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: block;
@@ -313,7 +290,8 @@ export class ContextMenuItem extends LitElement {
 @customElement('shadcn-context-menu-separator')
 export class ContextMenuSeparator extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: block;
@@ -339,7 +317,8 @@ export class ContextMenuSeparator extends LitElement {
 @customElement('shadcn-context-menu-label')
 export class ContextMenuLabel extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: block;
@@ -372,7 +351,8 @@ export class ContextMenuLabel extends LitElement {
 @customElement('shadcn-context-menu-checkbox-item')
 export class ContextMenuCheckboxItem extends LitElement {
   static styles = [
-    tokens,
+    tokensBase,
+    tokensMotion,
     css`
       :host {
         display: block;

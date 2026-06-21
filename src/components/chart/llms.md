@@ -21,6 +21,10 @@ Importing the component subpath registers every custom element in this component
 import '@billy_mcdowell/shadcn-web-components/chart';
 ```
 
+**Dependencies:** Chart requires `chart.js`. With npm, run `npm install chart.js` in
+addition to the main package. On CDN, add `chart.js` and `chart.js/` to your import
+map (see [Getting Started — Dependencies](../getting-started.mdx#dependencies)).
+
 The package root also registers all components, but the subpath is preferable when the application only needs this family. Load the library design tokens once at application level; see [the root agent index](../../../llms.txt).
 
 ## Example

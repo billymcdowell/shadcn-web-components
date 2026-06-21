@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property, queryAssignedElements } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 export type ResizableOrientation = 'horizontal' | 'vertical';
 
@@ -24,7 +24,7 @@ export interface ResizableChangeDetail {
 @customElement('shadcn-resizable-panel-group')
 export class ResizablePanelGroup extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
             :host {
                 display: flex;
@@ -310,7 +310,7 @@ export class ResizablePanel extends LitElement {
 @customElement('shadcn-resizable-handle')
 export class ResizableHandle extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
             :host {
                 position: relative;

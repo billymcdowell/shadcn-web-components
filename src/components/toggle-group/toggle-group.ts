@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 import type { Toggle } from '../toggle/toggle.js';
 
 /**
@@ -15,7 +15,7 @@ import type { Toggle } from '../toggle/toggle.js';
 @customElement('shadcn-toggle-group')
 export class ToggleGroup extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: inline-flex;

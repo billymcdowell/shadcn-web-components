@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 export type TooltipSide = 'top' | 'right' | 'bottom' | 'left';
 let tooltipId = 0;
@@ -8,7 +8,8 @@ let tooltipId = 0;
 /** @element shadcn-tooltip @slot - Tooltip trigger and content. @fires tooltip-open-change - Fired when the open state changes. */
 @customElement('shadcn-tooltip')
 export class Tooltip extends LitElement {
-  static styles = [tokens, css`:host { position: relative; display: inline-block; }`];
+  static styles = [tokensBase,
+    tokensMotion, css`:host { position: relative; display: inline-block; }`];
   /** Whether the tooltip is open. */
   @property({ type: Boolean, reflect: true }) open = false;
   /** Delay before opening, in milliseconds. */
@@ -54,7 +55,8 @@ export class TooltipTrigger extends LitElement {
 /** @element shadcn-tooltip-content @slot - Tooltip text. @csspart content - Tooltip bubble. */
 @customElement('shadcn-tooltip-content')
 export class TooltipContent extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { position: absolute; z-index: 50; display: block; pointer-events: none; }
     :host([side='top']) { bottom: calc(100% + .375rem); left: 50%; transform: translateX(-50%); }
     :host([side='bottom']) { top: calc(100% + .375rem); left: 50%; transform: translateX(-50%); }

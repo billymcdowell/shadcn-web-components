@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * Sidebar container.
@@ -12,7 +12,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-sidebar')
 export class Sidebar extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: block;

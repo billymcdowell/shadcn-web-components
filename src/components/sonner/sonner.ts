@@ -1,6 +1,6 @@
 import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 export type ToastId = string | number;
 export type ToastType = 'default' | 'success' | 'info' | 'warning' | 'error' | 'loading';
@@ -131,7 +131,7 @@ const icons: Record<Exclude<ToastType, 'default'>, unknown> = {
  */
 @customElement('shadcn-sonner')
 export class Sonner extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase, css`
     :host { display: contents; font-family: var(--font-sans); }
     .viewport { position: fixed; z-index: 100; display: flex; width: min(var(--sonner-width, 22rem), calc(100vw - 2rem)); margin: 0; padding: 0; list-style: none; pointer-events: none; }
     .viewport[data-position^='top'] { top: var(--sonner-offset, 1rem); flex-direction: column; }

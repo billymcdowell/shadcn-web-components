@@ -1,6 +1,6 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase, tokensMotion } from '../../styles/index.js';
 
 export interface ComboboxChangeDetail {
   value: string;
@@ -18,7 +18,8 @@ export interface ComboboxChangeDetail {
 @customElement('shadcn-combobox')
 export class Combobox extends LitElement {
   static formAssociated = true;
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: inline-block; position: relative; min-width: 12rem; }
   `];
 
@@ -240,7 +241,8 @@ export class Combobox extends LitElement {
 /** @element shadcn-combobox-input @fires combobox-input - Fired while filtering. @fires combobox-input-keydown - Requests keyboard navigation. @csspart input - Native search input. */
 @customElement('shadcn-combobox-input')
 export class ComboboxInput extends LitElement {
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: block; }
     .wrap { position: relative; }
     input { box-sizing: border-box; width: 100%; height: 2.5rem; padding: 0 var(--spacing-9) 0 var(--spacing-3); border: 1px solid var(--input); border-radius: var(--radius-md); background: var(--background); color: var(--foreground); font: inherit; font-size: var(--font-size-sm); outline: none; }
@@ -286,7 +288,8 @@ export class ComboboxInput extends LitElement {
 @customElement('shadcn-combobox-content')
 export class ComboboxContent extends LitElement {
   private static _nextId = 0;
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: block; position: absolute; z-index: 50; top: calc(100% + var(--spacing-1)); left: 0; width: 100%; }
     :host(:not([open])) { display: none; }
     .content { max-height: 15rem; overflow: auto; padding: var(--spacing-1); border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--popover); color: var(--popover-foreground); box-shadow: var(--shadow-md); animation: shadcn-zoom-in var(--transition-fast); }
@@ -300,7 +303,8 @@ export class ComboboxContent extends LitElement {
 /** @element shadcn-combobox-empty @slot - Empty-state message. */
 @customElement('shadcn-combobox-empty')
 export class ComboboxEmpty extends LitElement {
-  static styles = [tokens, css`:host { display: none; padding: var(--spacing-6) var(--spacing-2); text-align: center; font-size: var(--font-size-sm); } :host([visible]) { display: block; }`];
+  static styles = [tokensBase,
+    tokensMotion, css`:host { display: none; padding: var(--spacing-6) var(--spacing-2); text-align: center; font-size: var(--font-size-sm); } :host([visible]) { display: block; }`];
   @property({ type: Boolean, reflect: true }) visible = false;
   protected render() { return html`<slot>No items found.</slot>`; }
 }
@@ -316,7 +320,8 @@ export class ComboboxGroup extends LitElement {
 /** @element shadcn-combobox-label @slot - Group label. */
 @customElement('shadcn-combobox-label')
 export class ComboboxLabel extends LitElement {
-  static styles = [tokens, css`:host { display: block; padding: var(--spacing-2); color: var(--muted-foreground); font-size: var(--font-size-xs); font-weight: 500; }`];
+  static styles = [tokensBase,
+    tokensMotion, css`:host { display: block; padding: var(--spacing-2); color: var(--muted-foreground); font-size: var(--font-size-xs); font-weight: 500; }`];
   protected render() { return html`<slot></slot>`; }
 }
 
@@ -324,7 +329,8 @@ export class ComboboxLabel extends LitElement {
 @customElement('shadcn-combobox-item')
 export class ComboboxItem extends LitElement {
   private static _nextId = 0;
-  static styles = [tokens, css`
+  static styles = [tokensBase,
+    tokensMotion, css`
     :host { display: block; }
     :host([filtered]) { display: none; }
     .item { position: relative; display: flex; min-height: 2rem; align-items: center; padding: var(--spacing-1) var(--spacing-8) var(--spacing-1) var(--spacing-2); border-radius: var(--radius-sm); font-size: var(--font-size-sm); cursor: default; outline: none; }
@@ -363,7 +369,8 @@ export class ComboboxItem extends LitElement {
 /** @element shadcn-combobox-separator */
 @customElement('shadcn-combobox-separator')
 export class ComboboxSeparator extends LitElement {
-  static styles = [tokens, css`:host { display: block; height: 1px; margin: var(--spacing-1) calc(var(--spacing-1) * -1); background: var(--border); }`];
+  static styles = [tokensBase,
+    tokensMotion, css`:host { display: block; height: 1px; margin: var(--spacing-1) calc(var(--spacing-1) * -1); background: var(--border); }`];
 }
 
 declare global {

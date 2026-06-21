@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * A component for displaying keyboard shortcuts and key combinations.
@@ -16,7 +16,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-kbd')
 export class Kbd extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: inline-block;

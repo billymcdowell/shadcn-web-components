@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement } from 'lit/decorators.js';
-import { tokens } from '../../styles/index.js';
+import { tokensBase } from '../../styles/index.js';
 
 /**
  * A card container component for grouping related content.
@@ -17,7 +17,7 @@ import { tokens } from '../../styles/index.js';
 @customElement('shadcn-card')
 export class Card extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: block;
@@ -86,7 +86,7 @@ export class Card extends LitElement {
 @customElement('shadcn-card-header')
 export class CardHeader extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: block;
@@ -109,7 +109,7 @@ export class CardHeader extends LitElement {
 @customElement('shadcn-card-title')
 export class CardTitle extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: block;
@@ -136,7 +136,7 @@ export class CardTitle extends LitElement {
 @customElement('shadcn-card-description')
 export class CardDescription extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: block;
@@ -161,7 +161,7 @@ export class CardDescription extends LitElement {
 @customElement('shadcn-card-content')
 export class CardContent extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: block;
@@ -184,7 +184,7 @@ export class CardContent extends LitElement {
 @customElement('shadcn-card-footer')
 export class CardFooter extends LitElement {
     static styles = [
-        tokens,
+        tokensBase,
         css`
       :host {
         display: flex;

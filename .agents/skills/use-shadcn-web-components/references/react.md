@@ -1,6 +1,6 @@
 # React and JSX
 
-For npm delivery, import each registration subpath once in a client entry or client component. For CDN delivery, load the import map and direct module from the application document shell and omit the npm registration import. Never combine both. Use lowercase custom-element tags in JSX.
+For npm delivery, import each registration subpath once in a client entry or client component. For CDN delivery, load the import map and direct module from the application document shell and omit the npm registration import. Never combine both. See [HTML and CDN](html-cdn.md) for the full import map and dependency matrix. Use lowercase custom-element tags in JSX.
 
 React 19 supports custom-element properties and `CustomEvent` listeners. Spell custom event props as lowercase `on` plus the exact event name:
 
