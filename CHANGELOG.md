@@ -1,5 +1,11 @@
 # shadcn-web-components
 
+## 0.2.1
+
+### Patch Changes
+
+- eb8d9c7: Ensure `dist/styles/tokens.css` and `dist/styles/reset.css` are always present in published packages by adding an explicit style asset verification step and wiring style-related changes into release workflow triggers.
+
 ## 0.2.0
 
 ### Minor Changes
