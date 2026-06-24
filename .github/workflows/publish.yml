@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - "src/components/**"
+      - "src/styles/**"
+      - "scripts/copy-styles.mjs"
+      - "scripts/verify-style-assets.mjs"
       - ".changeset/**"
       - "package.json"
       - "CHANGELOG.md"
@@ -35,6 +38,9 @@ jobs:
           filters: |
             release:
               - 'src/components/**'
+              - 'src/styles/**'
+              - 'scripts/copy-styles.mjs'
+              - 'scripts/verify-style-assets.mjs'
               - '!src/components/**/*.stories.ts'
               - '.changeset/**'
               - 'package.json'
@@ -74,6 +80,7 @@ jobs:
       - name: Run Build and Validation Scripts
         run: |
           npm run build
+          npm run verify:style-assets
           npm run type-check
           npm run analyze
 

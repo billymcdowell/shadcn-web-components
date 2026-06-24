@@ -251,9 +251,10 @@
   "customElements": "custom-elements.json",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && node scripts/copy-styles.mjs",
+    "build": "tsc && vite build && node scripts/copy-styles.mjs && npm run verify:style-assets",
     "build:analyze": "ANALYZE=true npm run build",
     "size-limit": "npx size-limit",
+    "verify:style-assets": "node scripts/verify-style-assets.mjs",
     "verify:exports": "node scripts/verify-exports.mjs",
     "preview": "vite preview",
     "type-check": "tsc --noEmit",
